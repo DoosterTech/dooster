@@ -1,0 +1,86 @@
+{# Reusable section pieces. Copy comes from content/ — nothing editorial here. #}
+
+{% macro section_head(eyebrow, heading, lede='', align='left', level=2) -%}
+<div class="section-head {{ 'section-head-center' if align == 'center' }}">
+  {% if eyebrow %}<p class="eyebrow">{{ eyebrow }}</p>{% endif %}
+  <h{{ level }} class="h2">{{ heading }}</h{{ level }}>
+  {% if lede %}<p class="lede">{{ lede }}</p>{% endif %}
+</div>
+{%- endmacro %}
+
+{% macro icon(name) -%}
+<svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+{%- if name == 'aeo' -%}
+  <path d="M4 5h16v10H9l-5 4V5z"/><path d="M8 10h5"/><circle cx="17" cy="9" r="1.2" fill="currentColor" stroke="none"/>
+{%- elif name == 'web' -%}
+  <rect x="3" y="4" width="18" height="16" rx="2.5"/><path d="M3 9h18"/><path d="M10 13.5l-2 2 2 2M14 13.5l2 2-2 2"/>
+{%- elif name == 'social' -%}
+  <circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="18" cy="18" r="2.5"/><path d="M8.2 10.8l7.6-3.6M8.2 13.2l7.6 3.6"/>
+{%- elif name == 'design' -%}
+  <path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 13l9 5 9-5"/>
+{%- elif name == 'email' -%}
+  <rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3.5 6.5L12 13l8.5-6.5"/>
+{%- elif name == 'analytics' -%}
+  <path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>
+{%- else -%}
+  <path d="M5 12h14M13 6l6 6-6 6"/>
+{%- endif -%}
+</svg>
+{%- endmacro %}
+
+{% macro faq_list(entries) -%}
+<div class="faq-list">
+  {% for f in entries %}
+  <details class="faq" {% if loop.first %}open{% endif %}>
+    <summary><h3>{{ f.q }}</h3><span class="faq-toggle" aria-hidden="true"></span></summary>
+    <p>{{ f.a }}</p>
+  </details>
+  {% endfor %}
+</div>
+{%- endmacro %}
+
+{% macro cta_band(cta, secondary=None) -%}
+<section class="section">
+  <div class="wrap">
+    <div class="cta-band">
+      <div class="cta-glow" aria-hidden="true"></div>
+      <h2 class="h2">{{ cta.heading }}</h2>
+      <p class="lede">{{ cta.body }}</p>
+      <div class="btn-row btn-row-center">
+        {% if cta.primary %}<a href="{{ cta.primary.href }}" class="btn btn-accent">{{ cta.primary.label }} →</a>{% endif %}
+        {% set sec = cta.secondary or secondary %}
+        {% if sec %}<a href="{{ sec.href }}" class="btn btn-ghost-dark">{{ sec.label }}</a>{% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+{%- endmacro %}
+
+{% macro service_card(s, link_label='Learn more') -%}
+<a href="{{ s.url }}" class="card service-card">
+  <span class="icon-tile">{{ icon(s.icon) }}</span>
+  <h3 class="h3">{{ s.card_title }}</h3>
+  <p>{{ s.summary }}</p>
+  <span class="card-link">{{ link_label }} <span aria-hidden="true">→</span></span>
+</a>
+{%- endmacro %}
+
+{% macro case_card(c, link_label, href) -%}
+<article class="case-card">
+  <div class="case-top">
+    <p class="case-sector">{{ c.sector }}</p>
+    <h3 class="h3">{{ c.client }}</h3>
+    <p class="case-headline">{{ c.headline }}</p>
+    <p>{{ c.summary }}</p>
+  </div>
+  <div class="case-stats">
+    {% for h in c.highlights %}
+    <div><span class="stat-value">{{ h.value }}</span><span class="stat-label">{{ h.label }}</span></div>
+    {% endfor %}
+  </div>
+  <div class="case-foot">
+    <ul class="tags">{% for t in c.services %}<li>{{ t }}</li>{% endfor %}</ul>
+    <a href="{{ href }}" class="card-link">{{ link_label }} <span aria-hidden="true">→</span></a>
+  </div>
+</article>
+{%- endmacro %}

@@ -1,0 +1,11 @@
+{# The Dooster logo: a mark (a ring with a rising dot — "boosted") and the wordmark. #}
+{% macro logo(size="md", label=True) -%}
+<span class="logo logo-{{ size }}">
+  <svg class="logo-mark" viewBox="0 0 40 40" aria-hidden="true" focusable="false">
+    <rect width="40" height="40" rx="11" fill="currentColor"/>
+    <circle cx="17" cy="23" r="8.5" fill="none" stroke="var(--logo-ring, #F6F5F0)" stroke-width="4"/>
+    <circle cx="29" cy="11" r="4.5" fill="#FF5B2E"/>
+  </svg>
+  {%- if label %}<span class="logo-word">dooster</span>{% endif -%}
+</span>
+{%- endmacro %}

@@ -1,0 +1,120 @@
+{% extends 'layouts/base.html' %}
+{% import 'components/seometa.html' as seo with context %}
+{% from 'components/sections.html' import section_head, icon, faq_list, cta_band, service_card %}
+
+{% block seometa %}
+{{ seo.meta(meta.title, meta.description, meta.url, meta.image,
+            [seo.service_jsonld(service, site),
+             seo.breadcrumb_jsonld(site, [('Home', '/'), ('Services', '/services'), (service.short_title, service.url)]),
+             seo.faq_jsonld(service.faqs)]) }}
+{% endblock %}
+
+{% block content %}
+{% set h = service.hero %}
+<section class="page-hero">
+  <div class="hero-grid-bg" aria-hidden="true"></div>
+  <div class="wrap">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a><span aria-hidden="true">/</span><a href="/services">Services</a><span aria-hidden="true">/</span><span aria-current="page">{{ service.short_title }}</span>
+    </nav>
+    <p class="eyebrow eyebrow-icon"><span class="icon-tile icon-tile-sm">{{ icon(service.icon) }}</span>{{ h.eyebrow }}</p>
+    <h1 class="h1">{{ h.heading }}</h1>
+    <p class="lede lede-lg">{{ h.lede }}</p>
+    <div class="btn-row">
+      <a href="{{ h.primary_cta.href }}" class="btn btn-accent">{{ h.primary_cta.label }} →</a>
+      <a href="{{ h.secondary_cta.href }}" class="btn btn-ghost">{{ h.secondary_cta.label }}</a>
+    </div>
+  </div>
+</section>
+
+<!-- Direct answer: the definition AI engines can quote -->
+<section class="section section-tight">
+  <div class="wrap">
+    <div class="definition">
+      <h2 class="h3">{{ service.definition.heading }}</h2>
+      <p>{{ service.definition.body }}</p>
+    </div>
+  </div>
+</section>
+
+<section class="section section-dark">
+  <div class="wrap">
+    {{ section_head(labels.problems_eyebrow, service.problems.heading) }}
+    <div class="grid grid-3 challenge-grid">
+      {% for c in service.problems.entries %}
+      <div class="challenge">
+        <span class="challenge-num">{{ '%02d' % loop.index }}</span>
+        <h3 class="h3">{{ c.title }}</h3>
+        <p>{{ c.body }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap split">
+    {{ section_head(labels.approach_eyebrow, service.approach.heading) }}
+    <ol class="point-list">
+      {% for p in service.approach.entries %}
+      <li>
+        <span class="point-num">{{ loop.index }}</span>
+        <div><h3 class="h3">{{ p.title }}</h3><p>{{ p.body }}</p></div>
+      </li>
+      {% endfor %}
+    </ol>
+  </div>
+</section>
+
+<section class="section section-tint" id="process">
+  <div class="wrap">
+    {{ section_head(labels.process_eyebrow, labels.process_heading) }}
+    <ol class="steps steps-6">
+      {% for s in service.process %}
+      <li class="step">
+        <span class="step-num">{{ '%02d' % loop.index }}</span>
+        <h3 class="h3">{{ s.title }}</h3>
+        <p>{{ s.body }}</p>
+      </li>
+      {% endfor %}
+    </ol>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap grid grid-2 grid-gap-lg">
+    <div>
+      {{ section_head(labels.deliverables_eyebrow, labels.deliverables_heading) }}
+      <ul class="check-list">
+        {% for d in service.deliverables %}<li><span class="check" aria-hidden="true">✓</span>{{ d }}</li>{% endfor %}
+      </ul>
+    </div>
+    <div>
+      {{ section_head(labels.ideal_eyebrow, labels.ideal_heading) }}
+      <ul class="check-list check-list-card">
+        {% for d in service.ideal_for %}<li><span class="check" aria-hidden="true">→</span>{{ d }}</li>{% endfor %}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section section-tint">
+  <div class="wrap split">
+    {{ section_head(labels.faqs_eyebrow, labels.faqs_heading) }}
+    {{ faq_list(service.faqs) }}
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    {{ section_head('', labels.related_heading) }}
+    <div class="grid grid-3">
+      {% for s in related %}{{ service_card(s) }}{% endfor %}
+    </div>
+  </div>
+</section>
+
+{{ cta_band({"heading": service.cta.heading, "body": service.cta.body,
+             "primary": {"label": labels.cta_primary, "href": "/contact#contact-form"},
+             "secondary": {"label": labels.cta_secondary, "href": "/services"}}) }}
+{% endblock %}

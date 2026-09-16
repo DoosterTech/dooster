@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %}{{ meta.title }}{% endblock %}</title>
+
+  <link rel="icon" type="image/svg+xml" href="/static/images/favicon.svg" />
+  <link rel="apple-touch-icon" href="/static/images/apple-touch-icon.png" />
+  <meta name="theme-color" content="#0D0F14" />
+
+  <!-- Fonts: Space Grotesk (display) + Inter (text) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/static/css/base.css" />
+  <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM summary" />
+
+  {% block seometa %}{% endblock %}
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  {% include 'components/header.html' %}
+
+  <main id="main">
+    {% block content %}{% endblock %}
+  </main>
+
+  {% include 'components/footer.html' %}
+
+  <script src="/static/js/site.js" defer></script>
+  {% block extrascripts %}{% endblock %}
+</body>
+</html>

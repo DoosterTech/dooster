@@ -1,0 +1,20 @@
+{% extends 'layouts/base.html' %}
+{% import 'components/seometa.html' as seo with context %}
+
+{% block seometa %}
+{{ seo.meta(meta.title, meta.description, meta.url, meta.image) }}
+{% endblock %}
+
+{% block content %}
+<section class="page-hero page-hero-sm">
+  <div class="wrap wrap-narrow">
+    <p class="eyebrow">Legal</p>
+    <h1 class="h1">{{ legal.title }}</h1>
+  </div>
+</section>
+<section class="section section-flush-top">
+  <div class="wrap wrap-narrow prose">
+    {{ legal.html | safe }}
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,71 @@
+{% extends 'layouts/base.html' %}
+{% import 'components/seometa.html' as seo with context %}
+{% from 'components/sections.html' import section_head, icon, faq_list, cta_band, service_card %}
+
+{% block seometa %}
+{{ seo.meta(meta.title, meta.description, meta.url, meta.image,
+            [seo.breadcrumb_jsonld(site, [('Home', '/'), ('Services', '/services')]),
+             seo.faq_jsonld(page.faqs.entries)]) }}
+{% endblock %}
+
+{% block content %}
+<section class="page-hero">
+  <div class="hero-grid-bg" aria-hidden="true"></div>
+  <div class="wrap">
+    <p class="eyebrow">{{ page.hero.eyebrow }}</p>
+    <h1 class="h1">{{ page.hero.heading }}</h1>
+    <p class="lede lede-lg">{{ page.hero.lede }}</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="grid grid-3">
+      {% for s in services %}{{ service_card(s) }}{% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section section-dark">
+  <div class="wrap">
+    {{ section_head('', page.groups.heading) }}
+    <div class="grid grid-3">
+      {% for g in page.groups.entries %}
+      <div class="group-card">
+        <h3 class="h3">{{ g.title }}</h3>
+        <p>{{ g.body }}</p>
+        <ul class="group-links">
+          {% for slug in g.slugs %}{% for s in services if s.slug == slug %}
+          <li><a href="{{ s.url }}">{{ icon(s.icon) }} {{ s.short_title }}</a></li>
+          {% endfor %}{% endfor %}
+        </ul>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section section-tint">
+  <div class="wrap">
+    {{ section_head('', page.process.heading) }}
+    <ol class="steps">
+      {% for s in page.process.steps %}
+      <li class="step">
+        <span class="step-num">{{ '%02d' % loop.index }}</span>
+        <h3 class="h3">{{ s.title }}</h3>
+        <p>{{ s.body }}</p>
+      </li>
+      {% endfor %}
+    </ol>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap split">
+    {{ section_head('FAQs', page.faqs.heading) }}
+    {{ faq_list(page.faqs.entries) }}
+  </div>
+</section>
+
+{{ cta_band(page.cta) }}
+{% endblock %}

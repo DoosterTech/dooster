@@ -1,0 +1,24 @@
+{
+  "meta": {
+    "title": "Results & Case Studies | Dooster",
+    "description": "Dooster case studies: the TraderMade website and social media management, and the 45-page Kingfisher House Business Centre website rebuild.",
+    "path": "results",
+    "image": "og-default.png"
+  },
+  "hero": {
+    "eyebrow": "Results",
+    "heading": "Work that performs after launch",
+    "lede": "A selection of the businesses we've built websites and run marketing for — what they needed, and what we delivered."
+  },
+  "labels": {
+    "challenge": "The challenge",
+    "work": "What we delivered",
+    "services": "Services",
+    "visit": "Visit site"
+  },
+  "cta": {
+    "heading": "Want results like these?",
+    "body": "Tell us where your website or marketing feels stuck and we'll show you what we'd do first.",
+    "primary": { "label": "Book a free AEO audit", "href": "/contact#contact-form" }
+  }
+}

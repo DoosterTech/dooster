@@ -1,0 +1,21 @@
+{% extends 'layouts/base.html' %}
+
+{% block seometa %}
+<meta name="robots" content="noindex" />
+{% endblock %}
+
+{% block content %}
+<section class="page-hero page-hero-404">
+  <div class="hero-grid-bg" aria-hidden="true"></div>
+  <div class="wrap wrap-narrow center">
+    <p class="eyebrow">{{ page.eyebrow }}</p>
+    <h1 class="h1">{{ page.heading }}</h1>
+    <p class="lede lede-lg">{{ page.body }}</p>
+    <div class="btn-row btn-row-center">
+      {% for l in page.links %}
+      <a href="{{ l.href }}" class="btn {{ 'btn-accent' if loop.first else 'btn-ghost' }}">{{ l.label }}</a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}

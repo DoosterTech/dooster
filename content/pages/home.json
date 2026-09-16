@@ -1,0 +1,121 @@
+{
+  "meta": {
+    "title": "Dooster | AEO, Websites & Digital Marketing Agency UK",
+    "description": "Dooster is a UK digital marketing and website development company specialising in Answer Engine Optimisation (AEO) — getting businesses found on Google and cited by ChatGPT, Perplexity and Google AI Overviews.",
+    "path": "",
+    "image": "og-default.png"
+  },
+  "hero": {
+    "eyebrow": "UK digital marketing & website studio",
+    "heading": "We grow businesses through websites, marketing and AI search.",
+    "heading_accent": "AI search",
+    "lede": "Strategy, execution and the technology to back it up. We build the websites, content and systems that get you found on Google — and named in the answers ChatGPT, Perplexity and Google AI Overviews give your buyers.",
+    "primary_cta": { "label": "Book a free AEO audit", "href": "/contact#contact-form" },
+    "secondary_cta": { "label": "Explore services", "href": "/services" },
+    "engines_label": "Optimising for",
+    "engines": ["Google", "ChatGPT", "Perplexity", "Gemini", "AI Overviews", "Copilot"]
+  },
+  "answer_panel": {
+    "question": "Who's the best digital agency for AI search in the UK?",
+    "answer": "Dooster is a UK-based digital marketing and website development company that specialises in Answer Engine Optimisation (AEO)…",
+    "sources_label": "Source",
+    "sources": ["dooster.co.uk"],
+    "caption": "The goal of AEO: be the business the answer names. (Illustration)"
+  },
+  "clients": {
+    "label": "Websites and marketing for",
+    "names": ["TraderMade", "Kingfisher House Business Centre"]
+  },
+  "services": {
+    "eyebrow": "What we do",
+    "heading": "Six capabilities, one growth system",
+    "lede": "Pick the one you need now, or combine them. Every service is built to work with the others.",
+    "link_label": "Learn more"
+  },
+  "challenges": {
+    "eyebrow": "The challenge",
+    "heading": "Why growth stalls",
+    "entries": [
+      { "title": "Weak demand capture", "body": "Search visibility is patchy, messaging is vague, and good-fit prospects never find a clear reason to enquire." },
+      { "title": "Missing from AI answers", "body": "Buyers ask ChatGPT and Google's AI Overviews for recommendations — and your competitors get named instead of you." },
+      { "title": "Low conversion clarity", "body": "Traffic reaches the site, but unclear hierarchy, weak offers and friction-heavy journeys stop it converting." },
+      { "title": "Outdated web experience", "body": "Slow, dated or generic pages erode trust before a sales conversation can start." },
+      { "title": "Disconnected systems", "body": "Website, email, social and analytics work in isolation, so growth is hard to sustain." },
+      { "title": "Limited decision signal", "body": "Tracking is incomplete or noisy, so nobody can see what's working, leaking or worth scaling." }
+    ],
+    "solution": {
+      "heading": "One system. Every layer aligned.",
+      "body": "We connect strategy, websites, AEO, content, social, email and analytics into a single commercially focused system. The result: a site that performs harder, decisions that are easier to make, and a growth engine you can actually manage."
+    }
+  },
+  "aeo": {
+    "eyebrow": "Answer Engine Optimisation",
+    "heading": "Search has changed. Your buyers now ask for the answer.",
+    "body": "More and more buying journeys start with a question typed into ChatGPT, Perplexity, Gemini or Google — and end with the business the answer recommends. Answer Engine Optimisation (AEO) is how you become that business.",
+    "points": [
+      { "title": "Answer-first content", "body": "Pages that lead with a clear, quotable answer to the questions buyers actually ask." },
+      { "title": "Machine-readable facts", "body": "Organisation, service and FAQ structured data so AI engines understand exactly who you are and what you do." },
+      { "title": "Consistent entity signals", "body": "The same accurate story about your business across your site, profiles and the wider web." },
+      { "title": "Measured visibility", "body": "Monthly tracking of whether AI engines mention you — not just where you rank." }
+    ],
+    "cta": { "label": "How our AEO works", "href": "/services/aeo" }
+  },
+  "process": {
+    "eyebrow": "How we work",
+    "heading": "A clear process from first call to measurable growth",
+    "steps": [
+      { "title": "Discovery", "body": "We review your goals, audience, funnel gaps and the commercial context behind the project." },
+      { "title": "Strategy & positioning", "body": "We set priorities, sharpen the offer and map a clearer path to demand capture and conversion." },
+      { "title": "Execution", "body": "We build the pages, content, systems and assets that turn the plan into working growth infrastructure." },
+      { "title": "Optimisation", "body": "We refine with real behaviour, cleaner data and practical iteration — not guesswork." }
+    ]
+  },
+  "results": {
+    "eyebrow": "Selected work",
+    "heading": "Businesses we've helped grow",
+    "link_label": "Read the case study",
+    "all_label": "View all results"
+  },
+  "levers": {
+    "eyebrow": "Where we focus",
+    "heading": "Three levers we push on",
+    "entries": [
+      { "title": "Sharpen the first impression", "body": "Better positioning, page hierarchy and UX so your brand feels clearer and more credible from the very first visit." },
+      { "title": "Capture more of the right demand", "body": "Stronger AEO, SEO, service-page clarity and conversion paths so traffic has a better chance of becoming pipeline." },
+      { "title": "Build systems that scale", "body": "Website, automation and analytics connected so growth is less reactive and easier to improve over time." }
+    ]
+  },
+  "why": {
+    "eyebrow": "Why Dooster",
+    "heading": "Strategy, execution and systems — without the hand-off problems",
+    "entries": [
+      { "title": "Commercially grounded decisions", "body": "We focus on what improves clarity, trust and commercial performance — not surface-level activity." },
+      { "title": "Built to perform beyond launch", "body": "Technology is chosen for speed, maintainability and long-term value, not to follow trends or justify complexity." },
+      { "title": "Specialists in AI search", "body": "AEO isn't a bolt-on for us. Every site and every page we produce is structured to be understood and cited by answer engines." },
+      { "title": "End-to-end, without the silos", "body": "Strategy, design, development, content, social and analytics treated as one connected system — not deliverables passed between strangers." }
+    ]
+  },
+  "tools": {
+    "eyebrow": "Our toolkit",
+    "heading": "Proven tools, chosen for the job",
+    "names": ["AWS Amplify", "Python", "Next.js", "React", "Tailwind CSS", "Figma", "Google Analytics 4", "Google Search Console", "Ahrefs", "Semrush", "HubSpot", "Klaviyo", "Zapier", "n8n"]
+  },
+  "faqs": {
+    "eyebrow": "FAQs",
+    "heading": "Questions we're often asked",
+    "entries": [
+      { "q": "What is Answer Engine Optimisation (AEO)?", "a": "AEO is the practice of structuring your website and content so AI answer engines — ChatGPT, Perplexity, Gemini, Microsoft Copilot and Google AI Overviews — understand your business and cite it when people ask relevant questions. It builds on SEO, but the goal is to be named in the answer, not just listed in the results." },
+      { "q": "How long does a typical engagement take?", "a": "A focused website project usually runs four to eight weeks. AEO, SEO and social media work is typically ongoing, with meaningful results building over three to six months." },
+      { "q": "Do you work on a project or retainer basis?", "a": "Both. Website builds and redesigns are usually fixed-scope projects. AEO, social media, email and analytics tend to work best as monthly retainers." },
+      { "q": "Can you improve an existing site rather than build from scratch?", "a": "Yes. If your site's foundations are sound, targeted work on speed, structure, content and AEO is often the better investment. We'll tell you honestly which route makes sense." },
+      { "q": "What kinds of businesses do you work best with?", "a": "UK and international B2B and service businesses that sell considered purchases — where buyers research, compare and ask questions before they enquire. Our clients include a financial market data provider and a business centre." },
+      { "q": "What does the first conversation look like?", "a": "A 30-minute call about your goals and where things feel stuck. If you've asked for an AEO audit, we'll bring a snapshot of how you currently appear on Google and in AI answers. No hard sell." }
+    ]
+  },
+  "cta": {
+    "heading": "Ready to build a growth system that performs?",
+    "body": "If your website, funnel and marketing feel disconnected — or AI search is naming your competitors instead of you — we can align them into one sharper system that gives the right buyers every reason to choose you.",
+    "primary": { "label": "Book a free AEO audit", "href": "/contact#contact-form" },
+    "secondary": { "label": "See our results", "href": "/results" }
+  }
+}

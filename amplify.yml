@@ -1,0 +1,38 @@
+# AWS Amplify Hosting build spec.
+#
+# Amplify runs this on every commit. If any command exits non-zero the build
+# FAILS and nothing is deployed — the version already live stays live. That is
+# what protects the site from a malformed content file: validate_content.py
+# exits 1 and the deploy never happens.
+
+# One Amplify app, two branches. The build reads Amplify's AWS_BRANCH
+# (site_env.py), so nothing needs setting per branch for this:
+#   main -> production: indexable, review pages left out
+#   dev  -> dev: noindex on every page, robots.txt blocks crawlers
+# FORM_ENDPOINT is the only variable set per branch in the console.
+
+version: 1
+frontend:
+  phases:
+    preBuild:
+      commands:
+        - python3 -m pip install --upgrade pip
+        - python3 -m pip install -r requirements.txt
+
+    build:
+      commands:
+        # Explicit validation step so a content mistake shows up as its own
+        # clearly-named failure in the Amplify build log, not buried in a
+        # Python traceback. export_static.py re-runs it as a safety net.
+        - echo "Checking content files..."
+        - python3 validate_content.py
+        - echo "Building site..."
+        - python3 export_static.py --absolute --out dist
+
+  artifacts:
+    baseDirectory: dist
+    files:
+      - '**/*'
+
+  cache:
+    paths: []

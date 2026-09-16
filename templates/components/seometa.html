@@ -1,0 +1,103 @@
+{% macro meta(title='', description='', url='', image='', jsonld=[]) -%}
+<!-- Primary Meta -->
+<meta name="description" content="{{ description }}" />
+{# dev deploys are public URLs, so they stay out of search — see site_env.py #}
+<meta name="robots" content="{{ 'index, follow, max-snippet:-1, max-image-preview:large' if is_production else 'noindex, nofollow' }}" />
+<meta name="author" content="{{ site.brand.full_name }}" />
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="en_GB" />
+<meta property="og:title" content="{{ title }}" />
+<meta property="og:description" content="{{ description }}" />
+<meta property="og:url" content="{{ url }}" />
+<meta property="og:image" content="{{ image }}" />
+<meta property="og:site_name" content="{{ site.brand.name }}" />
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="{{ title }}" />
+<meta name="twitter:description" content="{{ description }}" />
+<meta name="twitter:image" content="{{ image }}" />
+
+<!-- Canonical -->
+<link rel="canonical" href="{{ url }}" />
+
+<!-- JSON-LD: structured facts for search and AI answer engines -->
+{% for block in jsonld %}
+<script type="application/ld+json">{{ block | safe }}</script>
+{% endfor %}
+{%- endmacro %}
+
+{% macro org_jsonld(site) -%}
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "@id": "{{ site.site_url }}/#organization",
+  "name": {{ site.brand.full_name | tojson }},
+  "url": {{ site.site_url | tojson }},
+  "logo": "{{ site.site_url }}/static/images/logo.png",
+  "image": "{{ site.site_url }}/static/images/og-default.png",
+  "description": {{ site.seo.org_description | tojson }},
+  "email": {{ site.contact.email | tojson }},
+  "areaServed": "GB",
+  "address": { "@type": "PostalAddress", "addressCountry": "GB" },
+  "knowsAbout": {{ site.seo.knows_about | tojson }}
+}
+{%- endmacro %}
+
+{% macro website_jsonld(site) -%}
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "{{ site.site_url }}/#website",
+  "name": {{ site.brand.name | tojson }},
+  "url": {{ site.site_url | tojson }},
+  "inLanguage": "en-GB",
+  "publisher": { "@id": "{{ site.site_url }}/#organization" }
+}
+{%- endmacro %}
+
+{% macro service_jsonld(service, site) -%}
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": {{ service.title | tojson }},
+  "serviceType": {{ service.short_title | tojson }},
+  "description": {{ service.description | tojson }},
+  "provider": { "@id": "{{ site.site_url }}/#organization", "@type": "ProfessionalService", "name": {{ site.brand.full_name | tojson }} },
+  "url": "{{ site.site_url }}{{ service.url }}",
+  "areaServed": "GB"
+}
+{%- endmacro %}
+
+{% macro faq_jsonld(entries) -%}
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {% for f in entries %}{
+      "@type": "Question",
+      "name": {{ f.q | tojson }},
+      "acceptedAnswer": { "@type": "Answer", "text": {{ f.a | tojson }} }
+    }{% if not loop.last %},{% endif %}
+    {% endfor %}
+  ]
+}
+{%- endmacro %}
+
+{% macro breadcrumb_jsonld(site, crumbs) -%}
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {% for label, path in crumbs %}{
+      "@type": "ListItem",
+      "position": {{ loop.index }},
+      "name": {{ label | tojson }},
+      "item": "{{ site.site_url }}{{ path }}"
+    }{% if not loop.last %},{% endif %}
+    {% endfor %}
+  ]
+}
+{%- endmacro %}

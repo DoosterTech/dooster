@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 196 40" role="img" aria-label="Dooster">
+  <rect width="40" height="40" rx="11" fill="#0D0F14"/>
+  <circle cx="17" cy="23" r="8.5" fill="none" stroke="#F6F5F0" stroke-width="4"/>
+  <circle cx="29" cy="11" r="4.5" fill="#FF5B2E"/>
+  <text x="52" y="30" font-family="'Space Grotesk', 'Segoe UI', Arial, sans-serif" font-weight="700" font-size="30" letter-spacing="-1.3" fill="#0D0F14">dooster</text>
+</svg>

@@ -1,0 +1,58 @@
+{
+  "meta": {
+    "title": "Contact Dooster | Book a Free AEO Audit",
+    "description": "Contact Dooster to book a free AEO audit or talk about a website, SEO, social media or email marketing project. We reply within one working day.",
+    "path": "contact",
+    "image": "og-default.png"
+  },
+  "hero": {
+    "eyebrow": "Contact",
+    "heading": "Let's build a clearer growth system.",
+    "lede": "Tell us where your website, funnel or marketing feels stuck. We'll come back with practical next steps."
+  },
+  "promises": [
+    "No spam. No hard sell.",
+    "A reply within one working day.",
+    "Useful commercial insight, even if we don't work together."
+  ],
+  "audit": {
+    "heading": "What's in a free AEO audit?",
+    "entries": [
+      "How you rank on Google for the questions buyers ask",
+      "Whether ChatGPT, Perplexity and Google AI Overviews mention you",
+      "Technical and structured-data issues holding you back",
+      "The three highest-impact fixes to make first"
+    ]
+  },
+  "form": {
+    "heading": "Send us a message",
+    "first_name": "First name",
+    "last_name": "Last name",
+    "email": "Work email",
+    "company": "Company",
+    "website_url": "Your website",
+    "interest": "What can we help with?",
+    "interest_placeholder": "Choose one",
+    "interest_options": [
+      { "value": "aeo-audit", "label": "Free AEO audit" },
+      { "value": "aeo-seo", "label": "AEO & SEO" },
+      { "value": "website", "label": "Website design & development" },
+      { "value": "social-media", "label": "Social media management" },
+      { "value": "design", "label": "UI/UX design" },
+      { "value": "email", "label": "Email marketing" },
+      { "value": "analytics", "label": "Analytics" },
+      { "value": "not-sure", "label": "Not sure yet" }
+    ],
+    "message": "Tell us about your project",
+    "submit": "Send message",
+    "privacy_note": "We'll only use your details to reply to your enquiry. See our privacy policy.",
+    "messages": {
+      "sending": "Sending…",
+      "success_heading": "Thanks — message received.",
+      "success_body": "We'll be in touch within one working day.",
+      "validation_summary": "Please check the highlighted fields.",
+      "error": "Something went wrong sending your message. Please email us directly instead.",
+      "not_connected": "This form isn't connected yet. Please email us directly."
+    }
+  }
+}

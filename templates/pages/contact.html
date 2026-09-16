@@ -1,0 +1,94 @@
+{% extends 'layouts/base.html' %}
+{% import 'components/seometa.html' as seo with context %}
+
+{% block seometa %}
+{{ seo.meta(meta.title, meta.description, meta.url, meta.image,
+            [seo.org_jsonld(site), seo.breadcrumb_jsonld(site, [('Home', '/'), ('Contact', '/contact')])]) }}
+{% endblock %}
+
+{% block content %}
+{% set f = page.form %}
+<section class="page-hero page-hero-contact">
+  <div class="hero-grid-bg" aria-hidden="true"></div>
+  <div class="wrap contact-grid">
+    <div class="contact-intro">
+      <p class="eyebrow">{{ page.hero.eyebrow }}</p>
+      <h1 class="h1">{{ page.hero.heading }}</h1>
+      <p class="lede lede-lg">{{ page.hero.lede }}</p>
+
+      <ul class="promise-list">
+        {% for p in page.promises %}<li><span class="check" aria-hidden="true">✓</span>{{ p }}</li>{% endfor %}
+      </ul>
+
+      <div class="audit-box">
+        <h2 class="h3">{{ page.audit.heading }}</h2>
+        <ul class="check-list">
+          {% for e in page.audit.entries %}<li><span class="check" aria-hidden="true">✓</span>{{ e }}</li>{% endfor %}
+        </ul>
+      </div>
+
+      <p class="contact-email">Prefer email? <a href="mailto:{{ site.contact.email }}">{{ site.contact.email }}</a></p>
+    </div>
+
+    <div class="form-card" id="contact-form-card">
+      <h2 class="h3">{{ f.heading }}</h2>
+      <form id="contact-form" data-endpoint="{{ form_endpoint }}" data-email="{{ site.contact.email }}" novalidate>
+        <div class="field-row">
+          <div class="field">
+            <label for="first_name">{{ f.first_name }} <span aria-hidden="true">*</span></label>
+            <input id="first_name" name="first_name" type="text" autocomplete="given-name" required aria-describedby="err-first_name" />
+            <p class="field-error" id="err-first_name" aria-live="polite"></p>
+          </div>
+          <div class="field">
+            <label for="last_name">{{ f.last_name }}</label>
+            <input id="last_name" name="last_name" type="text" autocomplete="family-name" aria-describedby="err-last_name" />
+            <p class="field-error" id="err-last_name" aria-live="polite"></p>
+          </div>
+        </div>
+        <div class="field">
+          <label for="email">{{ f.email }} <span aria-hidden="true">*</span></label>
+          <input id="email" name="email" type="email" autocomplete="email" required aria-describedby="err-email" />
+          <p class="field-error" id="err-email" aria-live="polite"></p>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="company">{{ f.company }}</label>
+            <input id="company" name="company" type="text" autocomplete="organization" aria-describedby="err-company" />
+            <p class="field-error" id="err-company" aria-live="polite"></p>
+          </div>
+          <div class="field">
+            <label for="site_url">{{ f.website_url }}</label>
+            <input id="site_url" name="site_url" type="text" inputmode="url" placeholder="yourcompany.co.uk" aria-describedby="err-site_url" />
+            <p class="field-error" id="err-site_url" aria-live="polite"></p>
+          </div>
+        </div>
+        <div class="field">
+          <label for="interest">{{ f.interest }}</label>
+          <select id="interest" name="interest">
+            <option value="">{{ f.interest_placeholder }}</option>
+            {% for o in f.interest_options %}<option value="{{ o.value }}">{{ o.label }}</option>{% endfor %}
+          </select>
+        </div>
+        <div class="field">
+          <label for="message">{{ f.message }} <span aria-hidden="true">*</span></label>
+          <textarea id="message" name="message" rows="5" required aria-describedby="err-message"></textarea>
+          <p class="field-error" id="err-message" aria-live="polite"></p>
+        </div>
+        {# Honeypot: hidden from people, filled in by bots #}
+        <div class="hp" aria-hidden="true">
+          <label for="website">Leave this empty</label>
+          <input id="website" name="website" type="text" tabindex="-1" autocomplete="off" />
+        </div>
+        <button type="submit" id="contact-submit" class="btn btn-accent btn-block">{{ f.submit }}</button>
+        <p class="form-note">{{ f.privacy_note.replace('privacy policy', '<a href="/privacy-policy">privacy policy</a>') | safe }}</p>
+        <div id="form-status" role="status" aria-live="polite"></div>
+      </form>
+      <script type="application/json" id="form-messages">{{ f.messages | tojson }}</script>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block extrascripts %}
+<script src="/static/js/contact-form.js" defer></script>
+{% endblock %}

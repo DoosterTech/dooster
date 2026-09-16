@@ -1,0 +1,17 @@
+{
+  "meta": {
+    "title": "Page not found | Dooster",
+    "description": "The page you were looking for could not be found.",
+    "path": "404",
+    "image": "og-default.png"
+  },
+  "eyebrow": "404",
+  "heading": "This page isn't the answer you were looking for",
+  "body": "It may have moved, or the address may be mistyped. Try one of these instead.",
+  "links": [
+    { "label": "Home", "href": "/" },
+    { "label": "Services", "href": "/services" },
+    { "label": "Results", "href": "/results" },
+    { "label": "Contact", "href": "/contact" }
+  ]
+}

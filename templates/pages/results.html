@@ -1,0 +1,57 @@
+{% extends 'layouts/base.html' %}
+{% import 'components/seometa.html' as seo with context %}
+{% from 'components/sections.html' import cta_band %}
+
+{% block seometa %}
+{{ seo.meta(meta.title, meta.description, meta.url, meta.image,
+            [seo.breadcrumb_jsonld(site, [('Home', '/'), ('Results', '/results')])]) }}
+{% endblock %}
+
+{% block content %}
+<section class="page-hero">
+  <div class="hero-grid-bg" aria-hidden="true"></div>
+  <div class="wrap">
+    <p class="eyebrow">{{ page.hero.eyebrow }}</p>
+    <h1 class="h1">{{ page.hero.heading }}</h1>
+    <p class="lede lede-lg">{{ page.hero.lede }}</p>
+  </div>
+</section>
+
+{% for c in case_studies %}
+<section class="section {{ 'section-tint' if loop.index is even }}" id="{{ c.slug }}">
+  <div class="wrap">
+    <article class="case-full">
+      <header class="case-full-head">
+        <p class="case-sector">{{ c.sector }}</p>
+        <h2 class="h2">{{ c.client }}</h2>
+        <p class="case-headline case-headline-lg">{{ c.headline }}</p>
+        <a href="{{ c.website }}" class="card-link" rel="noopener" target="_blank">{{ page.labels.visit }}: {{ c.website_label }} <span aria-hidden="true">↗</span></a>
+      </header>
+
+      <div class="case-full-body">
+        <div>
+          <p class="lede">{{ c.summary }}</p>
+          <h3 class="h3 case-sub">{{ page.labels.challenge }}</h3>
+          <p>{{ c.challenge }}</p>
+        </div>
+        <div class="case-side">
+          <div class="case-stats case-stats-stack">
+            {% for h in c.highlights %}
+            <div><span class="stat-value">{{ h.value }}</span><span class="stat-label">{{ h.label }}</span></div>
+            {% endfor %}
+          </div>
+          <h3 class="h3 case-sub">{{ page.labels.work }}</h3>
+          <ul class="check-list">
+            {% for w in c.work %}<li><span class="check" aria-hidden="true">✓</span>{{ w }}</li>{% endfor %}
+          </ul>
+          <p class="case-sub-label">{{ page.labels.services }}</p>
+          <ul class="tags">{% for t in c.services %}<li>{{ t }}</li>{% endfor %}</ul>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+{% endfor %}
+
+{{ cta_band(page.cta) }}
+{% endblock %}

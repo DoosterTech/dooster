@@ -1,0 +1,185 @@
+{% extends 'layouts/base.html' %}
+{% import 'components/seometa.html' as seo with context %}
+{% from 'components/sections.html' import section_head, icon, faq_list, cta_band, service_card, case_card %}
+
+{% block seometa %}
+{{ seo.meta(meta.title, meta.description, meta.url, meta.image,
+            [seo.org_jsonld(site), seo.website_jsonld(site), seo.faq_jsonld(page.faqs.entries)]) }}
+{% endblock %}
+
+{% block content %}
+{% set h = page.hero %}
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-grid-bg" aria-hidden="true"></div>
+  <div class="wrap hero-inner">
+    <div class="hero-copy">
+      <p class="eyebrow eyebrow-pill"><span class="status-dot" aria-hidden="true"></span>{{ h.eyebrow }}</p>
+      {% set parts = h.heading.split(h.heading_accent) %}
+      <h1 class="h1">{{ parts[0] }}<span class="accent-text">{{ h.heading_accent }}</span>{{ parts[1] if parts|length > 1 }}</h1>
+      <p class="lede lede-lg">{{ h.lede }}</p>
+      <div class="btn-row">
+        <a href="{{ h.primary_cta.href }}" class="btn btn-accent">{{ h.primary_cta.label }} →</a>
+        <a href="{{ h.secondary_cta.href }}" class="btn btn-ghost">{{ h.secondary_cta.label }}</a>
+      </div>
+      <div class="engines">
+        <span class="engines-label">{{ h.engines_label }}</span>
+        <ul>{% for e in h.engines %}<li>{{ e }}</li>{% endfor %}</ul>
+      </div>
+    </div>
+
+    {% set a = page.answer_panel %}
+    <figure class="answer-panel" aria-label="{{ a.caption }}">
+      <div class="answer-window">
+        <div class="answer-bar"><span></span><span></span><span></span></div>
+        <div class="answer-q">
+          <span class="answer-avatar" aria-hidden="true">You</span>
+          <p>{{ a.question }}</p>
+        </div>
+        <div class="answer-a">
+          <span class="answer-avatar answer-avatar-ai" aria-hidden="true">AI</span>
+          <div>
+            <p>{{ a.answer }}</p>
+            <div class="answer-lines" aria-hidden="true"><span></span><span></span><span class="short"></span></div>
+            <p class="answer-sources">{{ a.sources_label }}: {% for s in a.sources %}<span class="source-chip">{{ s }}</span>{% endfor %}</p>
+          </div>
+        </div>
+      </div>
+      <figcaption>{{ a.caption }}</figcaption>
+    </figure>
+  </div>
+
+  <div class="wrap clients-strip">
+    <span>{{ page.clients.label }}</span>
+    <ul>{% for c in page.clients.names %}<li>{{ c }}</li>{% endfor %}</ul>
+  </div>
+</section>
+
+<!-- Services -->
+<section class="section" id="services">
+  <div class="wrap">
+    {{ section_head(page.services.eyebrow, page.services.heading, page.services.lede) }}
+    <div class="grid grid-3">
+      {% for s in services %}{{ service_card(s, page.services.link_label) }}{% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- Challenge -->
+<section class="section section-dark">
+  <div class="wrap">
+    {{ section_head(page.challenges.eyebrow, page.challenges.heading) }}
+    <div class="grid grid-3 challenge-grid">
+      {% for c in page.challenges.entries %}
+      <div class="challenge">
+        <span class="challenge-num">{{ '%02d' % loop.index }}</span>
+        <h3 class="h3">{{ c.title }}</h3>
+        <p>{{ c.body }}</p>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="solution">
+      <h3 class="h2">{{ page.challenges.solution.heading }}</h3>
+      <p class="lede">{{ page.challenges.solution.body }}</p>
+    </div>
+  </div>
+</section>
+
+<!-- AEO -->
+<section class="section" id="aeo">
+  <div class="wrap split">
+    <div>
+      {{ section_head(page.aeo.eyebrow, page.aeo.heading, page.aeo.body) }}
+      <a href="{{ page.aeo.cta.href }}" class="btn btn-dark">{{ page.aeo.cta.label }} →</a>
+    </div>
+    <ol class="point-list">
+      {% for p in page.aeo.points %}
+      <li>
+        <span class="point-num">{{ loop.index }}</span>
+        <div><h3 class="h3">{{ p.title }}</h3><p>{{ p.body }}</p></div>
+      </li>
+      {% endfor %}
+    </ol>
+  </div>
+</section>
+
+<!-- Process -->
+<section class="section section-tint">
+  <div class="wrap">
+    {{ section_head(page.process.eyebrow, page.process.heading) }}
+    <ol class="steps">
+      {% for s in page.process.steps %}
+      <li class="step">
+        <span class="step-num">{{ '%02d' % loop.index }}</span>
+        <h3 class="h3">{{ s.title }}</h3>
+        <p>{{ s.body }}</p>
+      </li>
+      {% endfor %}
+    </ol>
+  </div>
+</section>
+
+<!-- Results -->
+<section class="section" id="case-studies">
+  <div class="wrap">
+    <div class="section-head-row">
+      {{ section_head(page.results.eyebrow, page.results.heading) }}
+      <a href="/results" class="btn btn-ghost">{{ page.results.all_label }}</a>
+    </div>
+    <div class="grid grid-2">
+      {% for c in case_studies %}{{ case_card(c, page.results.link_label, '/results#' ~ c.slug) }}{% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- Levers -->
+<section class="section section-tint">
+  <div class="wrap">
+    {{ section_head(page.levers.eyebrow, page.levers.heading) }}
+    <div class="grid grid-3">
+      {% for l in page.levers.entries %}
+      <div class="card lever">
+        <span class="lever-bar" aria-hidden="true"></span>
+        <h3 class="h3">{{ l.title }}</h3>
+        <p>{{ l.body }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- Why Dooster -->
+<section class="section" id="why-dooster">
+  <div class="wrap split">
+    {{ section_head(page.why.eyebrow, page.why.heading) }}
+    <div class="grid grid-2 why-grid">
+      {% for w in page.why.entries %}
+      <div class="why">
+        <span class="check" aria-hidden="true">✓</span>
+        <h3 class="h3">{{ w.title }}</h3>
+        <p>{{ w.body }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- Tools -->
+<section class="section section-tight">
+  <div class="wrap">
+    {{ section_head(page.tools.eyebrow, page.tools.heading, align='center') }}
+    <ul class="tool-cloud">{% for t in page.tools.names %}<li>{{ t }}</li>{% endfor %}</ul>
+  </div>
+</section>
+
+<!-- FAQs -->
+<section class="section section-tint" id="faqs">
+  <div class="wrap split">
+    {{ section_head(page.faqs.eyebrow, page.faqs.heading) }}
+    {{ faq_list(page.faqs.entries) }}
+  </div>
+</section>
+
+{{ cta_band(page.cta) }}
+{% endblock %}

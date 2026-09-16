@@ -1,0 +1,58 @@
+{
+  "brand": {
+    "name": "Dooster",
+    "full_name": "Dooster",
+    "tagline": "A UK digital marketing and website studio that gets businesses found, chosen and cited — on Google and in AI answer engines.",
+    "footer_blurb": "Websites, AEO and marketing systems for businesses that want sharper positioning, cleaner funnels and measurable growth.",
+    "availability": "Taking on new projects",
+    "copyright_year": "2026",
+    "country": "United Kingdom"
+  },
+  "contact": {
+    "email": "hello@dooster.co.uk",
+    "response_promise": "We reply within one working day with something useful, not a pitch."
+  },
+  "site_url": "https://www.dooster.co.uk",
+  "nav": {
+    "primary": [
+      { "label": "Services", "href": "/services", "children_from": "services" },
+      { "label": "Results", "href": "/results" },
+      { "label": "Why Dooster", "href": "/#why-dooster" },
+      { "label": "Contact", "href": "/contact" }
+    ],
+    "cta": { "label": "Book a free AEO audit", "href": "/contact#contact-form" }
+  },
+  "footer": {
+    "columns": [
+      {
+        "heading": "Company",
+        "links": [
+          { "label": "Home", "href": "/" },
+          { "label": "Services", "href": "/services" },
+          { "label": "Results", "href": "/results" },
+          { "label": "Why Dooster", "href": "/#why-dooster" },
+          { "label": "Contact", "href": "/contact" }
+        ]
+      }
+    ],
+    "services_heading": "Services",
+    "contact_heading": "Get in touch",
+    "legal_links": [
+      { "label": "Privacy Policy", "href": "/privacy-policy" },
+      { "label": "Cookies Policy", "href": "/cookies-policy" }
+    ]
+  },
+  "seo": {
+    "default_image": "og-default.png",
+    "org_description": "Dooster is a UK-based digital marketing and website development company specialising in Answer Engine Optimisation (AEO) — helping businesses rank in Google and get cited by AI search engines such as ChatGPT, Perplexity, Gemini and Google AI Overviews.",
+    "knows_about": [
+      "Answer Engine Optimisation",
+      "AI search visibility",
+      "Search engine optimisation",
+      "Website design and development",
+      "Social media management",
+      "Email marketing automation",
+      "Marketing analytics"
+    ]
+  }
+}

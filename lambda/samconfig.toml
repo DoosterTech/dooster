@@ -1,0 +1,32 @@
+# AWS SAM settings for the contact form, one block per environment.
+#
+#   cd lambda
+#   sam build
+#   sam deploy --config-env dev
+#   sam deploy --config-env prod
+#
+# Before the first dev deploy, replace the two REPLACE-* values below: the
+# inbox test enquiries should go to, and the dev site's address (shown on the
+# dev branch in Amplify, or dev.dooster.co.uk if you map one).
+#
+# Region: eu-west-2 is London. SES must be verified, and production access
+# requested, in this same region — change both stacks together if you use
+# another.
+
+version = 0.1
+
+[dev.deploy.parameters]
+stack_name = "dooster-contact-dev"
+region = "eu-west-2"
+capabilities = "CAPABILITY_IAM"
+resolve_s3 = true
+confirm_changeset = true
+parameter_overrides = "Stage=dev ToEmail=REPLACE-WITH-TEST-INBOX FromEmail=website@dooster.co.uk AllowedOrigin=REPLACE-WITH-DEV-SITE-URL"
+
+[prod.deploy.parameters]
+stack_name = "dooster-contact-prod"
+region = "eu-west-2"
+capabilities = "CAPABILITY_IAM"
+resolve_s3 = true
+confirm_changeset = true
+parameter_overrides = "Stage=prod ToEmail=hello@dooster.co.uk FromEmail=website@dooster.co.uk AllowedOrigin=https://www.dooster.co.uk"

@@ -1,0 +1,48 @@
+{% from 'components/logo.html' import logo %}
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a href="/" class="header-logo" aria-label="{{ site.brand.name }} home">{{ logo() }}</a>
+
+    <nav class="desktop-nav" aria-label="Main">
+      {% for item in nav.primary %}
+        {% if item.children %}
+        <div class="nav-group">
+          <a href="{{ item.href }}" class="nav-link" aria-haspopup="true" aria-expanded="false">
+            {{ item.label }}
+            <svg width="10" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </a>
+          <div class="nav-menu">
+            {% for child in item.children %}
+            <a href="{{ child.href }}">{{ child.label }}</a>
+            {% endfor %}
+          </div>
+        </div>
+        {% else %}
+        <a href="{{ item.href }}" class="nav-link">{{ item.label }}</a>
+        {% endif %}
+      {% endfor %}
+    </nav>
+
+    <div class="header-actions">
+      <a href="{{ nav.cta.href }}" class="btn btn-accent btn-sm desktop-only">{{ nav.cta.label }}</a>
+      <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+{# Outside <header>: its backdrop-filter would trap a fixed-position child #}
+<div class="mobile-menu" id="mobile-menu" hidden>
+    <nav class="wrap mobile-nav" aria-label="Mobile">
+      {% for item in nav.primary %}
+      <a href="{{ item.href }}" class="mobile-link">{{ item.label }}</a>
+      {% if item.children %}
+        {% for child in item.children %}{% if child.href != item.href %}
+        <a href="{{ child.href }}" class="mobile-link mobile-sub">{{ child.label }}</a>
+        {% endif %}{% endfor %}
+      {% endif %}
+      {% endfor %}
+      <a href="{{ nav.cta.href }}" class="btn btn-accent mobile-cta">{{ nav.cta.label }} →</a>
+    </nav>
+</div>

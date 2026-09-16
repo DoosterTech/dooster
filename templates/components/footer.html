@@ -1,0 +1,42 @@
+{% from 'components/logo.html' import logo %}
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-brand">
+      <a href="/" aria-label="{{ site.brand.name }} home">{{ logo() }}</a>
+      <p>{{ site.brand.footer_blurb }}</p>
+      <p class="status-pill"><span class="status-dot" aria-hidden="true"></span>{{ site.brand.availability }}</p>
+    </div>
+
+    {% for col in site.footer.columns %}
+    <div>
+      <h2 class="footer-heading">{{ col.heading }}</h2>
+      <ul class="footer-links">
+        {% for link in col.links %}<li><a href="{{ link.href }}">{{ link.label }}</a></li>{% endfor %}
+      </ul>
+    </div>
+    {% endfor %}
+
+    <div>
+      <h2 class="footer-heading">{{ site.footer.services_heading }}</h2>
+      <ul class="footer-links">
+        {% for s in all_services %}<li><a href="{{ s.url }}">{{ s.short_title }}</a></li>{% endfor %}
+      </ul>
+    </div>
+
+    <div>
+      <h2 class="footer-heading">{{ site.footer.contact_heading }}</h2>
+      <ul class="footer-links">
+        <li><a href="mailto:{{ site.contact.email }}">{{ site.contact.email }}</a></li>
+        <li class="footer-note">{{ site.brand.country }}</li>
+      </ul>
+      <a href="{{ nav.cta.href }}" class="btn btn-accent btn-sm footer-cta">{{ nav.cta.label }}</a>
+    </div>
+  </div>
+
+  <div class="wrap footer-base">
+    <p>© {{ site.brand.copyright_year }} {{ site.brand.full_name }}. All rights reserved.</p>
+    <ul>
+      {% for link in site.footer.legal_links %}<li><a href="{{ link.href }}">{{ link.label }}</a></li>{% endfor %}
+    </ul>
+  </div>
+</footer>

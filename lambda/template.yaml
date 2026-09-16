@@ -1,0 +1,82 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Dooster contact form — API Gateway (HTTP API) -> Lambda -> SES
+
+# Deployed once per environment. Stage namespaces the function name and the API
+# stage, so a dev stack and a prod stack live side by side in one account.
+# Values for each live in samconfig.toml:
+#   sam deploy --config-env dev
+#   sam deploy --config-env prod
+
+Parameters:
+  Stage:
+    Type: String
+    AllowedValues: [dev, prod]
+    Description: Which site this stack serves.
+  ToEmail:
+    Type: String
+    Default: hello@dooster.co.uk
+    Description: Where enquiries are delivered. Use a test inbox for dev.
+  FromEmail:
+    Type: String
+    Default: website@dooster.co.uk
+    Description: Sender address. Must be verified in SES (or its domain must be).
+  AllowedOrigin:
+    Type: String
+    Default: https://www.dooster.co.uk
+    Description: Site origin permitted to call the API. Set to * only for testing.
+
+Globals:
+  Function:
+    Timeout: 10
+    MemorySize: 256
+    Runtime: python3.12
+
+Resources:
+  ContactApi:
+    Type: AWS::Serverless::HttpApi
+    Properties:
+      StageName: !Ref Stage
+      CorsConfiguration:
+        AllowOrigins:
+          - !Ref AllowedOrigin
+        AllowHeaders:
+          - content-type
+        AllowMethods:
+          - POST
+          - OPTIONS
+      # Caps cost and abuse from a public endpoint
+      DefaultRouteSettings:
+        ThrottlingBurstLimit: 10
+        ThrottlingRateLimit: 5
+
+  ContactFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub 'dooster-contact-form-${Stage}'
+      CodeUri: ./
+      Handler: contact_handler.lambda_handler
+      Environment:
+        Variables:
+          TO_EMAIL: !Ref ToEmail
+          FROM_EMAIL: !Ref FromEmail
+          ALLOWED_ORIGIN: !Ref AllowedOrigin
+      Policies:
+        - Statement:
+            - Effect: Allow
+              Action: ses:SendEmail
+              Resource: '*'
+      Events:
+        Submit:
+          Type: HttpApi
+          Properties:
+            ApiId: !Ref ContactApi
+            Path: /contact
+            Method: POST
+
+Outputs:
+  FormEndpoint:
+    Description: >-
+      Set this as FORM_ENDPOINT on the matching Amplify branch, then redeploy
+      that branch.
+    Value: !Sub 'https://${ContactApi}.execute-api.${AWS::Region}.amazonaws.com/${Stage}/contact'

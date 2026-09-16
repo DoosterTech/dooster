@@ -1,0 +1,28 @@
+# {{ site.brand.full_name }}
+
+> {{ site.seo.org_description }}
+
+Website: {{ site.site_url }}
+Contact: {{ site.contact.email }}
+Based in: {{ site.brand.country }}
+
+## Services
+{% for s in services %}
+- [{{ s.title }}]({{ site.site_url }}{{ s.url }}): {{ s.description }}
+{%- endfor %}
+
+## Clients and case studies
+{% for c in case_studies %}
+- {{ c.client }} ({{ c.website_label }}): {{ c.summary }}
+{%- endfor %}
+
+## Frequently asked questions
+{% for f in home.faqs.entries %}
+### {{ f.q }}
+{{ f.a }}
+{% endfor %}
+## Key pages
+
+- [Services]({{ site.site_url }}/services)
+- [Results]({{ site.site_url }}/results)
+- [Contact / free AEO audit]({{ site.site_url }}/contact)
