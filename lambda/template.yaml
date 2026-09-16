@@ -15,15 +15,15 @@ Parameters:
     Description: Which site this stack serves.
   ToEmail:
     Type: String
-    Default: hello@dooster.co.uk
+    Default: hello@dooster.io
     Description: Where enquiries are delivered. Use a test inbox for dev.
   FromEmail:
     Type: String
-    Default: website@dooster.co.uk
+    Default: website@dooster.io
     Description: Sender address. Must be verified in SES (or its domain must be).
   AllowedOrigin:
     Type: String
-    Default: https://www.dooster.co.uk
+    Default: https://www.dooster.io
     Description: Site origin permitted to call the API. Set to * only for testing.
 
 Globals:

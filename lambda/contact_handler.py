@@ -7,8 +7,8 @@ reply in the mail client answers the customer directly.
 
 Environment variables (set by template.yaml):
     TO_EMAIL         where enquiries are delivered
-    FROM_EMAIL       verified SES sender, e.g. website@dooster.co.uk
-    ALLOWED_ORIGIN   site origin allowed to call this, e.g. https://www.dooster.co.uk
+    FROM_EMAIL       verified SES sender, e.g. website@dooster.io
+    ALLOWED_ORIGIN   site origin allowed to call this, e.g. https://www.dooster.io
 """
 
 import html
@@ -21,8 +21,8 @@ from botocore.exceptions import ClientError
 
 ses = boto3.client("ses")
 
-TO_EMAIL = os.environ.get("TO_EMAIL", "hello@dooster.co.uk")
-FROM_EMAIL = os.environ.get("FROM_EMAIL", "website@dooster.co.uk")
+TO_EMAIL = os.environ.get("TO_EMAIL", "hello@dooster.io")
+FROM_EMAIL = os.environ.get("FROM_EMAIL", "website@dooster.io")
 ALLOWED_ORIGIN = os.environ.get("ALLOWED_ORIGIN", "*")
 
 EMAIL_RE = re.compile(r"^[^@\s]+@[^@\s.]+\.[^@\s]+$")
@@ -166,7 +166,7 @@ def lambda_handler(event, context):
         print(f"SES send failed: {e}")
         return _response(502, {
             "ok": False,
-            "error": "We couldn't send your message. Please email hello@dooster.co.uk.",
+            "error": "We couldn't send your message. Please email hello@dooster.io.",
         })
 
     return _response(200, {"ok": True})

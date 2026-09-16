@@ -1,6 +1,6 @@
 # Dooster — website
 
-Static website for [dooster.co.uk](https://www.dooster.co.uk), a UK digital
+Static website for [dooster.io](https://www.dooster.io), a UK digital
 marketing and website development company specialising in Answer Engine
 Optimisation (AEO). Built from JSON and markdown content by a small Flask app
 and deployed to AWS Amplify as static HTML. It uses the same setup as the
@@ -117,7 +117,7 @@ sam deploy --config-env prod
 ```
 
 Replace the `REPLACE-*` values in `lambda/samconfig.toml` first, verify the
-`dooster.co.uk` domain in SES, and request SES production access before launch.
+`dooster.io` domain in SES, and request SES production access before launch.
 Until `FORM_ENDPOINT` is set, the form tells visitors to email instead.
 
 ---

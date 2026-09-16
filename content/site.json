@@ -9,10 +9,10 @@
     "country": "United Kingdom"
   },
   "contact": {
-    "email": "hello@dooster.co.uk",
+    "email": "hello@dooster.io",
     "response_promise": "We reply within one working day with something useful, not a pitch."
   },
-  "site_url": "https://www.dooster.co.uk",
+  "site_url": "https://www.dooster.io",
   "nav": {
     "primary": [
       { "label": "Services", "href": "/services", "children_from": "services" },
