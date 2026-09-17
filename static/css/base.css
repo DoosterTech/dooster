@@ -716,3 +716,9 @@ a.card:hover .icon-tile { background: var(--accent); color: #fff; }
   .case-full-head { position: static; }
   .case-full-body { grid-template-columns: 7fr 5fr; gap: 64px; }
 }
+
+/* Alternate cards mirror the layout but keep the same image and text widths */
+@media (min-width: 900px) {
+  .work:nth-child(even) { grid-template-columns: 5fr 7fr; }
+  .work:nth-child(even) .work-text { order: 1; }
+}
