@@ -1,0 +1,69 @@
+{% extends 'layouts/base.html' %}
+{% import 'components/seometa.html' as seo with context %}
+{% from 'components/sections.html' import section_head, cta_band, case_card %}
+
+{% block seometa %}
+{{ seo.meta(meta.title, meta.description, meta.url, meta.image,
+            [seo.org_jsonld(site), seo.webpage_jsonld(site, meta, page.meta.updated),
+             seo.breadcrumb_jsonld(site, [('Home', '/'), ('About', '/about')])]) }}
+{% endblock %}
+
+{% block content %}
+<section class="page-hero">
+  <div class="hero-grid-bg" aria-hidden="true"></div>
+  <div class="wrap">
+    <p class="eyebrow">{{ page.hero.eyebrow }}</p>
+    <h1 class="h1">{{ page.hero.heading }}</h1>
+    <p class="lede lede-lg">{{ page.hero.lede }}</p>
+  </div>
+</section>
+
+<section class="section section-flush-top">
+  <div class="wrap split">
+    {{ section_head(page.story.eyebrow, page.story.heading) }}
+    <div class="story">
+      {% for p in page.story.paragraphs %}<p>{{ p }}</p>{% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section section-tint">
+  <div class="wrap">
+    {{ section_head(page.principles.eyebrow, page.principles.heading) }}
+    <div class="grid grid-3">
+      {% for pr in page.principles.entries %}
+      <div class="card lever">
+        <span class="lever-bar" aria-hidden="true"></span>
+        <h3 class="h3">{{ pr.title }}</h3>
+        <p>{{ pr.body }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section section-dark">
+  <div class="wrap">
+    {{ section_head(page.stack.eyebrow, page.stack.heading) }}
+    <div class="stack-grid">
+      {% for g in page.stack.groups %}
+      <div class="group-card">
+        <h3 class="h3">{{ g.title }}</h3>
+        <ul class="stack-list">{% for e in g.entries %}<li>{{ e }}</li>{% endfor %}</ul>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    {{ section_head(page.clients.eyebrow, page.clients.heading) }}
+    <div class="grid grid-2">
+      {% for c in case_studies %}{{ case_card(c, page.clients.link_label, '/results#' ~ c.slug) }}{% endfor %}
+    </div>
+  </div>
+</section>
+
+{{ cta_band(page.cta) }}
+{% endblock %}

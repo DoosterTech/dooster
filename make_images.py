@@ -88,9 +88,9 @@ def og_image():
     img.alpha_composite(m, (80, 80))
     d.text((200, 88), "dooster", font=font(76), fill=(255, 255, 255))
 
-    d.text((80, 270), "Be the business", font=font(78), fill=(255, 255, 255))
-    d.text((80, 360), "the answer names.", font=font(78), fill=ACCENT)
-    d.text((80, 500), "AEO  ·  Websites  ·  Social media  ·  Digital marketing  —  UK",
+    d.text((80, 270), "Websites, marketing & AI,", font=font(72), fill=(255, 255, 255))
+    d.text((80, 360), "engineered for growth.", font=font(72), fill=ACCENT)
+    d.text((80, 500), "Web development  ·  Digital marketing  ·  AI search  —  UK",
            font=font(30, bold=False), fill=MUTED)
     img.convert("RGB").save(os.path.join(OUT, "og-default.png"), optimize=True)
 

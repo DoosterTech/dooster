@@ -42,7 +42,21 @@
   "email": {{ site.contact.email | tojson }},
   "areaServed": "GB",
   "address": { "@type": "PostalAddress", "addressCountry": "GB" },
-  "knowsAbout": {{ site.seo.knows_about | tojson }}
+  "knowsAbout": {{ site.seo.knows_about | tojson }}{% if site.seo.same_as %},
+  "sameAs": {{ site.seo.same_as | tojson }}{% endif %}
+}
+{%- endmacro %}
+
+{% macro webpage_jsonld(site, meta, updated) -%}
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": {{ meta.title | tojson }},
+  "url": {{ meta.url | tojson }},
+  "inLanguage": "en-GB",
+  "isPartOf": { "@id": "{{ site.site_url }}/#website" },
+  "publisher": { "@id": "{{ site.site_url }}/#organization" }{% if updated %},
+  "dateModified": "{{ updated }}"{% endif %}
 }
 {%- endmacro %}
 

@@ -1,51 +1,244 @@
 {
   "services": [
     {
-      "slug": "aeo",
-      "url": "/services/aeo",
-      "icon": "aeo",
-      "short_title": "AEO & SEO",
-      "title": "Answer Engine Optimisation & SEO",
-      "card_title": "AEO, SEO & Content",
-      "summary": "Get found on Google and cited by AI answer engines — with technical SEO, answer-first content and Answer Engine Optimisation.",
-      "description": "Answer Engine Optimisation (AEO) and SEO from a UK team: technical SEO, answer-first content and structured data that get your business ranked on Google and cited in ChatGPT, Perplexity, Gemini and Google AI Overviews.",
+      "slug": "web-development",
+      "url": "/services/web-development",
+      "icon": "web",
+      "short_title": "Website Development",
+      "title": "Website Design & Development",
+      "card_title": "Website Design & Development",
+      "summary": "Engineered, not templated: fast, secure websites on modern cloud infrastructure, built to convert and easy for search engines and AI to understand.",
+      "description": "UK website design and development from a technology-led team: fast, secure, search-ready websites engineered to convert, structured for Google and AI search, and hosted on AWS.",
       "hero": {
-        "eyebrow": "AEO & SEO",
-        "heading": "Search visibility built for how people find you now",
-        "lede": "Buyers still search Google — but more of them now ask ChatGPT, Perplexity, Gemini or Google's AI Overviews and act on the answer. We make sure your business is the one that answer names, combining technical SEO, answer-first content and Answer Engine Optimisation.",
-        "primary_cta": { "label": "Request an AEO audit", "href": "/contact#contact-form" },
-        "secondary_cta": { "label": "See the process", "href": "#process" }
+        "eyebrow": "Website Development",
+        "heading": "Websites engineered to load fast, earn trust and convert",
+        "lede": "We're developers first. We design and build websites that are quick, secure and simple to keep up to date, deployed on AWS with automated checks on every release, and structured so Google and AI assistants understand exactly what you do.",
+        "primary_cta": {
+          "label": "Start a website project",
+          "href": "/contact#contact-form"
+        },
+        "secondary_cta": {
+          "label": "See our work",
+          "href": "/results"
+        }
       },
       "definition": {
-        "heading": "What is Answer Engine Optimisation (AEO)?",
-        "body": "Answer Engine Optimisation is the practice of structuring a website so AI-powered answer engines — ChatGPT, Perplexity, Gemini, Microsoft Copilot and Google AI Overviews — can understand it, trust it and quote it. Where SEO earns a position in a list of links, AEO earns a mention inside the answer itself. The two share foundations: crawlable pages, clear entities, and content that genuinely answers the question being asked."
+        "heading": "What makes a website ready for AI search?",
+        "body": "A website that is ready for AI search is fast, crawlable and unambiguous. Every page has a clear purpose, its main content is in the HTML rather than loaded by JavaScript, it carries accurate structured data, and its addresses stay stable so the authority it has earned is never lost. We build every site to that standard by default."
+      },
+      "problems": {
+        "heading": "Why websites stop pulling their weight",
+        "entries": [
+          {
+            "title": "Slow and dated",
+            "body": "Sluggish pages and an old design erode trust before a sales conversation can begin."
+          },
+          {
+            "title": "Hard to update",
+            "body": "Simple copy changes need a developer, so the site falls behind the business."
+          },
+          {
+            "title": "Unclear journeys",
+            "body": "Visitors can't tell what you offer or what to do next, so they leave."
+          },
+          {
+            "title": "Invisible to search",
+            "body": "Missing metadata, broken links and no structured data hold back rankings and AI citations."
+          },
+          {
+            "title": "Risky relaunches",
+            "body": "Redesigns that change every URL throw away years of search authority overnight."
+          }
+        ]
+      },
+      "approach": {
+        "heading": "How we build websites",
+        "entries": [
+          {
+            "title": "Content first",
+            "body": "We agree the message, page structure and buyer journey before anything is designed."
+          },
+          {
+            "title": "Engineered for performance",
+            "body": "Lean, statically generated pages served from AWS's global network load quickly, stay secure and cost little to host."
+          },
+          {
+            "title": "Safe deploys",
+            "body": "Every change is checked automatically — broken links, missing pages or SEO tags stop a release before it goes live."
+          },
+          {
+            "title": "Search authority protected",
+            "body": "When we rebuild, existing addresses are kept or redirected, so rankings carry across."
+          }
+        ]
+      },
+      "process": [
+        {
+          "title": "Discovery",
+          "body": "Goals, audience, existing site audit and the pages that already earn traffic."
+        },
+        {
+          "title": "Structure & content",
+          "body": "Sitemap, page hierarchy and answer-first copy agreed."
+        },
+        {
+          "title": "Design",
+          "body": "A distinctive design system applied across every page type."
+        },
+        {
+          "title": "Build",
+          "body": "Fast, accessible, content-managed pages with structured data built in."
+        },
+        {
+          "title": "Test & launch",
+          "body": "Automated checks, a staging review site, redirects in place, then go live."
+        },
+        {
+          "title": "Support",
+          "body": "Updates, new pages and ongoing optimisation once the site is live."
+        }
+      ],
+      "deliverables": [
+        "Sitemap and page structure",
+        "Custom design system",
+        "Responsive, accessible build",
+        "Structured data and SEO tags on every page",
+        "Staging site for review",
+        "Legacy URL redirects",
+        "Contact forms and enquiry routing",
+        "Hosting and deployment on AWS"
+      ],
+      "ideal_for": [
+        "Businesses whose website no longer reflects the quality of their work",
+        "Companies replacing an old site without losing search rankings",
+        "Teams that want to edit content without calling a developer",
+        "Brands that need a site built to be found in Google and AI search"
+      ],
+      "faqs": [
+        {
+          "q": "What do you build websites with?",
+          "a": "It depends on the job. For most marketing sites we build lean, statically generated pages deployed to AWS Amplify — fast, secure and inexpensive to host. For more complex needs we use modern frameworks such as Next.js and React."
+        },
+        {
+          "q": "Do you use AI when building websites?",
+          "a": "Yes, where it helps: for research, content drafting, testing and our own audit tooling. Every page is still designed, written and reviewed by people, and the code is ours to maintain and hand over."
+        },
+        {
+          "q": "Can you improve our existing site instead of rebuilding it?",
+          "a": "Yes. If the foundations are sound, targeted improvements to speed, structure and content are often the better investment. We'll tell you honestly which route makes sense."
+        },
+        {
+          "q": "Will we lose our Google rankings if we rebuild?",
+          "a": "Not if it's done properly. We map every existing address and keep or redirect it, so the authority your pages have earned carries over."
+        },
+        {
+          "q": "How long does a website project take?",
+          "a": "A focused marketing site typically takes four to eight weeks. Larger sites with extensive content migration take longer; we'll give you a timeline at the scoping stage."
+        }
+      ],
+      "cta": {
+        "heading": "Ready for a website that works as hard as you do?",
+        "body": "Tell us about your current site and what you need it to achieve. We'll come back with a clear plan."
+      },
+      "updated": "2026-09-17"
+    },
+    {
+      "slug": "ai-search",
+      "url": "/services/ai-search",
+      "icon": "aeo",
+      "short_title": "AI Search & SEO",
+      "title": "AI Search Optimisation & SEO",
+      "card_title": "AI Search & SEO",
+      "summary": "Get found on Google and recommended by AI assistants like ChatGPT, with technical SEO, clear content and structured data.",
+      "description": "AI search optimisation (AEO / GEO) and SEO from a UK technology team: technical SEO, clear answer-led content and structured data that help your business rank on Google and get cited by ChatGPT, Perplexity, Gemini and Google AI Overviews.",
+      "hero": {
+        "eyebrow": "AI Search & SEO",
+        "heading": "Search visibility built for how people find you now",
+        "lede": "Buyers still search Google, but more of them now ask ChatGPT, Perplexity, Gemini or Google's AI Overviews and act on the answer. We combine technical SEO, clear content and structured data so your business shows up in both.",
+        "primary_cta": {
+          "label": "Get a free AI visibility check",
+          "href": "/ai-visibility-check"
+        },
+        "secondary_cta": {
+          "label": "See the process",
+          "href": "#process"
+        }
+      },
+      "definition": {
+        "heading": "What is AI search optimisation (AEO / GEO)?",
+        "body": "AI search optimisation, also called Answer Engine Optimisation (AEO) or Generative Engine Optimisation (GEO), is the practice of making a website easy for AI assistants such as ChatGPT, Perplexity, Gemini, Microsoft Copilot and Google AI Overviews to understand, trust and quote. Where SEO earns a position in a list of links, AI search optimisation earns a mention inside the answer. Both rest on the same foundations: crawlable pages, clear facts about who you are, and content that answers the question being asked."
       },
       "problems": {
         "heading": "Why search often fails to produce real growth",
         "entries": [
-          { "title": "Invisible for buyer-intent searches", "body": "You rank for your brand name, but not for the questions buyers ask before they choose a supplier." },
-          { "title": "Technical issues holding pages back", "body": "Slow pages, crawl errors, thin metadata and missing structured data quietly cap what any content can achieve." },
-          { "title": "Content that doesn't answer anything", "body": "Pages talk about the company instead of answering the question, so neither Google nor AI engines have a reason to surface them." },
-          { "title": "Missing from AI answers", "body": "When a prospect asks an AI assistant for a recommendation, your competitors are named and you are not." },
-          { "title": "Traffic that doesn't convert", "body": "Visits arrive, but they land on pages with no clear next step, so rankings never turn into enquiries." }
+          {
+            "title": "Invisible for buyer-intent searches",
+            "body": "You rank for your brand name, but not for the questions buyers ask before they choose a supplier."
+          },
+          {
+            "title": "Technical issues holding pages back",
+            "body": "Slow pages, crawl errors, thin metadata and missing structured data quietly cap what any content can achieve."
+          },
+          {
+            "title": "Content that doesn't answer anything",
+            "body": "Pages talk about the company instead of answering the question, so neither Google nor AI engines have a reason to surface them."
+          },
+          {
+            "title": "Missing from AI answers",
+            "body": "When a prospect asks an AI assistant for a recommendation, your competitors are named and you are not."
+          },
+          {
+            "title": "Traffic that doesn't convert",
+            "body": "Visits arrive, but they land on pages with no clear next step, so rankings never turn into enquiries."
+          }
         ]
       },
       "approach": {
-        "heading": "How we approach AEO and SEO",
+        "heading": "How we approach AI search and SEO",
         "entries": [
-          { "title": "Audit before action", "body": "We benchmark where you rank on Google and whether AI engines mention you today, so every recommendation starts from evidence." },
-          { "title": "Map the questions buyers ask", "body": "We build a map of the real questions behind purchase decisions and match each one to a page that answers it directly." },
-          { "title": "Make your business easy to quote", "body": "Answer-first copy, clear entity signals, FAQ and organisation schema, and consistent facts across the web give AI engines something reliable to cite." },
-          { "title": "Measure what matters", "body": "We track rankings, AI citations, organic enquiries and conversions — not vanity traffic." }
+          {
+            "title": "Audit before action",
+            "body": "We benchmark where you rank on Google and whether AI engines mention you today, so every recommendation starts from evidence."
+          },
+          {
+            "title": "Map the questions buyers ask",
+            "body": "We build a map of the real questions behind purchase decisions and match each one to a page that answers it directly."
+          },
+          {
+            "title": "Make your business easy to quote",
+            "body": "Answer-first copy, clear entity signals, FAQ and organisation schema, and consistent facts across the web give AI engines something reliable to cite."
+          },
+          {
+            "title": "Measure what matters",
+            "body": "We track rankings, AI citations, organic enquiries and conversions — not vanity traffic."
+          }
         ]
       },
       "process": [
-        { "title": "AEO & SEO audit", "body": "Technical crawl, ranking baseline and an AI-visibility check across the major answer engines." },
-        { "title": "Question & intent mapping", "body": "The buyer questions worth owning, grouped by intent and matched to pages." },
-        { "title": "Technical fixes", "body": "Speed, indexation, metadata, canonical tags and structured data put right." },
-        { "title": "Answer-first content", "body": "New and rewritten pages that lead with the answer and back it up with detail." },
-        { "title": "AI visibility", "body": "Entity consistency, schema, citations and llms.txt so answer engines can find and trust you." },
-        { "title": "Reporting & iteration", "body": "Monthly reporting on rankings, AI mentions and enquiries, with the next priorities agreed." }
+        {
+          "title": "AEO & SEO audit",
+          "body": "Technical crawl, ranking baseline and an AI-visibility check across the major answer engines."
+        },
+        {
+          "title": "Question & intent mapping",
+          "body": "The buyer questions worth owning, grouped by intent and matched to pages."
+        },
+        {
+          "title": "Technical fixes",
+          "body": "Speed, indexation, metadata, canonical tags and structured data put right."
+        },
+        {
+          "title": "Answer-first content",
+          "body": "New and rewritten pages that lead with the answer and back it up with detail."
+        },
+        {
+          "title": "AI visibility",
+          "body": "Entity consistency, schema, citations and llms.txt so answer engines can find and trust you."
+        },
+        {
+          "title": "Reporting & iteration",
+          "body": "Monthly reporting on rankings, AI mentions and enquiries, with the next priorities agreed."
+        }
       ],
       "deliverables": [
         "Technical SEO audit",
@@ -64,90 +257,32 @@
         "Teams who want search reporting tied to enquiries, not just traffic"
       ],
       "faqs": [
-        { "q": "What is the difference between AEO and SEO?", "a": "SEO optimises pages to rank in search results. AEO optimises the same content so AI answer engines can extract and cite it in a direct answer. Good AEO is built on good SEO, so we deliver them together." },
-        { "q": "Which AI engines do you optimise for?", "a": "ChatGPT, Perplexity, Google Gemini and AI Overviews, and Microsoft Copilot. They draw on different sources, so we track visibility in each." },
-        { "q": "How long before we see results?", "a": "Technical fixes can show impact within weeks. Rankings and AI citations for competitive questions usually build over three to six months of consistent work." },
-        { "q": "Do you write the content, or do we?", "a": "Either. We can write everything, or brief your team and edit what they produce. Most clients choose a mix." },
-        { "q": "How do you report on AI visibility?", "a": "We run a fixed set of buyer questions through each answer engine every month and record whether, and how, your business is mentioned — alongside Google rankings and enquiries." }
+        {
+          "q": "What's the difference between AEO, GEO and SEO?",
+          "a": "SEO optimises pages to rank in search results. AEO (Answer Engine Optimisation) and GEO (Generative Engine Optimisation) are two names for the same newer discipline: making content easy for AI assistants to extract and cite in their answers. Good AI search optimisation is built on good SEO, so we deliver them together."
+        },
+        {
+          "q": "Which AI assistants do you optimise for?",
+          "a": "ChatGPT, Perplexity, Google Gemini and AI Overviews, and Microsoft Copilot. They draw on different sources, so we track visibility in each."
+        },
+        {
+          "q": "How long before we see results?",
+          "a": "Technical fixes can show impact within weeks. Rankings and AI citations for competitive questions usually build over three to six months of consistent work."
+        },
+        {
+          "q": "Do you write the content, or do we?",
+          "a": "Either. We can write everything, or brief your team and edit what they produce. Most clients choose a mix."
+        },
+        {
+          "q": "How do you measure AI visibility?",
+          "a": "We use our own audit tooling to check how AI-ready your site is, and run a fixed set of buyer questions through each AI assistant every month to record whether and how your business is mentioned, alongside Google rankings and enquiries."
+        }
       ],
       "cta": {
-        "heading": "Want to be the answer — on Google and in AI search?",
-        "body": "Start with a free AEO audit. We'll show you where you rank, whether AI engines mention you, and what to fix first."
-      }
-    },
-    {
-      "slug": "web-development",
-      "url": "/services/web-development",
-      "icon": "web",
-      "short_title": "Website Development",
-      "title": "Website Design & Development",
-      "card_title": "Website Design & Development",
-      "summary": "Fast, credible websites built to convert, easy to update, and structured for search and AI engines from day one.",
-      "description": "UK website design and development: fast, secure, search-ready websites built to convert — with AEO structure, clean content management and reliable hosting on AWS.",
-      "hero": {
-        "eyebrow": "Website Development",
-        "heading": "Websites that load fast, earn trust and turn visits into enquiries",
-        "lede": "We design and build websites that are quick, secure and simple to keep up to date — structured from the first line of code so Google and AI answer engines understand exactly what you do.",
-        "primary_cta": { "label": "Start a website project", "href": "/contact#contact-form" },
-        "secondary_cta": { "label": "See our work", "href": "/results" }
+        "heading": "Want to show up where your buyers are asking?",
+        "body": "Start with a free AI visibility check. We'll show you how ready your site is for Google and AI assistants, and what to fix first."
       },
-      "definition": {
-        "heading": "What makes a website AEO-ready?",
-        "body": "An AEO-ready website is fast, crawlable and unambiguous: every page has a clear purpose, answers a real question, carries accurate structured data, and keeps its addresses stable so the authority it has earned is never lost. We build every site to that standard by default."
-      },
-      "problems": {
-        "heading": "Why websites stop pulling their weight",
-        "entries": [
-          { "title": "Slow and dated", "body": "Sluggish pages and an old design erode trust before a sales conversation can begin." },
-          { "title": "Hard to update", "body": "Simple copy changes need a developer, so the site falls behind the business." },
-          { "title": "Unclear journeys", "body": "Visitors can't tell what you offer or what to do next, so they leave." },
-          { "title": "Invisible to search", "body": "Missing metadata, broken links and no structured data hold back rankings and AI citations." },
-          { "title": "Risky relaunches", "body": "Redesigns that change every URL throw away years of search authority overnight." }
-        ]
-      },
-      "approach": {
-        "heading": "How we build websites",
-        "entries": [
-          { "title": "Content first", "body": "We agree the message, page structure and buyer journey before anything is designed." },
-          { "title": "Performance by default", "body": "Lean static pages served from a global CDN load quickly and stay secure." },
-          { "title": "Safe deploys", "body": "Every change is checked automatically — broken links, missing pages or SEO tags stop a release before it goes live." },
-          { "title": "Search authority protected", "body": "When we rebuild, existing addresses are kept or redirected, so rankings carry across." }
-        ]
-      },
-      "process": [
-        { "title": "Discovery", "body": "Goals, audience, existing site audit and the pages that already earn traffic." },
-        { "title": "Structure & content", "body": "Sitemap, page hierarchy and answer-first copy agreed." },
-        { "title": "Design", "body": "A distinctive design system applied across every page type." },
-        { "title": "Build", "body": "Fast, accessible, content-managed pages with structured data built in." },
-        { "title": "Test & launch", "body": "Automated checks, a staging review site, redirects in place, then go live." },
-        { "title": "Support", "body": "Updates, new pages and ongoing optimisation once the site is live." }
-      ],
-      "deliverables": [
-        "Sitemap and page structure",
-        "Custom design system",
-        "Responsive, accessible build",
-        "Structured data and SEO tags on every page",
-        "Staging site for review",
-        "Legacy URL redirects",
-        "Contact forms and enquiry routing",
-        "Hosting and deployment on AWS"
-      ],
-      "ideal_for": [
-        "Businesses whose website no longer reflects the quality of their work",
-        "Companies replacing an old site without losing search rankings",
-        "Teams that want to edit content without calling a developer",
-        "Brands that need a site built to be found in AI search"
-      ],
-      "faqs": [
-        { "q": "What do you build websites with?", "a": "It depends on the job. For most marketing sites we build lean, statically generated pages deployed to AWS Amplify — fast, secure and inexpensive to host. For more complex needs we use modern frameworks such as Next.js and React." },
-        { "q": "Can you improve our existing site instead of rebuilding it?", "a": "Yes. If the foundations are sound, targeted improvements to speed, structure and content are often the better investment. We'll tell you honestly which route makes sense." },
-        { "q": "Will we lose our Google rankings if we rebuild?", "a": "Not if it's done properly. We map every existing address and keep or redirect it, so the authority your pages have earned carries over." },
-        { "q": "How long does a website project take?", "a": "A focused marketing site typically takes four to eight weeks. Larger sites with extensive content migration take longer; we'll give you a timeline at the scoping stage." }
-      ],
-      "cta": {
-        "heading": "Ready for a website that works as hard as you do?",
-        "body": "Tell us about your current site and what you need it to achieve. We'll come back with a clear plan."
-      }
+      "updated": "2026-09-17"
     },
     {
       "slug": "social-media",
@@ -162,8 +297,14 @@
         "eyebrow": "Social Media",
         "heading": "Social content that builds authority, not just activity",
         "lede": "We plan, create and publish social content that sharpens how your market sees you — and feeds the brand signals that search and AI engines use to decide who's credible.",
-        "primary_cta": { "label": "Talk about social", "href": "/contact#contact-form" },
-        "secondary_cta": { "label": "See the process", "href": "#process" }
+        "primary_cta": {
+          "label": "Talk about social",
+          "href": "/contact#contact-form"
+        },
+        "secondary_cta": {
+          "label": "See the process",
+          "href": "#process"
+        }
       },
       "definition": {
         "heading": "How does social media help AI search visibility?",
@@ -172,29 +313,74 @@
       "problems": {
         "heading": "Why social media often goes nowhere",
         "entries": [
-          { "title": "Posting without a plan", "body": "Content is reactive and inconsistent, so the audience never builds." },
-          { "title": "Off-brand messaging", "body": "Posts don't reinforce what you want to be known for." },
-          { "title": "The wrong channels", "body": "Effort goes where it's easiest, not where buyers are." },
-          { "title": "No link to results", "body": "Likes are tracked; enquiries and site visits are not." },
-          { "title": "No time", "body": "Social slips down the list whenever the team gets busy." }
+          {
+            "title": "Posting without a plan",
+            "body": "Content is reactive and inconsistent, so the audience never builds."
+          },
+          {
+            "title": "Off-brand messaging",
+            "body": "Posts don't reinforce what you want to be known for."
+          },
+          {
+            "title": "The wrong channels",
+            "body": "Effort goes where it's easiest, not where buyers are."
+          },
+          {
+            "title": "No link to results",
+            "body": "Likes are tracked; enquiries and site visits are not."
+          },
+          {
+            "title": "No time",
+            "body": "Social slips down the list whenever the team gets busy."
+          }
         ]
       },
       "approach": {
         "heading": "How we run social media",
         "entries": [
-          { "title": "Positioning first", "body": "We define the themes and proof points you want to own before a single post goes out." },
-          { "title": "A repeatable content system", "body": "Monthly calendars, reusable formats and an approval flow that fits around your team." },
-          { "title": "Channel focus", "body": "We concentrate on the platforms your buyers actually use." },
-          { "title": "Reporting tied to growth", "body": "We measure reach, engagement, site visits and enquiries driven by social." }
+          {
+            "title": "Positioning first",
+            "body": "We define the themes and proof points you want to own before a single post goes out."
+          },
+          {
+            "title": "A repeatable content system",
+            "body": "Monthly calendars, reusable formats and an approval flow that fits around your team."
+          },
+          {
+            "title": "Channel focus",
+            "body": "We concentrate on the platforms your buyers actually use."
+          },
+          {
+            "title": "Reporting tied to growth",
+            "body": "We measure reach, engagement, site visits and enquiries driven by social."
+          }
         ]
       },
       "process": [
-        { "title": "Audit", "body": "Current channels, competitors and audience reviewed." },
-        { "title": "Strategy", "body": "Content pillars, tone of voice and channel plan agreed." },
-        { "title": "Content calendar", "body": "A month of posts planned and drafted in advance." },
-        { "title": "Creation", "body": "Copy, graphics and short-form video produced." },
-        { "title": "Publishing & community", "body": "Scheduled posting and engagement with your audience." },
-        { "title": "Reporting", "body": "Monthly results and next month's priorities." }
+        {
+          "title": "Audit",
+          "body": "Current channels, competitors and audience reviewed."
+        },
+        {
+          "title": "Strategy",
+          "body": "Content pillars, tone of voice and channel plan agreed."
+        },
+        {
+          "title": "Content calendar",
+          "body": "A month of posts planned and drafted in advance."
+        },
+        {
+          "title": "Creation",
+          "body": "Copy, graphics and short-form video produced."
+        },
+        {
+          "title": "Publishing & community",
+          "body": "Scheduled posting and engagement with your audience."
+        },
+        {
+          "title": "Reporting",
+          "body": "Monthly results and next month's priorities."
+        }
       ],
       "deliverables": [
         "Social media audit",
@@ -212,14 +398,24 @@
         "Companies that want social reporting tied to real outcomes"
       ],
       "faqs": [
-        { "q": "Which platforms do you manage?", "a": "LinkedIn, X, Instagram and Facebook most often. We recommend where to focus based on where your buyers spend time." },
-        { "q": "Do we approve posts before they go out?", "a": "Yes. You review each month's calendar in advance, and nothing is published without your sign-off." },
-        { "q": "Can you work with our existing brand guidelines?", "a": "Absolutely. We work within your guidelines, or help you tighten them if they need it." }
+        {
+          "q": "Which platforms do you manage?",
+          "a": "LinkedIn, X, Instagram and Facebook most often. We recommend where to focus based on where your buyers spend time."
+        },
+        {
+          "q": "Do we approve posts before they go out?",
+          "a": "Yes. You review each month's calendar in advance, and nothing is published without your sign-off."
+        },
+        {
+          "q": "Can you work with our existing brand guidelines?",
+          "a": "Absolutely. We work within your guidelines, or help you tighten them if they need it."
+        }
       ],
       "cta": {
         "heading": "Want social media that earns attention?",
         "body": "Tell us which channels matter to you and we'll show you what a consistent content system could look like."
-      }
+      },
+      "updated": "2026-09-17"
     },
     {
       "slug": "design",
@@ -234,8 +430,14 @@
         "eyebrow": "UI/UX Design",
         "heading": "Design that makes the right choice obvious",
         "lede": "We redesign the pages and journeys that decide whether a visitor enquires — clearer hierarchy, stronger offers and interfaces that build trust at first glance.",
-        "primary_cta": { "label": "Discuss a redesign", "href": "/contact#contact-form" },
-        "secondary_cta": { "label": "See the process", "href": "#process" }
+        "primary_cta": {
+          "label": "Discuss a redesign",
+          "href": "/contact#contact-form"
+        },
+        "secondary_cta": {
+          "label": "See the process",
+          "href": "#process"
+        }
       },
       "definition": {
         "heading": "Why does design matter for search and AI?",
@@ -244,29 +446,74 @@
       "problems": {
         "heading": "Where design holds businesses back",
         "entries": [
-          { "title": "Weak first impression", "body": "The site looks generic, so visitors assume the service is too." },
-          { "title": "Unclear hierarchy", "body": "Important messages are buried and visitors can't scan the page." },
-          { "title": "Friction-heavy journeys", "body": "Too many steps between interest and enquiry." },
-          { "title": "Inconsistent brand", "body": "Every page looks a little different, eroding credibility." },
-          { "title": "Poor on mobile", "body": "Layouts that work on desktop fall apart on a phone." }
+          {
+            "title": "Weak first impression",
+            "body": "The site looks generic, so visitors assume the service is too."
+          },
+          {
+            "title": "Unclear hierarchy",
+            "body": "Important messages are buried and visitors can't scan the page."
+          },
+          {
+            "title": "Friction-heavy journeys",
+            "body": "Too many steps between interest and enquiry."
+          },
+          {
+            "title": "Inconsistent brand",
+            "body": "Every page looks a little different, eroding credibility."
+          },
+          {
+            "title": "Poor on mobile",
+            "body": "Layouts that work on desktop fall apart on a phone."
+          }
         ]
       },
       "approach": {
         "heading": "How we approach design",
         "entries": [
-          { "title": "Start with the buyer", "body": "We design around what visitors need to see to feel confident choosing you." },
-          { "title": "Hierarchy before decoration", "body": "The message and the next step come first; the visual polish supports them." },
-          { "title": "Systems, not one-offs", "body": "Reusable components keep every page consistent and future pages fast to build." },
-          { "title": "Tested with real behaviour", "body": "Analytics and user feedback guide refinement after launch." }
+          {
+            "title": "Start with the buyer",
+            "body": "We design around what visitors need to see to feel confident choosing you."
+          },
+          {
+            "title": "Hierarchy before decoration",
+            "body": "The message and the next step come first; the visual polish supports them."
+          },
+          {
+            "title": "Systems, not one-offs",
+            "body": "Reusable components keep every page consistent and future pages fast to build."
+          },
+          {
+            "title": "Tested with real behaviour",
+            "body": "Analytics and user feedback guide refinement after launch."
+          }
         ]
       },
       "process": [
-        { "title": "UX review", "body": "Key pages and journeys assessed for clarity and friction." },
-        { "title": "Wireframes", "body": "Page structure and content hierarchy agreed." },
-        { "title": "Visual design", "body": "High-fidelity designs in Figma." },
-        { "title": "Design system", "body": "Components, type and colour documented for build." },
-        { "title": "Handover or build", "body": "Designs handed to your developers, or built by us." },
-        { "title": "Refine", "body": "Improvements based on how people use the pages." }
+        {
+          "title": "UX review",
+          "body": "Key pages and journeys assessed for clarity and friction."
+        },
+        {
+          "title": "Wireframes",
+          "body": "Page structure and content hierarchy agreed."
+        },
+        {
+          "title": "Visual design",
+          "body": "High-fidelity designs in Figma."
+        },
+        {
+          "title": "Design system",
+          "body": "Components, type and colour documented for build."
+        },
+        {
+          "title": "Handover or build",
+          "body": "Designs handed to your developers, or built by us."
+        },
+        {
+          "title": "Refine",
+          "body": "Improvements based on how people use the pages."
+        }
       ],
       "deliverables": [
         "UX and conversion review",
@@ -283,14 +530,24 @@
         "Companies needing a consistent design system"
       ],
       "faqs": [
-        { "q": "Do you only design, or build as well?", "a": "Both. We can hand designs to your developers, or design and build the site ourselves." },
-        { "q": "What design tools do you use?", "a": "Figma for design and prototyping, so you can review and comment on work as it progresses." },
-        { "q": "Can you redesign just a few key pages?", "a": "Yes. Focusing on the highest-impact pages — home, services and contact — is often the best place to start." }
+        {
+          "q": "Do you only design, or build as well?",
+          "a": "Both. We can hand designs to your developers, or design and build the site ourselves."
+        },
+        {
+          "q": "What design tools do you use?",
+          "a": "Figma for design and prototyping, so you can review and comment on work as it progresses."
+        },
+        {
+          "q": "Can you redesign just a few key pages?",
+          "a": "Yes. Focusing on the highest-impact pages — home, services and contact — is often the best place to start."
+        }
       ],
       "cta": {
         "heading": "Want a site that looks as good as your work?",
         "body": "Share the pages you'd most like to improve and we'll suggest where design can make the biggest difference."
-      }
+      },
+      "updated": "2026-09-17"
     },
     {
       "slug": "email-marketing",
@@ -305,8 +562,14 @@
         "eyebrow": "Email Marketing",
         "heading": "Email that keeps working after the first visit",
         "lede": "Most visitors aren't ready to buy today. We build automated email journeys that stay helpful and relevant until they are — and newsletters people actually open.",
-        "primary_cta": { "label": "Talk about email", "href": "/contact#contact-form" },
-        "secondary_cta": { "label": "See the process", "href": "#process" }
+        "primary_cta": {
+          "label": "Talk about email",
+          "href": "/contact#contact-form"
+        },
+        "secondary_cta": {
+          "label": "See the process",
+          "href": "#process"
+        }
       },
       "definition": {
         "heading": "What is lifecycle email marketing?",
@@ -315,29 +578,74 @@
       "problems": {
         "heading": "Why email underperforms",
         "entries": [
-          { "title": "Leads go cold", "body": "Enquiries that aren't ready to buy get one email, then silence." },
-          { "title": "Generic blasts", "body": "Everyone receives the same message regardless of interest." },
-          { "title": "Content nobody opens", "body": "Subject lines and copy that don't give a reason to read." },
-          { "title": "Disconnected tools", "body": "Forms, CRM and email platform don't talk to each other." },
-          { "title": "No visibility", "body": "Nobody knows which emails lead to revenue." }
+          {
+            "title": "Leads go cold",
+            "body": "Enquiries that aren't ready to buy get one email, then silence."
+          },
+          {
+            "title": "Generic blasts",
+            "body": "Everyone receives the same message regardless of interest."
+          },
+          {
+            "title": "Content nobody opens",
+            "body": "Subject lines and copy that don't give a reason to read."
+          },
+          {
+            "title": "Disconnected tools",
+            "body": "Forms, CRM and email platform don't talk to each other."
+          },
+          {
+            "title": "No visibility",
+            "body": "Nobody knows which emails lead to revenue."
+          }
         ]
       },
       "approach": {
         "heading": "How we build email programmes",
         "entries": [
-          { "title": "Map the journey", "body": "We plan what each contact needs to hear, and when." },
-          { "title": "Automate the essentials", "body": "Welcome, nurture and win-back flows run without manual effort." },
-          { "title": "Write to be read", "body": "Useful, human copy with a clear reason to click." },
-          { "title": "Connect and measure", "body": "Forms, CRM and email platform integrated, with results tracked to enquiries." }
+          {
+            "title": "Map the journey",
+            "body": "We plan what each contact needs to hear, and when."
+          },
+          {
+            "title": "Automate the essentials",
+            "body": "Welcome, nurture and win-back flows run without manual effort."
+          },
+          {
+            "title": "Write to be read",
+            "body": "Useful, human copy with a clear reason to click."
+          },
+          {
+            "title": "Connect and measure",
+            "body": "Forms, CRM and email platform integrated, with results tracked to enquiries."
+          }
         ]
       },
       "process": [
-        { "title": "Audit", "body": "Lists, platform, existing flows and performance reviewed." },
-        { "title": "Journey mapping", "body": "Lifecycle stages and triggers defined." },
-        { "title": "Integration", "body": "Forms, CRM and email platform connected." },
-        { "title": "Flows & templates", "body": "Automated sequences and branded templates built." },
-        { "title": "Content", "body": "Email copy written for each stage." },
-        { "title": "Optimise", "body": "Testing subject lines, timing and content." }
+        {
+          "title": "Audit",
+          "body": "Lists, platform, existing flows and performance reviewed."
+        },
+        {
+          "title": "Journey mapping",
+          "body": "Lifecycle stages and triggers defined."
+        },
+        {
+          "title": "Integration",
+          "body": "Forms, CRM and email platform connected."
+        },
+        {
+          "title": "Flows & templates",
+          "body": "Automated sequences and branded templates built."
+        },
+        {
+          "title": "Content",
+          "body": "Email copy written for each stage."
+        },
+        {
+          "title": "Optimise",
+          "body": "Testing subject lines, timing and content."
+        }
       ],
       "deliverables": [
         "Email marketing audit",
@@ -355,14 +663,24 @@
         "Brands moving to a new email platform"
       ],
       "faqs": [
-        { "q": "Which email platforms do you work with?", "a": "HubSpot, Klaviyo, Mailchimp and most major platforms. If you're choosing one, we'll recommend what fits your needs and budget." },
-        { "q": "Do you write the emails?", "a": "Yes. We write the copy for every automated flow and newsletter, in your tone of voice." },
-        { "q": "Is email marketing GDPR-compliant?", "a": "It must be. We set up consent capture, unsubscribe handling and list hygiene in line with UK GDPR and PECR." }
+        {
+          "q": "Which email platforms do you work with?",
+          "a": "HubSpot, Klaviyo, Mailchimp and most major platforms. If you're choosing one, we'll recommend what fits your needs and budget."
+        },
+        {
+          "q": "Do you write the emails?",
+          "a": "Yes. We write the copy for every automated flow and newsletter, in your tone of voice."
+        },
+        {
+          "q": "Is email marketing GDPR-compliant?",
+          "a": "It must be. We set up consent capture, unsubscribe handling and list hygiene in line with UK GDPR and PECR."
+        }
       ],
       "cta": {
         "heading": "Ready to stop leads going cold?",
         "body": "Tell us how you capture leads today and we'll show you the flows that would make the biggest difference."
-      }
+      },
+      "updated": "2026-09-17"
     },
     {
       "slug": "analytics",
@@ -377,8 +695,14 @@
         "eyebrow": "Analytics",
         "heading": "Know what's working, what's leaking and what's worth scaling",
         "lede": "We set up clean tracking across your website and channels — including visits referred by AI assistants — and turn it into reporting you can make decisions from.",
-        "primary_cta": { "label": "Get your tracking checked", "href": "/contact#contact-form" },
-        "secondary_cta": { "label": "See the process", "href": "#process" }
+        "primary_cta": {
+          "label": "Get your tracking checked",
+          "href": "/contact#contact-form"
+        },
+        "secondary_cta": {
+          "label": "See the process",
+          "href": "#process"
+        }
       },
       "definition": {
         "heading": "Can you track traffic from ChatGPT and other AI engines?",
@@ -387,29 +711,74 @@
       "problems": {
         "heading": "Why marketing data rarely helps",
         "entries": [
-          { "title": "Incomplete tracking", "body": "Key conversions aren't recorded, so success is guesswork." },
-          { "title": "Noisy data", "body": "Spam, duplicates and internal visits distort every report." },
-          { "title": "AI traffic hidden", "body": "Visits from AI assistants are lumped in with 'referral' or 'direct'." },
-          { "title": "Reports nobody reads", "body": "Dashboards full of numbers but no conclusions." },
-          { "title": "Siloed channels", "body": "Search, social and email are measured separately, never together." }
+          {
+            "title": "Incomplete tracking",
+            "body": "Key conversions aren't recorded, so success is guesswork."
+          },
+          {
+            "title": "Noisy data",
+            "body": "Spam, duplicates and internal visits distort every report."
+          },
+          {
+            "title": "AI traffic hidden",
+            "body": "Visits from AI assistants are lumped in with 'referral' or 'direct'."
+          },
+          {
+            "title": "Reports nobody reads",
+            "body": "Dashboards full of numbers but no conclusions."
+          },
+          {
+            "title": "Siloed channels",
+            "body": "Search, social and email are measured separately, never together."
+          }
         ]
       },
       "approach": {
         "heading": "How we approach analytics",
         "entries": [
-          { "title": "Define what success means", "body": "We agree the actions that matter — enquiries, sign-ups, sales — before tracking anything." },
-          { "title": "Clean, reliable setup", "body": "GA4, Tag Manager and conversion events configured properly." },
-          { "title": "The full funnel", "body": "Search, AI, social and email measured side by side." },
-          { "title": "Insight, not dashboards", "body": "Reporting that says what happened, why, and what to do next." }
+          {
+            "title": "Define what success means",
+            "body": "We agree the actions that matter — enquiries, sign-ups, sales — before tracking anything."
+          },
+          {
+            "title": "Clean, reliable setup",
+            "body": "GA4, Tag Manager and conversion events configured properly."
+          },
+          {
+            "title": "The full funnel",
+            "body": "Search, AI, social and email measured side by side."
+          },
+          {
+            "title": "Insight, not dashboards",
+            "body": "Reporting that says what happened, why, and what to do next."
+          }
         ]
       },
       "process": [
-        { "title": "Tracking audit", "body": "What's measured today, and what's missing." },
-        { "title": "Measurement plan", "body": "Goals, events and channels defined." },
-        { "title": "Implementation", "body": "GA4, Tag Manager and conversions set up." },
-        { "title": "AI channel tracking", "body": "AI assistant referrals separated and reported." },
-        { "title": "Reporting", "body": "A clear dashboard built around your goals." },
-        { "title": "Review", "body": "Regular analysis with recommended actions." }
+        {
+          "title": "Tracking audit",
+          "body": "What's measured today, and what's missing."
+        },
+        {
+          "title": "Measurement plan",
+          "body": "Goals, events and channels defined."
+        },
+        {
+          "title": "Implementation",
+          "body": "GA4, Tag Manager and conversions set up."
+        },
+        {
+          "title": "AI channel tracking",
+          "body": "AI assistant referrals separated and reported."
+        },
+        {
+          "title": "Reporting",
+          "body": "A clear dashboard built around your goals."
+        },
+        {
+          "title": "Review",
+          "body": "Regular analysis with recommended actions."
+        }
       ],
       "deliverables": [
         "Tracking audit",
@@ -427,14 +796,24 @@
         "Leaders who need reporting they can act on"
       ],
       "faqs": [
-        { "q": "Do you work with Google Analytics 4?", "a": "Yes. GA4 with Google Tag Manager is our standard setup, and we can connect it to Looker Studio for reporting." },
-        { "q": "Can you fix our existing tracking?", "a": "Usually, yes. We audit what's there, keep what's reliable and correct what isn't." },
-        { "q": "Is analytics tracking compliant with cookie law?", "a": "We configure consent mode and a cookie banner so tracking respects visitor choices under UK GDPR and PECR." }
+        {
+          "q": "Do you work with Google Analytics 4?",
+          "a": "Yes. GA4 with Google Tag Manager is our standard setup, and we can connect it to Looker Studio for reporting."
+        },
+        {
+          "q": "Can you fix our existing tracking?",
+          "a": "Usually, yes. We audit what's there, keep what's reliable and correct what isn't."
+        },
+        {
+          "q": "Is analytics tracking compliant with cookie law?",
+          "a": "We configure consent mode and a cookie banner so tracking respects visitor choices under UK GDPR and PECR."
+        }
       ],
       "cta": {
         "heading": "Want data you can actually make decisions with?",
         "body": "We'll review your current tracking and show you the gaps that matter most."
-      }
+      },
+      "updated": "2026-09-17"
     }
   ]
 }

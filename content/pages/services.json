@@ -1,44 +1,92 @@
 {
   "meta": {
-    "title": "Services | AEO, Website Development & Digital Marketing | Dooster",
-    "description": "Dooster's services: Answer Engine Optimisation (AEO) and SEO, website design and development, social media management, UI/UX design, email marketing and analytics — for UK businesses.",
+    "title": "Services | Website Development, Digital Marketing & AI Search | Dooster",
+    "description": "Dooster's services: website design and development, AI search optimisation and SEO, social media management, UI/UX design, email marketing and analytics, for UK businesses.",
     "path": "services",
     "image": "og-default.png"
   },
   "hero": {
     "eyebrow": "Services",
     "heading": "Everything you need to get found, get chosen and grow",
-    "lede": "Six capabilities spanning AI search, websites, content and data — delivered as one connected system or one focused project at a time."
+    "lede": "Six capabilities spanning websites, marketing, data and AI, delivered by one technology-led team as a connected system or one focused project at a time."
   },
   "groups": {
     "heading": "Three disciplines, working together",
     "entries": [
-      { "title": "Visibility & growth", "body": "AEO & SEO and analytics — so the right buyers find you, and you can see what's working.", "slugs": ["aeo", "analytics"] },
-      { "title": "Experience & design", "body": "Websites and UI/UX that make your offer clear and your brand credible.", "slugs": ["web-development", "design"] },
-      { "title": "Audience & nurture", "body": "Social media and email that build authority and keep leads warm.", "slugs": ["social-media", "email-marketing"] }
+      {
+        "title": "Visibility & growth",
+        "body": "AI search, SEO and analytics, so the right buyers find you and you can see what's working.",
+        "slugs": [
+          "ai-search",
+          "analytics"
+        ]
+      },
+      {
+        "title": "Experience & design",
+        "body": "Websites and UI/UX that make your offer clear and your brand credible.",
+        "slugs": [
+          "web-development",
+          "design"
+        ]
+      },
+      {
+        "title": "Audience & nurture",
+        "body": "Social media and email that build authority and keep leads warm.",
+        "slugs": [
+          "social-media",
+          "email-marketing"
+        ]
+      }
     ]
   },
   "process": {
     "heading": "How every engagement runs",
     "steps": [
-      { "title": "Discovery & audit", "body": "Where you are today — on Google, in AI answers, and across your funnel." },
-      { "title": "Strategic blueprint", "body": "Priorities, scope and the measures of success agreed up front." },
-      { "title": "Execution & build", "body": "The pages, content and systems delivered." },
-      { "title": "Launch & iterate", "body": "Go live, measure, and improve what the data shows." }
+      {
+        "title": "Discovery & audit",
+        "body": "Where you are today — on Google, in AI answers, and across your funnel."
+      },
+      {
+        "title": "Strategic blueprint",
+        "body": "Priorities, scope and the measures of success agreed up front."
+      },
+      {
+        "title": "Execution & build",
+        "body": "The pages, content and systems delivered."
+      },
+      {
+        "title": "Launch & iterate",
+        "body": "Go live, measure, and improve what the data shows."
+      }
     ]
   },
   "faqs": {
     "heading": "Service FAQs",
     "entries": [
-      { "q": "Do I need to use all your services at once?", "a": "No. Most clients start with one focused area — often a website or an AEO audit — and expand once they see results. We scope everything before work begins." },
-      { "q": "Can you guarantee rankings or AI citations?", "a": "No honest agency can. What we guarantee is the work: a clear plan, best-practice execution and transparent reporting on rankings, AI mentions and enquiries." },
-      { "q": "Do you only work with UK businesses?", "a": "We're based in the UK and most of our clients are here, but we work with businesses selling internationally too." },
-      { "q": "How is pricing structured?", "a": "Websites are priced as fixed-scope projects. AEO, social media, email and analytics are usually monthly retainers. We'll give you a clear quote after the discovery call." }
+      {
+        "q": "Do I need to use all your services at once?",
+        "a": "No. Most clients start with one focused area, often a website or a free AI visibility check, and expand once they see results. We scope everything before work begins."
+      },
+      {
+        "q": "Can you guarantee rankings or AI recommendations?",
+        "a": "No honest agency can. What we guarantee is the work: a clear plan, well-engineered execution and transparent reporting on rankings, AI mentions and enquiries."
+      },
+      {
+        "q": "Do you only work with UK businesses?",
+        "a": "We're based in the UK and most of our clients are here, but we work with businesses selling internationally too."
+      },
+      {
+        "q": "How is pricing structured?",
+        "a": "Websites are priced as fixed-scope projects. AI search, social media, email and analytics are usually monthly retainers. We'll give you a clear quote after the discovery call."
+      }
     ]
   },
   "cta": {
     "heading": "Not sure which service fits?",
     "body": "Let's work it out together. Book a free call and we'll recommend where to start.",
-    "primary": { "label": "Book an intro call", "href": "/contact#contact-form" }
+    "primary": {
+      "label": "Book an intro call",
+      "href": "/contact#contact-form"
+    }
   }
 }

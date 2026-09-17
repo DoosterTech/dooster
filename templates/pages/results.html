@@ -35,7 +35,7 @@
           <p>{{ c.challenge }}</p>
         </div>
         <div class="case-side">
-          <div class="case-stats case-stats-stack">
+          <div class="case-stats case-stats-stack case-stats-{{ c.highlights | length }}">
             {% for h in c.highlights %}
             <div><span class="stat-value">{{ h.value }}</span><span class="stat-label">{{ h.label }}</span></div>
             {% endfor %}

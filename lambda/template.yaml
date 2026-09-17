@@ -1,6 +1,6 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
-Description: Dooster contact form — API Gateway (HTTP API) -> Lambda -> SES
+Description: Dooster contact form and free AI visibility check — API Gateway (HTTP API) -> Lambda -> SES
 
 # Deployed once per environment. Stage namespaces the function name and the API
 # stage, so a dev stack and a prod stack live side by side in one account.
@@ -49,6 +49,11 @@ Resources:
       DefaultRouteSettings:
         ThrottlingBurstLimit: 10
         ThrottlingRateLimit: 5
+      # Each audit fetches a dozen pages and sends two emails, so keep it tighter
+      RouteSettings:
+        'POST /audit':
+          ThrottlingBurstLimit: 3
+          ThrottlingRateLimit: 1
 
   ContactFunction:
     Type: AWS::Serverless::Function
@@ -74,9 +79,47 @@ Resources:
             Path: /contact
             Method: POST
 
+  AuditFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub 'dooster-ai-visibility-${Stage}'
+      CodeUri: ./
+      Handler: audit_handler.lambda_handler
+      # The HTTP call returns in a second; the async audit run needs minutes
+      Timeout: 300
+      MemorySize: 512
+      Environment:
+        Variables:
+          FROM_EMAIL: !Ref FromEmail
+          NOTIFY_EMAIL: !Ref ToEmail
+          ALLOWED_ORIGIN: !Ref AllowedOrigin
+          AUDIT_PAGES: '10'
+      Policies:
+        - Statement:
+            - Effect: Allow
+              Action:
+                - ses:SendEmail
+                - ses:SendRawEmail
+              Resource: '*'
+            - Effect: Allow
+              Action: lambda:InvokeFunction
+              Resource: !Sub 'arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:dooster-ai-visibility-${Stage}'
+      Events:
+        Submit:
+          Type: HttpApi
+          Properties:
+            ApiId: !Ref ContactApi
+            Path: /audit
+            Method: POST
+
 Outputs:
   FormEndpoint:
     Description: >-
       Set this as FORM_ENDPOINT on the matching Amplify branch, then redeploy
       that branch.
     Value: !Sub 'https://${ContactApi}.execute-api.${AWS::Region}.amazonaws.com/${Stage}/contact'
+  AuditEndpoint:
+    Description: >-
+      Set this as AUDIT_ENDPOINT on the matching Amplify branch, then redeploy
+      that branch.
+    Value: !Sub 'https://${ContactApi}.execute-api.${AWS::Region}.amazonaws.com/${Stage}/audit'

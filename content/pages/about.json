@@ -1,0 +1,56 @@
+{
+  "meta": {
+    "title": "About Dooster | Technology-led Digital Studio, UK",
+    "description": "Dooster is a UK digital studio that brings software engineering, digital marketing and AI together in one team, building websites and growth systems for businesses such as TraderMade and Kingfisher House.",
+    "path": "about",
+    "image": "og-default.png",
+    "updated": "2026-09-17"
+  },
+  "hero": {
+    "eyebrow": "About Dooster",
+    "heading": "Engineers and marketers, building for the AI era",
+    "lede": "Dooster is a UK digital studio that brings software engineering, digital marketing and AI together in one team. We build the websites, run the marketing and create the tooling, so nothing gets lost between agencies."
+  },
+  "story": {
+    "eyebrow": "Why we exist",
+    "heading": "Good marketing now depends on good technology",
+    "paragraphs": [
+      "The way buyers find suppliers has changed. They still search Google, but they also ask AI assistants, compare options on social media and expect a fast, credible website when they arrive. Getting that right takes engineering and marketing skills working together.",
+      "Too often those skills sit in separate agencies. The web developer doesn't know the marketing plan, the marketing agency can't change the website, and nobody owns the data in between. Dooster was set up to close that gap: one team that writes the code, runs the campaigns and measures what works.",
+      "We work with businesses that sell considered purchases, from a financial market data provider serving developers and banks worldwide to a business centre serving companies in Bromley."
+    ]
+  },
+  "principles": {
+    "eyebrow": "How we work",
+    "heading": "What you can expect from us",
+    "entries": [
+      { "title": "Evidence over opinion", "body": "We audit before we recommend, track what we change, and report on enquiries and revenue, not vanity metrics." },
+      { "title": "Built to last", "body": "Clean, documented code on reliable cloud infrastructure. You own it, and it's easy for anyone to maintain." },
+      { "title": "Automated quality", "body": "Every website release runs through automated checks for broken links, missing pages and invalid structured data before it goes live." },
+      { "title": "AI where it helps", "body": "We use AI for research, analysis and our own tooling, and keep people responsible for strategy, writing and review." },
+      { "title": "Plain English", "body": "No jargon, no black boxes. You'll always know what we're doing, why, and what it's achieving." },
+      { "title": "One accountable team", "body": "Strategy, design, development, content and analytics sit together, so there's no hand-off and no finger-pointing." }
+    ]
+  },
+  "stack": {
+    "eyebrow": "Technology",
+    "heading": "What we build with",
+    "groups": [
+      { "title": "Websites & apps", "entries": ["Python & Flask", "Next.js & React", "Tailwind CSS", "Figma"] },
+      { "title": "Cloud & delivery", "entries": ["AWS Amplify", "AWS Lambda", "Amazon SES", "Automated testing & staging"] },
+      { "title": "AI & search", "entries": ["Dooster AI visibility audit", "Structured data (schema.org)", "Google Search Console", "Bing Webmaster Tools"] },
+      { "title": "Marketing & data", "entries": ["Google Analytics 4", "HubSpot & Klaviyo", "n8n & Zapier", "Ahrefs & Semrush"] }
+    ]
+  },
+  "clients": {
+    "eyebrow": "Clients",
+    "heading": "Who we work with",
+    "link_label": "Read the case study"
+  },
+  "cta": {
+    "heading": "Let's talk about what you're building",
+    "body": "Tell us where your website or marketing feels stuck, or start with a free AI visibility check.",
+    "primary": { "label": "Start a project", "href": "/contact#contact-form" },
+    "secondary": { "label": "Free AI visibility check", "href": "/ai-visibility-check" }
+  }
+}

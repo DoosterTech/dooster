@@ -29,24 +29,17 @@
       </div>
     </div>
 
-    {% set a = page.answer_panel %}
-    <figure class="answer-panel" aria-label="{{ a.caption }}">
+    {% set r = page.release_panel %}
+    <figure class="answer-panel release-panel">
       <div class="answer-window">
-        <div class="answer-bar"><span></span><span></span><span></span></div>
-        <div class="answer-q">
-          <span class="answer-avatar" aria-hidden="true">You</span>
-          <p>{{ a.question }}</p>
-        </div>
-        <div class="answer-a">
-          <span class="answer-avatar answer-avatar-ai" aria-hidden="true">AI</span>
-          <div>
-            <p>{{ a.answer }}</p>
-            <div class="answer-lines" aria-hidden="true"><span></span><span></span><span class="short"></span></div>
-            <p class="answer-sources">{{ a.sources_label }}: {% for s in a.sources %}<span class="source-chip">{{ s }}</span>{% endfor %}</p>
-          </div>
-        </div>
+        <div class="answer-bar"><span></span><span></span><span></span><code>{{ r.title }}</code></div>
+        <ol class="release-lines">
+          {% for l in r.lines %}
+          <li class="release-{{ l.status }}"><span class="release-mark" aria-hidden="true">{{ '●' if l.status == 'live' else '✓' }}</span>{{ l.text }}</li>
+          {% endfor %}
+        </ol>
       </div>
-      <figcaption>{{ a.caption }}</figcaption>
+      <figcaption>{{ r.caption }}</figcaption>
     </figure>
   </div>
 
@@ -86,15 +79,15 @@
   </div>
 </section>
 
-<!-- AEO -->
-<section class="section" id="aeo">
+<!-- AI & technology -->
+<section class="section" id="ai">
   <div class="wrap split">
     <div>
-      {{ section_head(page.aeo.eyebrow, page.aeo.heading, page.aeo.body) }}
-      <a href="{{ page.aeo.cta.href }}" class="btn btn-dark">{{ page.aeo.cta.label }} →</a>
+      {{ section_head(page.ai.eyebrow, page.ai.heading, page.ai.body) }}
+      <a href="{{ page.ai.cta.href }}" class="btn btn-dark">{{ page.ai.cta.label }} →</a>
     </div>
     <ol class="point-list">
-      {% for p in page.aeo.points %}
+      {% for p in page.ai.points %}
       <li>
         <span class="point-num">{{ loop.index }}</span>
         <div><h3 class="h3">{{ p.title }}</h3><p>{{ p.body }}</p></div>
@@ -133,6 +126,33 @@
   </div>
 </section>
 
+<!-- Comparison -->
+{% set cmp = page.compare %}
+<section class="section section-dark" id="why-dooster">
+  <div class="wrap">
+    {{ section_head(cmp.eyebrow, cmp.heading, cmp.lede) }}
+    <div class="compare-scroll">
+      <table class="compare">
+        <thead>
+          <tr><th scope="col"><span class="sr-only">Capability</span></th>
+            {% for c in cmp.columns %}<th scope="col" class="{{ 'compare-us' if loop.last }}">{{ c }}</th>{% endfor %}</tr>
+        </thead>
+        <tbody>
+          {% for row in cmp.rows %}
+          <tr>
+            <th scope="row">{{ row.label }}</th>
+            {% for v in row.marks %}
+            <td class="{{ 'compare-us' if loop.last }}"><span class="compare-mark compare-{{ v }}" aria-hidden="true"></span><span class="compare-text">{{ cmp.legend[v] }}</span></td>
+            {% endfor %}
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <p class="compare-note">{{ cmp.note }}</p>
+  </div>
+</section>
+
 <!-- Levers -->
 <section class="section section-tint">
   <div class="wrap">
@@ -150,7 +170,7 @@
 </section>
 
 <!-- Why Dooster -->
-<section class="section" id="why-dooster">
+<section class="section" id="how-we-work">
   <div class="wrap split">
     {{ section_head(page.why.eyebrow, page.why.heading) }}
     <div class="grid grid-2 why-grid">

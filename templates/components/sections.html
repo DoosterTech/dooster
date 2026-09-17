@@ -73,7 +73,7 @@
     <p class="case-headline">{{ c.headline }}</p>
     <p>{{ c.summary }}</p>
   </div>
-  <div class="case-stats">
+  <div class="case-stats case-stats-{{ c.highlights | length }}">
     {% for h in c.highlights %}
     <div><span class="stat-value">{{ h.value }}</span><span class="stat-label">{{ h.label }}</span></div>
     {% endfor %}

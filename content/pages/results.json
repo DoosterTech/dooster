@@ -19,6 +19,13 @@
   "cta": {
     "heading": "Want results like these?",
     "body": "Tell us where your website or marketing feels stuck and we'll show you what we'd do first.",
-    "primary": { "label": "Book a free AEO audit", "href": "/contact#contact-form" }
+    "primary": {
+      "label": "Start a project",
+      "href": "/contact#contact-form"
+    },
+    "secondary": {
+      "label": "Free AI visibility check",
+      "href": "/ai-visibility-check"
+    }
   }
 }

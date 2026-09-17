@@ -15,10 +15,20 @@
         "Structured data and technical SEO foundations",
         "Ongoing social media management and content"
       ],
-      "services": ["Web Development", "Social Media", "AEO & SEO"],
+      "services": [
+        "Web Development",
+        "Social Media",
+        "AI Search & SEO"
+      ],
       "highlights": [
-        { "value": "40+", "label": "Years of market data heritage, told for a developer audience" },
-        { "value": "Ongoing", "label": "Social media management" }
+        {
+          "value": "40+",
+          "label": "Years of market data heritage, told for a developer audience"
+        },
+        {
+          "value": "Ongoing",
+          "label": "Social media management"
+        }
       ]
     },
     {
@@ -37,10 +47,24 @@
         "Separate staging and live sites on AWS Amplify, with staging hidden from search",
         "Service, FAQ and LocalBusiness structured data throughout"
       ],
-      "services": ["Web Development", "UI/UX Design", "AEO & SEO"],
+      "services": [
+        "Web Development",
+        "UI/UX Design",
+        "AI Search & SEO"
+      ],
       "highlights": [
-        { "value": "45", "label": "Pages designed and built" },
-        { "value": "23", "label": "Legacy URLs redirected, none lost" }
+        {
+          "value": "45",
+          "label": "Pages designed and built"
+        },
+        {
+          "value": "23",
+          "label": "Legacy URLs redirected, none lost"
+        },
+        {
+          "value": "89/100",
+          "label": "AI-readiness score (Dooster audit, Sept 2026)"
+        }
       ]
     }
   ]

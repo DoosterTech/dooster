@@ -40,9 +40,8 @@ FIELDS = {
 
 # Must match the interest_options values in content/pages/contact.json
 INTEREST_LABELS = {
-    "aeo-audit": "Free AEO audit",
-    "aeo-seo": "AEO & SEO",
     "website": "Website design & development",
+    "ai-search": "AI search & SEO",
     "social-media": "Social media management",
     "design": "UI/UX design",
     "email": "Email marketing",
