@@ -17,7 +17,7 @@ Based in: {{ site.brand.country }}
 {%- endfor %}
 
 ## Frequently asked questions
-{% for f in home.faqs.entries %}
+{% for f in about.faqs.entries %}
 ### {{ f.q }}
 {{ f.a }}
 {% endfor %}

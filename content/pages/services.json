@@ -7,11 +7,11 @@
   },
   "hero": {
     "eyebrow": "Services",
-    "heading": "Everything you need to get found, get chosen and grow",
-    "lede": "Six capabilities spanning websites, marketing, data and AI, delivered by one technology-led team as a connected system or one focused project at a time."
+    "heading": "What we do",
+    "lede": "Six things, usually done together. The same team builds your website, writes for it, posts about it and measures what it brings in."
   },
   "groups": {
-    "heading": "Three disciplines, working together",
+    "heading": "How they fit together",
     "entries": [
       {
         "title": "Visibility & growth",
@@ -82,10 +82,10 @@
     ]
   },
   "cta": {
-    "heading": "Not sure which service fits?",
-    "body": "Let's work it out together. Book a free call and we'll recommend where to start.",
+    "heading": "Not sure which you need?",
+    "body": "Tell us what's not working and we'll suggest where to start.",
     "primary": {
-      "label": "Book an intro call",
+      "label": "Get in touch",
       "href": "/contact#contact-form"
     }
   }

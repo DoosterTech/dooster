@@ -1,56 +1,135 @@
 {
   "meta": {
-    "title": "About Dooster | Technology-led Digital Studio, UK",
-    "description": "Dooster is a UK digital studio that brings software engineering, digital marketing and AI together in one team, building websites and growth systems for businesses such as TraderMade and Kingfisher House.",
+    "title": "About Dooster | Web development and digital marketing under one roof",
+    "description": "Dooster brings web development and digital marketing under one roof, so small companies get a website that brings in leads without hiring a developer, writer and marketer.",
     "path": "about",
     "image": "og-default.png",
     "updated": "2026-09-17"
   },
   "hero": {
-    "eyebrow": "About Dooster",
-    "heading": "Engineers and marketers, building for the AI era",
-    "lede": "Dooster is a UK digital studio that brings software engineering, digital marketing and AI together in one team. We build the websites, run the marketing and create the tooling, so nothing gets lost between agencies."
+    "eyebrow": "About",
+    "heading": "Tech and marketing under one roof",
+    "lede": "We started Dooster because we kept seeing the same gap: marketing teams who couldn't change the website, tech teams who didn't know what to put on it, and small companies with no time to do either."
   },
   "story": {
-    "eyebrow": "Why we exist",
-    "heading": "Good marketing now depends on good technology",
+    "eyebrow": "",
+    "heading": "How it started",
     "paragraphs": [
-      "The way buyers find suppliers has changed. They still search Google, but they also ask AI assistants, compare options on social media and expect a fast, credible website when they arrive. Getting that right takes engineering and marketing skills working together.",
-      "Too often those skills sit in separate agencies. The web developer doesn't know the marketing plan, the marketing agency can't change the website, and nobody owns the data in between. Dooster was set up to close that gap: one team that writes the code, runs the campaigns and measures what works.",
-      "We work with businesses that sell considered purchases, from a financial market data provider serving developers and banks worldwide to a business centre serving companies in Bromley."
+      "Dooster started out of frustration with both sides.",
+      "Digital marketing teams often don't understand the technology behind a website. They can plan a campaign, but they can't fix a slow page, add structured data or work out why Google isn't picking up a new service page.",
+      "Technology companies have the opposite problem. The product is good, but the website doesn't explain it in terms buyers care about, social media is an afterthought, and nobody checks whether the company comes up when someone asks ChatGPT for a recommendation.",
+      "Small companies get hit hardest. Even when someone knows what needs doing, there's no time or budget for it: writing the content, posting every week, auditing the site, making the changes.",
+      "So we put those skills under one roof. The people who build your website also write for it, post about it and measure it, with one goal: make the website the main place your leads and sales come from."
     ]
   },
   "principles": {
-    "eyebrow": "How we work",
-    "heading": "What you can expect from us",
+    "eyebrow": "",
+    "heading": "How we work",
     "entries": [
-      { "title": "Evidence over opinion", "body": "We audit before we recommend, track what we change, and report on enquiries and revenue, not vanity metrics." },
-      { "title": "Built to last", "body": "Clean, documented code on reliable cloud infrastructure. You own it, and it's easy for anyone to maintain." },
-      { "title": "Automated quality", "body": "Every website release runs through automated checks for broken links, missing pages and invalid structured data before it goes live." },
-      { "title": "AI where it helps", "body": "We use AI for research, analysis and our own tooling, and keep people responsible for strategy, writing and review." },
-      { "title": "Plain English", "body": "No jargon, no black boxes. You'll always know what we're doing, why, and what it's achieving." },
-      { "title": "One accountable team", "body": "Strategy, design, development, content and analytics sit together, so there's no hand-off and no finger-pointing." }
+      {
+        "title": "We make the changes ourselves",
+        "body": "If an audit finds a problem, we fix it. You don't get a list of recommendations and a bill."
+      },
+      {
+        "title": "We're built for small teams",
+        "body": "Most of our clients don't have a developer, a content writer and a social media manager on staff. We cover those roles."
+      },
+      {
+        "title": "The website comes first",
+        "body": "Posts, emails and ads all send people somewhere. We make sure that page is fast, clear and easy to enquire from."
+      },
+      {
+        "title": "You own everything",
+        "body": "The code, content, accounts and data are yours. If you ever move on, you take all of it with you."
+      }
     ]
   },
   "stack": {
-    "eyebrow": "Technology",
-    "heading": "What we build with",
+    "eyebrow": "",
+    "heading": "What we use",
     "groups": [
-      { "title": "Websites & apps", "entries": ["Python & Flask", "Next.js & React", "Tailwind CSS", "Figma"] },
-      { "title": "Cloud & delivery", "entries": ["AWS Amplify", "AWS Lambda", "Amazon SES", "Automated testing & staging"] },
-      { "title": "AI & search", "entries": ["Dooster AI visibility audit", "Structured data (schema.org)", "Google Search Console", "Bing Webmaster Tools"] },
-      { "title": "Marketing & data", "entries": ["Google Analytics 4", "HubSpot & Klaviyo", "n8n & Zapier", "Ahrefs & Semrush"] }
+      {
+        "title": "Websites & apps",
+        "entries": [
+          "Python & Flask",
+          "Next.js & React",
+          "Tailwind CSS",
+          "Figma"
+        ]
+      },
+      {
+        "title": "Cloud & delivery",
+        "entries": [
+          "AWS Amplify",
+          "AWS Lambda",
+          "Amazon SES",
+          "Automated testing & staging"
+        ]
+      },
+      {
+        "title": "AI & search",
+        "entries": [
+          "Dooster AI visibility audit",
+          "Structured data (schema.org)",
+          "Google Search Console",
+          "Bing Webmaster Tools"
+        ]
+      },
+      {
+        "title": "Marketing & data",
+        "entries": [
+          "Google Analytics 4",
+          "HubSpot & Klaviyo",
+          "n8n & Zapier",
+          "Ahrefs & Semrush"
+        ]
+      }
     ]
   },
   "clients": {
-    "eyebrow": "Clients",
+    "eyebrow": "",
     "heading": "Who we work with",
     "link_label": "Read the case study"
   },
   "cta": {
-    "heading": "Let's talk about what you're building",
-    "body": "Tell us where your website or marketing feels stuck, or start with a free AI visibility check.",
-    "primary": { "label": "Start a project", "href": "/contact#contact-form" },
-    "secondary": { "label": "Free AI visibility check", "href": "/ai-visibility-check" }
+    "heading": "Tell us what your website should be doing for you",
+    "body": "Send a few lines about your business and where things are stuck. We'll reply within a working day.",
+    "primary": {
+      "label": "Get in touch",
+      "href": "/contact#contact-form"
+    },
+    "secondary": {
+      "label": "Free AI visibility check",
+      "href": "/ai-visibility-check"
+    }
+  },
+  "faqs": {
+    "heading": "Questions",
+    "entries": [
+      {
+        "q": "What does Dooster do?",
+        "a": "We build websites and run the marketing around them: content, social media, email, SEO and AI search visibility. Clients include TraderMade and Kingfisher House Business Centre."
+      },
+      {
+        "q": "Who do you work with?",
+        "a": "Mostly small and mid-sized UK companies, often in technology or professional services, that don't have in-house developers and marketers. Some are tech companies with a strong product and a website that doesn't sell it."
+      },
+      {
+        "q": "How do you help businesses show up in AI search?",
+        "a": "We make sure AI crawlers can read the site, write pages that answer the questions buyers ask, add structured data, and keep the facts about your business consistent across the web. This is often called AEO or GEO. Then we check each month whether AI tools mention you."
+      },
+      {
+        "q": "Do you work on projects or monthly?",
+        "a": "Both. Website builds are fixed projects. Content, social media, SEO and site updates usually run monthly."
+      },
+      {
+        "q": "Can you improve our existing site instead of rebuilding it?",
+        "a": "Often, yes. If the site is sound underneath, fixing speed, structure and content is usually the better use of budget. We'll tell you which makes sense."
+      },
+      {
+        "q": "What happens on the first call?",
+        "a": "We spend about 30 minutes on what your business sells, who buys it and where the website and marketing are letting you down. If you've run the free AI visibility check, we'll go through the results."
+      }
+    ]
   }
 }

@@ -294,7 +294,7 @@ def llms_txt():
     same content as the pages so it never drifts."""
     return Response(render_template("llms.txt", services=load_services(),
                                     case_studies=load_case_studies(),
-                                    home=load_page("home")),
+                                    about=load_page("about")),
                     mimetype="text/plain")
 
 

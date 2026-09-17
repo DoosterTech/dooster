@@ -1,16 +1,16 @@
 {% extends 'layouts/base.html' %}
 {% import 'components/seometa.html' as seo with context %}
-{% from 'components/sections.html' import section_head, cta_band, case_card %}
+{% from 'components/sections.html' import section_head, cta_band, case_card, faq_list %}
 
 {% block seometa %}
 {{ seo.meta(meta.title, meta.description, meta.url, meta.image,
             [seo.org_jsonld(site), seo.webpage_jsonld(site, meta, page.meta.updated),
-             seo.breadcrumb_jsonld(site, [('Home', '/'), ('About', '/about')])]) }}
+             seo.breadcrumb_jsonld(site, [('Home', '/'), ('About', '/about')]),
+             seo.faq_jsonld(page.faqs.entries)]) }}
 {% endblock %}
 
 {% block content %}
 <section class="page-hero">
-  <div class="hero-grid-bg" aria-hidden="true"></div>
   <div class="wrap">
     <p class="eyebrow">{{ page.hero.eyebrow }}</p>
     <h1 class="h1">{{ page.hero.heading }}</h1>
@@ -62,6 +62,13 @@
     <div class="grid grid-2">
       {% for c in case_studies %}{{ case_card(c, page.clients.link_label, '/results#' ~ c.slug) }}{% endfor %}
     </div>
+  </div>
+</section>
+
+<section class="section section-tint">
+  <div class="wrap split">
+    {{ section_head('', page.faqs.heading) }}
+    {{ faq_list(page.faqs.entries) }}
   </div>
 </section>
 

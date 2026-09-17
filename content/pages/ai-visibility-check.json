@@ -9,7 +9,7 @@
   "hero": {
     "eyebrow": "Free tool",
     "heading": "How visible is your business to AI?",
-    "lede": "Enter your website and our audit tool checks how ready it is for Google and AI assistants like ChatGPT, Perplexity and Google AI Overviews. You'll get a scored report with the top fixes by email."
+    "lede": "Put in your website address and we'll check how easy it is for Google and AI tools like ChatGPT, Perplexity and Google AI Overviews to find and understand. You'll get a score and a list of fixes by email."
   },
   "form": {
     "heading": "Run your free check",
@@ -32,12 +32,28 @@
   },
   "checks": {
     "eyebrow": "What we check",
-    "heading": "Four areas that decide whether AI can find and trust you",
+    "heading": "What the check looks at",
     "entries": [
-      { "icon": "web", "title": "AI crawler access", "body": "Whether ChatGPT, Perplexity, Google and Bing crawlers are allowed in, whether your firewall blocks them, and whether your content loads without JavaScript." },
-      { "icon": "aeo", "title": "Content structure", "body": "Clear headings, question-led sections that answer directly, lists and tables, and enough substance on each page to be worth quoting." },
-      { "icon": "design", "title": "Structured data", "body": "Valid schema.org markup that tells machines who you are and what you offer, including organisation, service, FAQ and breadcrumb data." },
-      { "icon": "analytics", "title": "Freshness & trust", "body": "Dates, authors, about and contact pages, and the other signals AI assistants use to judge whether a source is current and credible." }
+      {
+        "icon": "web",
+        "title": "AI crawler access",
+        "body": "Whether ChatGPT, Perplexity, Google and Bing crawlers are allowed in, whether your firewall blocks them, and whether your content loads without JavaScript."
+      },
+      {
+        "icon": "aeo",
+        "title": "Content structure",
+        "body": "Clear headings, question-led sections that answer directly, lists and tables, and enough substance on each page to be worth quoting."
+      },
+      {
+        "icon": "design",
+        "title": "Structured data",
+        "body": "Valid schema.org markup that tells machines who you are and what you offer, including organisation, service, FAQ and breadcrumb data."
+      },
+      {
+        "icon": "analytics",
+        "title": "Freshness & trust",
+        "body": "Dates, authors, about and contact pages, and the other signals AI assistants use to judge whether a source is current and credible."
+      }
     ]
   },
   "report": {
@@ -49,21 +65,36 @@
       "Page-by-page findings for the pages we checked",
       "An optional call to walk through the results"
     ],
-    "example": "Example: the Kingfisher House website we built scores 89/100."
+    "example": "We run the same check on every website we build before it goes live."
   },
   "faqs": {
     "eyebrow": "FAQs",
     "heading": "About the check",
     "entries": [
-      { "q": "Is the AI visibility check really free?", "a": "Yes. There's no charge and no obligation. We built the tool for our own client work and make it available so businesses can see where they stand." },
-      { "q": "What is AI visibility?", "a": "AI visibility is how easily AI assistants such as ChatGPT, Perplexity, Gemini and Google AI Overviews can find, understand and recommend your business. Improving it is often called AEO (Answer Engine Optimisation) or GEO (Generative Engine Optimisation)." },
-      { "q": "Does the check tell me whether ChatGPT mentions my business?", "a": "The automated check measures how ready your website is to be found and cited. What AI assistants actually say about you depends on other sites too, so a full review of real AI answers is part of our follow-up." },
-      { "q": "What do you do with my details?", "a": "We use them to send your report and, only if you tick the box, to follow up about the results. See our privacy policy for details." }
+      {
+        "q": "Is the AI visibility check really free?",
+        "a": "Yes. There's no charge and no obligation. We built the tool for our own client work and make it available so businesses can see where they stand."
+      },
+      {
+        "q": "What is AI visibility?",
+        "a": "AI visibility is how easily AI assistants such as ChatGPT, Perplexity, Gemini and Google AI Overviews can find, understand and recommend your business. Improving it is often called AEO (Answer Engine Optimisation) or GEO (Generative Engine Optimisation)."
+      },
+      {
+        "q": "Does the check tell me whether ChatGPT mentions my business?",
+        "a": "The automated check measures how ready your website is to be found and cited. What AI assistants actually say about you depends on other sites too, so a full review of real AI answers is part of our follow-up."
+      },
+      {
+        "q": "What do you do with my details?",
+        "a": "We use them to send your report and, only if you tick the box, to follow up about the results. See our privacy policy for details."
+      }
     ]
   },
   "cta": {
     "heading": "Prefer to talk it through?",
     "body": "If you'd rather skip the tool and speak to someone, we're happy to look at your site with you.",
-    "primary": { "label": "Contact us", "href": "/contact#contact-form" }
+    "primary": {
+      "label": "Contact us",
+      "href": "/contact#contact-form"
+    }
   }
 }

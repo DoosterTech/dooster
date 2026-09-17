@@ -2,8 +2,8 @@
   "brand": {
     "name": "Dooster",
     "full_name": "Dooster",
-    "tagline": "A UK technology-led digital studio: websites, marketing and AI, built by engineers who understand growth.",
-    "footer_blurb": "Technology-led websites, marketing and AI for businesses that want to be found, chosen and trusted.",
+    "tagline": "A UK team that builds websites and runs the digital marketing around them.",
+    "footer_blurb": "Websites and digital marketing, built and run by one team.",
     "availability": "Taking on new projects",
     "copyright_year": "2026",
     "country": "United Kingdom"
@@ -15,37 +15,77 @@
   "site_url": "https://www.dooster.io",
   "nav": {
     "primary": [
-      { "label": "Services", "href": "/services", "children_from": "services" },
-      { "label": "Results", "href": "/results" },
-      { "label": "About", "href": "/about" },
-      { "label": "Contact", "href": "/contact" }
+      {
+        "label": "Services",
+        "href": "/services",
+        "children_from": "services"
+      },
+      {
+        "label": "Results",
+        "href": "/results"
+      },
+      {
+        "label": "About",
+        "href": "/about"
+      },
+      {
+        "label": "Contact",
+        "href": "/contact"
+      }
     ],
-    "cta": { "label": "Free AI visibility check", "href": "/ai-visibility-check" }
+    "cta": {
+      "label": "Free AI visibility check",
+      "href": "/ai-visibility-check"
+    }
   },
   "footer": {
     "columns": [
       {
         "heading": "Company",
         "links": [
-          { "label": "Home", "href": "/" },
-          { "label": "Services", "href": "/services" },
-          { "label": "Results", "href": "/results" },
-          { "label": "About", "href": "/about" },
-          { "label": "Free AI visibility check", "href": "/ai-visibility-check" },
-          { "label": "Contact", "href": "/contact" }
+          {
+            "label": "Home",
+            "href": "/"
+          },
+          {
+            "label": "Services",
+            "href": "/services"
+          },
+          {
+            "label": "Results",
+            "href": "/results"
+          },
+          {
+            "label": "About",
+            "href": "/about"
+          },
+          {
+            "label": "Free AI visibility check",
+            "href": "/ai-visibility-check"
+          },
+          {
+            "label": "Contact",
+            "href": "/contact"
+          }
         ]
       }
     ],
     "services_heading": "Services",
     "contact_heading": "Get in touch",
     "legal_links": [
-      { "label": "Privacy Policy", "href": "/privacy-policy" },
-      { "label": "Cookies Policy", "href": "/cookies-policy" }
+      {
+        "label": "Privacy Policy",
+        "href": "/privacy-policy"
+      },
+      {
+        "label": "Cookies Policy",
+        "href": "/cookies-policy"
+      }
     ]
   },
   "seo": {
     "default_image": "og-default.png",
-    "org_description": "Dooster is a UK-based digital marketing and technology company. It designs and engineers high-performance websites, runs social media and digital marketing, and uses AI and data to help businesses get found on Google and in AI assistants such as ChatGPT, Perplexity and Google AI Overviews.",
+    "org_description": "Dooster is a UK web development and digital marketing company. It builds websites and runs the marketing around them, including content, social media, email, SEO and visibility in AI search tools such as ChatGPT, for companies without in-house developers and marketers.",
     "knows_about": [
       "Website design and development",
       "Cloud hosting on AWS",

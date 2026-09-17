@@ -9,7 +9,6 @@
 
 {% block content %}
 <section class="page-hero">
-  <div class="hero-grid-bg" aria-hidden="true"></div>
   <div class="wrap">
     <p class="eyebrow">{{ page.hero.eyebrow }}</p>
     <h1 class="h1">{{ page.hero.heading }}</h1>
@@ -27,6 +26,9 @@
         <p class="case-headline case-headline-lg">{{ c.headline }}</p>
         <a href="{{ c.website }}" class="card-link" rel="noopener" target="_blank">{{ page.labels.visit }}: {{ c.website_label }} <span aria-hidden="true">↗</span></a>
       </header>
+      {% if c.image %}
+      <figure class="case-shot"><img src="/static/images/{{ c.image }}" alt="{{ c.client }} website homepage" width="1440" height="900" loading="lazy" /></figure>
+      {% endif %}
 
       <div class="case-full-body">
         <div>
