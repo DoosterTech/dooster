@@ -730,7 +730,6 @@ a.card:hover .icon-tile { background: transparent; color: var(--accent); }
 .audit-box .check { background: transparent; }
 .faq[open] .faq-toggle { background: var(--ink); }
 .faq-toggle { border-radius: 4px; }
-.release-live .release-mark, .status-dot::after { animation: none; }
 
 .story .btn-link, .work-text .btn-link { justify-self: start; justify-content: flex-start; }
 .footer-heading { font-family: var(--font-mono); font-weight: 500; text-transform: none; letter-spacing: 0; font-size: .82rem; color: #fff; }
@@ -740,3 +739,11 @@ a.card:hover .icon-tile { background: transparent; color: var(--accent); }
   .case-full { grid-template-columns: 1fr; gap: 40px; }
   .case-full-body { grid-template-columns: 7fr 5fr; gap: 64px; }
 }
+
+/* Home hero kept in its earlier style */
+.hero-classic { border-bottom: 0; padding-bottom: 40px; }
+.hero-classic .hero-inner { align-items: center; }
+@media (min-width: 1024px) { .hero-classic .hero-inner { grid-template-columns: 7fr 5fr; } }
+.hero-classic .hero-copy .h1 { max-width: 16ch; }
+.hero-classic .eyebrow-pill { font-family: var(--font-text); font-weight: 600; font-size: .75rem; letter-spacing: .06em; text-transform: uppercase; color: var(--ink); }
+.hero-classic .btn { border-radius: var(--radius-pill); }

@@ -6,11 +6,64 @@
     "image": "og-default.png"
   },
   "hero": {
-    "label": "Web development and digital marketing, UK",
-    "heading": "Your website and your marketing, run by one team.",
-    "lede": "We build the website, write the content, post on social, check how you show up on Google and in AI tools like ChatGPT, and keep making changes until it brings in enquiries. You don't need a developer, a writer and a marketer on staff. You've got us.",
-    "primary_cta": { "label": "Tell us about your website", "href": "/contact#contact-form" },
-    "secondary_cta": { "label": "Free AI visibility check", "href": "/ai-visibility-check" }
+    "eyebrow": "UK technology-led digital studio",
+    "heading": "Websites, marketing and AI, engineered for growth.",
+    "heading_accent": "engineered",
+    "lede": "We're engineers and marketers in one team. We build fast, secure websites, run the marketing around them, and use AI and data so your business gets found, on Google and in the AI assistants your buyers now ask.",
+    "primary_cta": {
+      "label": "Start a project",
+      "href": "/contact#contact-form"
+    },
+    "secondary_cta": {
+      "label": "Free AI visibility check",
+      "href": "/ai-visibility-check"
+    },
+    "engines_label": "Built with",
+    "engines": [
+      "AWS",
+      "Python",
+      "Next.js",
+      "React",
+      "Figma",
+      "GA4"
+    ]
+  },
+  "release_panel": {
+    "title": "dooster deploy · kingfisherhousebc.co.uk",
+    "lines": [
+      {
+        "status": "ok",
+        "text": "Content validated · 45 pages"
+      },
+      {
+        "status": "ok",
+        "text": "Structured data valid on every page"
+      },
+      {
+        "status": "ok",
+        "text": "23 legacy URLs redirected"
+      },
+      {
+        "status": "ok",
+        "text": "Google & AI crawlers allowed"
+      },
+      {
+        "status": "ok",
+        "text": "Links and assets resolve"
+      },
+      {
+        "status": "live",
+        "text": "Deployed to AWS"
+      }
+    ],
+    "caption": "Every release we ship is checked automatically before it goes live."
+  },
+  "clients": {
+    "label": "Trusted by",
+    "names": [
+      "TraderMade",
+      "Kingfisher House Business Centre"
+    ]
   },
   "work": {
     "heading": "Recent work",
@@ -27,7 +80,10 @@
       "Small companies get hit hardest. Even when someone knows what needs doing, there's no time or budget for it: writing the content, posting every week, auditing the site, making the changes.",
       "So we put those skills under one roof. The people who build your website also write for it, post about it and measure it, with one goal: make the website the main place your leads and sales come from."
     ],
-    "link": { "label": "More about us", "href": "/about" }
+    "link": {
+      "label": "More about us",
+      "href": "/about"
+    }
   },
   "services": {
     "heading": "What we do",
@@ -37,21 +93,39 @@
   "practice": {
     "heading": "What that looks like week to week",
     "entries": [
-      { "lead": "You launch a new service.", "body": "We write the page, add the structured data, publish it, post about it and set up tracking, all in the same week." },
-      { "lead": "Enquiries drop off.", "body": "We look at the analytics, find the page that stopped working and change it. You get a fix, not a report about the problem." },
-      { "lead": "A buyer asks ChatGPT who to use.", "body": "We test the questions your customers ask every month and work on whatever is stopping you from being mentioned." },
-      { "lead": "Your team is stretched.", "body": "We do the writing, posting and site updates. You check and approve them." }
+      {
+        "lead": "You launch a new service.",
+        "body": "We write the page, add the structured data, publish it, post about it and set up tracking, all in the same week."
+      },
+      {
+        "lead": "Enquiries drop off.",
+        "body": "We look at the analytics, find the page that stopped working and change it. You get a fix, not a report about the problem."
+      },
+      {
+        "lead": "A buyer asks ChatGPT who to use.",
+        "body": "We test the questions your customers ask every month and work on whatever is stopping you from being mentioned."
+      },
+      {
+        "lead": "Your team is stretched.",
+        "body": "We do the writing, posting and site updates. You check and approve them."
+      }
     ]
   },
   "check": {
     "heading": "Not sure where to start?",
     "body": "Run our free AI visibility check on your site. It looks at up to 10 pages and emails you a score with the fixes that matter most.",
-    "cta": { "label": "Run the free check", "href": "/ai-visibility-check" }
+    "cta": {
+      "label": "Run the free check",
+      "href": "/ai-visibility-check"
+    }
   },
   "cta": {
     "heading": "Tell us what your website should be doing for you",
     "body": "Send a few lines about your business and where things are stuck. We'll reply within a working day with what we'd do first.",
-    "primary": { "label": "Get in touch", "href": "/contact#contact-form" },
+    "primary": {
+      "label": "Get in touch",
+      "href": "/contact#contact-form"
+    },
     "email_label": "Or email"
   }
 }

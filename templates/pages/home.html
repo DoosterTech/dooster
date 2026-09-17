@@ -10,21 +10,42 @@
 {% set h = page.hero %}
 {% set tm = case_studies[0] %}{% set kf = case_studies[1] %}
 
-<section class="hero">
+<!-- Hero -->
+<section class="hero hero-classic">
+  <div class="hero-grid-bg" aria-hidden="true"></div>
   <div class="wrap hero-inner">
     <div class="hero-copy">
-      <p class="label">{{ h.label }}</p>
-      <h1 class="h1">{{ h.heading }}</h1>
+      <p class="eyebrow eyebrow-pill"><span class="status-dot" aria-hidden="true"></span>{{ h.eyebrow }}</p>
+      {% set parts = h.heading.split(h.heading_accent) %}
+      <h1 class="h1">{{ parts[0] }}<span class="accent-text">{{ h.heading_accent }}</span>{{ parts[1] if parts|length > 1 }}</h1>
       <p class="lede lede-lg">{{ h.lede }}</p>
       <div class="btn-row">
-        <a href="{{ h.primary_cta.href }}" class="btn btn-dark">{{ h.primary_cta.label }}</a>
-        <a href="{{ h.secondary_cta.href }}" class="btn btn-link">{{ h.secondary_cta.label }} →</a>
+        <a href="{{ h.primary_cta.href }}" class="btn btn-accent">{{ h.primary_cta.label }} →</a>
+        <a href="{{ h.secondary_cta.href }}" class="btn btn-ghost">{{ h.secondary_cta.label }}</a>
+      </div>
+      <div class="engines">
+        <span class="engines-label">{{ h.engines_label }}</span>
+        <ul>{% for e in h.engines %}<li>{{ e }}</li>{% endfor %}</ul>
       </div>
     </div>
-    <div class="hero-shots" aria-hidden="true">
-      <img class="shot shot-back" src="/static/images/{{ tm.image }}" alt="" width="1440" height="900" />
-      <img class="shot shot-front" src="/static/images/{{ kf.image }}" alt="" width="1440" height="900" />
-    </div>
+
+    {% set r = page.release_panel %}
+    <figure class="answer-panel release-panel">
+      <div class="answer-window">
+        <div class="answer-bar"><span></span><span></span><span></span><code>{{ r.title }}</code></div>
+        <ol class="release-lines">
+          {% for l in r.lines %}
+          <li class="release-{{ l.status }}"><span class="release-mark" aria-hidden="true">{{ '●' if l.status == 'live' else '✓' }}</span>{{ l.text }}</li>
+          {% endfor %}
+        </ol>
+      </div>
+      <figcaption>{{ r.caption }}</figcaption>
+    </figure>
+  </div>
+
+  <div class="wrap clients-strip">
+    <span>{{ page.clients.label }}</span>
+    <ul>{% for c in page.clients.names %}<li>{{ c }}</li>{% endfor %}</ul>
   </div>
 </section>
 
