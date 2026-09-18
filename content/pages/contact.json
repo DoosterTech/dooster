@@ -18,12 +18,12 @@
   "audit": {
     "heading": "Want to see where you stand first?",
     "entries": [
-      "Run our free AI visibility check on your website",
+      "Request our free AI visibility report for your website",
       "See how ready it is for Google and AI assistants",
-      "Get the top fixes, emailed to you as a report"
+      "Get the score and top fixes by email within 24–48 hours"
     ],
     "cta": {
-      "label": "Get a free AI visibility check",
+      "label": "Get Free AI Visibility Report",
       "href": "/ai-visibility-check"
     }
   },

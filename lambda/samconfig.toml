@@ -23,7 +23,7 @@ region = "eu-west-2"
 capabilities = "CAPABILITY_IAM"
 resolve_s3 = true
 confirm_changeset = true
-parameter_overrides = "Stage=dev ToEmail=support@dooster.io FromEmail=website@dooster.io AllowedOrigins=https://dev.dooster.io,https://dev.dp8exvbtxi8lp.amplifyapp.com"
+parameter_overrides = "Stage=dev ToEmail=support@dooster.io FromEmail=info@dooster.io AllowedOrigins=https://dev.dooster.io,https://dev.dp8exvbtxi8lp.amplifyapp.com"
 
 [prod.deploy.parameters]
 stack_name = "dooster-contact-prod"
@@ -31,4 +31,4 @@ region = "eu-west-2"
 capabilities = "CAPABILITY_IAM"
 resolve_s3 = true
 confirm_changeset = true
-parameter_overrides = "Stage=prod ToEmail=support@dooster.io FromEmail=website@dooster.io AllowedOrigins=https://www.dooster.io,https://dooster.io,https://main.dp8exvbtxi8lp.amplifyapp.com"
+parameter_overrides = "Stage=prod ToEmail=support@dooster.io FromEmail=info@dooster.io AllowedOrigins=https://www.dooster.io,https://dooster.io,https://main.dp8exvbtxi8lp.amplifyapp.com"
