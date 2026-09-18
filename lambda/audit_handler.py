@@ -15,7 +15,7 @@ One function, two modes:
 aeo_audit.py is a copy of the standalone tool in ../aeo-audit. Keep them in sync.
 
 Environment variables (set by template.yaml):
-    FROM_EMAIL       verified SES sender, e.g. info@dooster.io
+    FROM_EMAIL       verified SES sender, e.g. support@dooster.io
     NOTIFY_EMAIL     Dooster inbox told about every check that runs
     ALLOWED_ORIGINS  comma-separated site origins allowed to call this
     AUDIT_PAGES      pages to sample per audit (default 10)
@@ -42,7 +42,7 @@ import aeo_audit
 ses = boto3.client("ses")
 lambda_client = boto3.client("lambda")
 
-FROM_EMAIL = os.environ.get("FROM_EMAIL", "info@dooster.io")
+FROM_EMAIL = os.environ.get("FROM_EMAIL", "support@dooster.io")
 NOTIFY_EMAIL = os.environ.get("NOTIFY_EMAIL", "support@dooster.io")
 ALLOWED_ORIGINS = [o.strip() for o in os.environ.get("ALLOWED_ORIGINS", "*").split(",") if o.strip()]
 _origin = ALLOWED_ORIGINS[0] if ALLOWED_ORIGINS else "*"
@@ -172,14 +172,16 @@ def send_report(job, report):
     attachment.add_header("Content-Disposition", "attachment",
                           filename=f"ai-visibility-{report['host']}.html")
     msg.attach(attachment)
-    ses.send_raw_email(Source=FROM_EMAIL, Destinations=[job["email"]],
+    # the Dooster inbox is a hidden recipient (no header), so there's a copy of
+    # exactly what the visitor received
+    ses.send_raw_email(Source=FROM_EMAIL, Destinations=[job["email"], NOTIFY_EMAIL],
                        RawMessage={"Data": msg.as_string()})
 
 
 def send_failure(job, reason):
     ses.send_email(
         Source=f"Dooster <{FROM_EMAIL}>",
-        Destination={"ToAddresses": [job["email"]]},
+        Destination={"ToAddresses": [job["email"]], "BccAddresses": [NOTIFY_EMAIL]},
         ReplyToAddresses=[NOTIFY_EMAIL],
         Message={
             "Subject": {"Data": f"We couldn't check {job['host']}", "Charset": "UTF-8"},

@@ -19,7 +19,7 @@ Parameters:
     Description: Where enquiries are delivered. Use a test inbox for dev.
   FromEmail:
     Type: String
-    Default: info@dooster.io
+    Default: support@dooster.io
     Description: Sender address. Must be verified in SES (or its domain must be).
   AutoSendReport:
     Type: String
