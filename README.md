@@ -105,6 +105,14 @@ Set per branch in the Amplify console:
 | `FORM_ENDPOINT` | prod stack's `FormEndpoint` | dev stack's `FormEndpoint` |
 | `AUDIT_ENDPOINT` | prod stack's `AuditEndpoint` | dev stack's `AuditEndpoint` |
 
+Easier than per-branch overrides: add these four for **all branches**, and
+each build picks the pair for its environment:
+
+| Variable | Value |
+|---|---|
+| `FORM_ENDPOINT_DEV` / `AUDIT_ENDPOINT_DEV` | dev stack's `FormEndpoint` / `AuditEndpoint` |
+| `FORM_ENDPOINT_PROD` / `AUDIT_ENDPOINT_PROD` | prod stack's `FormEndpoint` / `AuditEndpoint` |
+
 Paste `amplify-redirects.json` into the app's **Rewrites and redirects** JSON
 editor (custom 404 page). Add any future 301s to `REDIRECTS` in `app.py` and to
 that file; the build fails if the two disagree.

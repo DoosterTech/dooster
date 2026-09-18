@@ -9,7 +9,9 @@
 # (site_env.py), so nothing needs setting per branch for this:
 #   main -> production: indexable, review pages left out
 #   dev  -> dev: noindex on every page, robots.txt blocks crawlers
-# FORM_ENDPOINT is the only variable set per branch in the console.
+# Form endpoints: set FORM_ENDPOINT_PROD / FORM_ENDPOINT_DEV and
+# AUDIT_ENDPOINT_PROD / AUDIT_ENDPOINT_DEV once for all branches; each build
+# picks the pair for its environment (see app.py).
 
 version: 1
 frontend:

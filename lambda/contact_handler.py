@@ -7,8 +7,8 @@ reply in the mail client answers the customer directly.
 
 Environment variables (set by template.yaml):
     TO_EMAIL         where enquiries are delivered
-    FROM_EMAIL       verified SES sender, e.g. website@dooster.io
-    ALLOWED_ORIGIN   site origin allowed to call this, e.g. https://www.dooster.io
+    FROM_EMAIL       verified SES sender, e.g. info@dooster.io
+    ALLOWED_ORIGINS  comma-separated site origins allowed to call this
 """
 
 import html
@@ -21,9 +21,19 @@ from botocore.exceptions import ClientError
 
 ses = boto3.client("ses")
 
-TO_EMAIL = os.environ.get("TO_EMAIL", "hello@dooster.io")
-FROM_EMAIL = os.environ.get("FROM_EMAIL", "website@dooster.io")
-ALLOWED_ORIGIN = os.environ.get("ALLOWED_ORIGIN", "*")
+TO_EMAIL = os.environ.get("TO_EMAIL", "support@dooster.io")
+FROM_EMAIL = os.environ.get("FROM_EMAIL", "info@dooster.io")
+ALLOWED_ORIGINS = [o.strip() for o in os.environ.get("ALLOWED_ORIGINS", "*").split(",") if o.strip()]
+_origin = ALLOWED_ORIGINS[0] if ALLOWED_ORIGINS else "*"
+
+
+def _set_origin(event):
+    """Answer with the caller's origin if it is allowed. API Gateway's CORS
+    settings are the real guard; this keeps direct invocations consistent."""
+    global _origin
+    headers = {k.lower(): v for k, v in (event.get("headers") or {}).items()}
+    origin = headers.get("origin", "")
+    _origin = origin if origin in ALLOWED_ORIGINS or "*" in ALLOWED_ORIGINS else ALLOWED_ORIGINS[0]
 
 EMAIL_RE = re.compile(r"^[^@\s]+@[^@\s.]+\.[^@\s]+$")
 
@@ -55,7 +65,7 @@ def _response(status, body):
         "statusCode": status,
         "headers": {
             "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": ALLOWED_ORIGIN,
+            "Access-Control-Allow-Origin": _origin,
             "Access-Control-Allow-Headers": "Content-Type",
             "Access-Control-Allow-Methods": "POST,OPTIONS",
         },
@@ -123,6 +133,7 @@ def build_email(d):
 
 
 def lambda_handler(event, context):
+    _set_origin(event)
     method = (event.get("requestContext", {}).get("http", {}).get("method")
               or event.get("httpMethod", "POST"))
     if method == "OPTIONS":
@@ -150,7 +161,7 @@ def lambda_handler(event, context):
 
     try:
         ses.send_email(
-            Source=FROM_EMAIL,
+            Source=f"Dooster website <{FROM_EMAIL}>",
             Destination={"ToAddresses": [TO_EMAIL]},
             ReplyToAddresses=[cleaned["email"]],
             Message={
@@ -165,7 +176,7 @@ def lambda_handler(event, context):
         print(f"SES send failed: {e}")
         return _response(502, {
             "ok": False,
-            "error": "We couldn't send your message. Please email hello@dooster.io.",
+            "error": "We couldn't send your message. Please email support@dooster.io.",
         })
 
     return _response(200, {"ok": True})

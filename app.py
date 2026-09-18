@@ -22,11 +22,19 @@ app = Flask(__name__)
 CONTENT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "content")
 LEGAL_DIR = os.path.join(CONTENT, "legal")
 
-# Endpoint the contact form posts to. Set in Amplify; empty locally, which
-# makes the form show a "not connected" notice instead of failing silently.
-FORM_ENDPOINT = os.environ.get("FORM_ENDPOINT", "")
-# Endpoint for the free AI visibility check (same pattern as the contact form).
-AUDIT_ENDPOINT = os.environ.get("AUDIT_ENDPOINT", "")
+
+
+def _endpoint_var(name):
+    """The form endpoint for this build. Amplify can hold one value per
+    environment as NAME_PROD / NAME_DEV (set once for all branches); the build
+    picks the one matching SITE_ENV. A plain NAME, e.g. from a branch override,
+    wins over both. Empty means the form shows a "not connected" notice."""
+    suffix = "PROD" if IS_PRODUCTION else "DEV"
+    return (os.environ.get(name) or os.environ.get(f"{name}_{suffix}") or "").strip()
+
+
+FORM_ENDPOINT = _endpoint_var("FORM_ENDPOINT")          # contact form
+AUDIT_ENDPOINT = _endpoint_var("AUDIT_ENDPOINT")        # free AI visibility check
 
 _cache = {}
 

@@ -15,16 +15,25 @@ Parameters:
     Description: Which site this stack serves.
   ToEmail:
     Type: String
-    Default: hello@dooster.io
+    Default: support@dooster.io
     Description: Where enquiries are delivered. Use a test inbox for dev.
   FromEmail:
     Type: String
-    Default: website@dooster.io
+    Default: info@dooster.io
     Description: Sender address. Must be verified in SES (or its domain must be).
-  AllowedOrigin:
+  AutoSendReport:
     Type: String
-    Default: https://www.dooster.io
-    Description: Site origin permitted to call the API. Set to * only for testing.
+    AllowedValues: ['true', 'false']
+    Default: 'false'
+    Description: >-
+      'true' emails AI visibility reports straight to visitors (needs SES
+      production access). 'false' sends them to ToEmail for manual review.
+  AllowedOrigins:
+    Type: CommaDelimitedList
+    Default: https://www.dooster.io,https://dooster.io
+    Description: >-
+      Comma-separated site origins allowed to call the API, e.g. the Amplify
+      branch URL and the custom domain. No trailing slashes.
 
 Globals:
   Function:
@@ -38,8 +47,7 @@ Resources:
     Properties:
       StageName: !Ref Stage
       CorsConfiguration:
-        AllowOrigins:
-          - !Ref AllowedOrigin
+        AllowOrigins: !Ref AllowedOrigins
         AllowHeaders:
           - content-type
         AllowMethods:
@@ -65,7 +73,7 @@ Resources:
         Variables:
           TO_EMAIL: !Ref ToEmail
           FROM_EMAIL: !Ref FromEmail
-          ALLOWED_ORIGIN: !Ref AllowedOrigin
+          ALLOWED_ORIGINS: !Join [',', !Ref AllowedOrigins]
       Policies:
         - Statement:
             - Effect: Allow
@@ -92,8 +100,9 @@ Resources:
         Variables:
           FROM_EMAIL: !Ref FromEmail
           NOTIFY_EMAIL: !Ref ToEmail
-          ALLOWED_ORIGIN: !Ref AllowedOrigin
+          ALLOWED_ORIGINS: !Join [',', !Ref AllowedOrigins]
           AUDIT_PAGES: '10'
+          AUTO_SEND_REPORT: !Ref AutoSendReport
       Policies:
         - Statement:
             - Effect: Allow

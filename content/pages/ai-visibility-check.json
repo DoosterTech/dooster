@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Free AI Visibility Check | Is Your Website Ready for AI Search? | Dooster",
-    "description": "Free AI visibility check from Dooster: find out how ready your website is for Google and AI assistants like ChatGPT, Perplexity and Google AI Overviews, with a scored report and top fixes by email.",
+    "description": "Request a free AI visibility report from Dooster: we check how ready your website is for Google and AI assistants like ChatGPT, and email you a score and top fixes within 24–48 hours.",
     "path": "ai-visibility-check",
     "image": "og-default.png",
     "updated": "2026-09-17"
@@ -9,25 +9,25 @@
   "hero": {
     "eyebrow": "Free tool",
     "heading": "How visible is your business to AI?",
-    "lede": "Put in your website address and we'll check how easy it is for Google and AI tools like ChatGPT, Perplexity and Google AI Overviews to find and understand. You'll get a score and a list of fixes by email."
+    "lede": "Tell us your website and we'll check how easy it is for Google and AI tools like ChatGPT, Perplexity and Google AI Overviews to find and understand. We review every report before it goes out, so you'll get your score and a list of fixes by email within 24–48 hours."
   },
   "form": {
-    "heading": "Run your free check",
+    "heading": "Request your free report",
     "website": "Your website",
     "website_placeholder": "www.yourcompany.co.uk",
     "email": "Work email",
     "first_name": "First name",
     "company": "Company",
     "consent": "Dooster can contact me to talk through the results",
-    "submit": "Run my free check",
-    "note": "Checks up to 10 pages and usually takes a few minutes. We'll only use your details to send the report and, if you tick the box, to follow up.",
+    "submit": "Get Free AI Visibility Report",
+    "note": "We check up to 10 pages and review the results by hand, so reports arrive within 24–48 hours. We'll only use your details to send the report and, if you tick the box, to follow up.",
     "messages": {
-      "sending": "Starting your check…",
-      "success_heading": "Your check is running.",
-      "success_body": "We'll email your report within a few minutes. If it doesn't arrive, check your spam folder.",
+      "sending": "Sending your request…",
+      "success_heading": "Thanks, we've got your request.",
+      "success_body": "We'll email your AI visibility report within the next 24–48 hours. If you don't see it, check your spam folder.",
       "validation_summary": "Please check the highlighted fields.",
-      "error": "We couldn't start the check. Please try again or email us.",
-      "not_connected": "The automated check isn't switched on yet. Email us your website address and we'll run it for you:"
+      "error": "We couldn't send your request. Please try again or email us.",
+      "not_connected": "Our online form isn't switched on yet. Email us your website address and we'll send your report within 24–48 hours:"
     }
   },
   "checks": {
@@ -63,17 +63,21 @@
       "A score out of 100 across the four areas",
       "Priority fixes in plain English, most important first",
       "Page-by-page findings for the pages we checked",
-      "An optional call to walk through the results"
+      "Emailed within 24–48 hours, with an optional call to go through it"
     ],
-    "example": "We run the same check on every website we build before it goes live."
+    "example": "Every report is checked by our team before it's sent."
   },
   "faqs": {
     "eyebrow": "FAQs",
     "heading": "About the check",
     "entries": [
       {
-        "q": "Is the AI visibility check really free?",
+        "q": "Is the AI visibility report really free?",
         "a": "Yes. There's no charge and no obligation. We built the tool for our own client work and make it available so businesses can see where they stand."
+      },
+      {
+        "q": "How long does the report take?",
+        "a": "Within 24–48 hours. Our tool runs the checks, then someone from the team reviews the results before we email the report, so what you receive is accurate and useful."
       },
       {
         "q": "What is AI visibility?",

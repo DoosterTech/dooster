@@ -6,17 +6,21 @@ One function, two modes:
   1. HTTP request from the website form. Validates the website and email,
      then invokes this same function asynchronously and returns 202 straight
      away, because an audit takes longer than API Gateway's 30-second limit.
-  2. Async job ({"dooster_job": {...}}). Runs aeo_audit.run_audit(), emails the
-     visitor a summary with the full HTML report attached, and notifies the
-     Dooster inbox about the lead.
+  2. Async job ({"dooster_job": {...}}). Runs aeo_audit.run_audit(). With
+     AUTO_SEND_REPORT=true it emails the visitor a summary with the full HTML
+     report attached and notifies the Dooster inbox. Otherwise (the default)
+     the report goes only to the Dooster inbox, to be reviewed and sent on by
+     hand; the website promises it within 24-48 hours.
 
 aeo_audit.py is a copy of the standalone tool in ../aeo-audit. Keep them in sync.
 
 Environment variables (set by template.yaml):
-    FROM_EMAIL       verified SES sender, e.g. website@dooster.io
+    FROM_EMAIL       verified SES sender, e.g. info@dooster.io
     NOTIFY_EMAIL     Dooster inbox told about every check that runs
-    ALLOWED_ORIGIN   site origin allowed to call this
+    ALLOWED_ORIGINS  comma-separated site origins allowed to call this
     AUDIT_PAGES      pages to sample per audit (default 10)
+    AUTO_SEND_REPORT "true" emails the report straight to the visitor;
+                     anything else sends it to NOTIFY_EMAIL for manual review
 """
 
 import html
@@ -38,10 +42,21 @@ import aeo_audit
 ses = boto3.client("ses")
 lambda_client = boto3.client("lambda")
 
-FROM_EMAIL = os.environ.get("FROM_EMAIL", "website@dooster.io")
-NOTIFY_EMAIL = os.environ.get("NOTIFY_EMAIL", "hello@dooster.io")
-ALLOWED_ORIGIN = os.environ.get("ALLOWED_ORIGIN", "*")
+FROM_EMAIL = os.environ.get("FROM_EMAIL", "info@dooster.io")
+NOTIFY_EMAIL = os.environ.get("NOTIFY_EMAIL", "support@dooster.io")
+ALLOWED_ORIGINS = [o.strip() for o in os.environ.get("ALLOWED_ORIGINS", "*").split(",") if o.strip()]
+_origin = ALLOWED_ORIGINS[0] if ALLOWED_ORIGINS else "*"
+
+
+def _set_origin(event):
+    """Answer with the caller's origin if it is allowed. API Gateway's CORS
+    settings are the real guard; this keeps direct invocations consistent."""
+    global _origin
+    headers = {k.lower(): v for k, v in (event.get("headers") or {}).items()}
+    origin = headers.get("origin", "")
+    _origin = origin if origin in ALLOWED_ORIGINS or "*" in ALLOWED_ORIGINS else ALLOWED_ORIGINS[0]
 AUDIT_PAGES = int(os.environ.get("AUDIT_PAGES", "10"))
+AUTO_SEND_REPORT = os.environ.get("AUTO_SEND_REPORT", "false").strip().lower() == "true"
 SITE_URL = "https://www.dooster.io"
 
 EMAIL_RE = re.compile(r"^[^@\s]+@[^@\s.]+\.[^@\s]+$")
@@ -53,7 +68,7 @@ def _response(status, body):
         "statusCode": status,
         "headers": {
             "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": ALLOWED_ORIGIN,
+            "Access-Control-Allow-Origin": _origin,
             "Access-Control-Allow-Headers": "Content-Type",
             "Access-Control-Allow-Methods": "POST,OPTIONS",
         },
@@ -163,7 +178,7 @@ def send_report(job, report):
 
 def send_failure(job, reason):
     ses.send_email(
-        Source=FROM_EMAIL,
+        Source=f"Dooster <{FROM_EMAIL}>",
         Destination={"ToAddresses": [job["email"]]},
         ReplyToAddresses=[NOTIFY_EMAIL],
         Message={
@@ -175,8 +190,12 @@ def send_failure(job, reason):
         })
 
 
-def notify_dooster(job, report=None, error=None):
+def notify_dooster(job, report=None, error=None, sent_to_visitor=False):
+    """Tell the Dooster inbox about the request. In manual mode the full report
+    is attached so it can be checked and forwarded to the visitor."""
     lines = [
+        "New AI visibility report request" + ("" if sent_to_visitor else " (send within 24-48 hours)"),
+        "",
         f"Website:  {job['url']}",
         f"Email:    {job['email']}",
         f"Name:     {job.get('first_name') or '—'}",
@@ -187,15 +206,26 @@ def notify_dooster(job, report=None, error=None):
     ]
     if report:
         lines += [f"  {c['name']}: {c['score']}" for c in report["categories"].values()]
-    ses.send_email(
-        Source=FROM_EMAIL,
-        Destination={"ToAddresses": [NOTIFY_EMAIL]},
-        ReplyToAddresses=[job["email"]],
-        Message={
-            "Subject": {"Data": f"AI visibility check: {job['host']}"
-                        + (f" ({report['score']}/100)" if report else " (failed)"), "Charset": "UTF-8"},
-            "Body": {"Text": {"Data": "\n".join(lines), "Charset": "UTF-8"}},
-        })
+        lines += ["", "Top fixes:"] + [f"  - {c['name']}: {c['fix']}" for c in aeo_audit.top_fixes(report, 5)]
+        lines += ["", "The report was emailed to the visitor automatically." if sent_to_visitor else
+                  "The full report is attached. Check it, then forward it to the visitor (reply goes to them)."]
+    else:
+        lines += ["", "Run the check by hand and reply to the visitor (reply goes to them)."]
+
+    msg = MIMEMultipart("mixed")
+    msg["Subject"] = (f"AI visibility report request: {job['host']}"
+                      + (f" ({report['score']}/100)" if report else " (audit failed)"))
+    msg["From"] = f"Dooster website <{FROM_EMAIL}>"
+    msg["To"] = NOTIFY_EMAIL
+    msg["Reply-To"] = job["email"]
+    msg.attach(MIMEText("\n".join(lines), "plain", "utf-8"))
+    if report and not sent_to_visitor:
+        attachment = MIMEApplication(aeo_audit.render_html(report).encode("utf-8"), _subtype="html")
+        attachment.add_header("Content-Disposition", "attachment",
+                              filename=f"ai-visibility-{report['host']}.html")
+        msg.attach(attachment)
+    ses.send_raw_email(Source=FROM_EMAIL, Destinations=[NOTIFY_EMAIL],
+                       RawMessage={"Data": msg.as_string()})
 
 
 # ─── Entry point ──────────────────────────────────────────────────────────────
@@ -205,12 +235,25 @@ def run_job(job):
         report = aeo_audit.run_audit(job["url"], pages=AUDIT_PAGES, log=print)
     except aeo_audit.AuditError as e:
         print(f"audit failed for {job['url']}: {e}")
-        send_failure(job, str(e))
+        if AUTO_SEND_REPORT:
+            try:
+                send_failure(job, str(e))
+            except ClientError as err:
+                print(f"could not email visitor: {err}")
         notify_dooster(job, error=str(e))
         return
-    send_report(job, report)
-    notify_dooster(job, report)
-    print(f"audit sent: {job['host']} {report['score']}")
+
+    sent = False
+    if AUTO_SEND_REPORT:
+        try:
+            send_report(job, report)
+            sent = True
+        except ClientError as err:
+            # e.g. SES sandbox refusing an unverified address: fall back to
+            # manual review rather than losing the request
+            print(f"could not email visitor, sending to Dooster instead: {err}")
+    notify_dooster(job, report, sent_to_visitor=sent)
+    print(f"audit done: {job['host']} {report['score']} ({'sent to visitor' if sent else 'manual review'})")
 
 
 def lambda_handler(event, context):
@@ -218,6 +261,7 @@ def lambda_handler(event, context):
         run_job(event["dooster_job"])
         return {"ok": True}
 
+    _set_origin(event)
     method = (event.get("requestContext", {}).get("http", {}).get("method")
               or event.get("httpMethod", "POST"))
     if method == "OPTIONS":
@@ -243,5 +287,5 @@ def lambda_handler(event, context):
                              Payload=json.dumps({"dooster_job": job}).encode("utf-8"))
     except ClientError as e:
         print(f"could not start audit: {e}")
-        return _response(502, {"ok": False, "error": "We couldn't start the check. Please email hello@dooster.io."})
+        return _response(502, {"ok": False, "error": "We couldn't start the check. Please email support@dooster.io."})
     return _response(202, {"ok": True})
