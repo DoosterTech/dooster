@@ -7,7 +7,7 @@ reply in the mail client answers the customer directly.
 
 Environment variables (set by template.yaml):
     TO_EMAIL         where enquiries are delivered
-    FROM_EMAIL       verified SES sender, e.g. info@dooster.io
+    FROM_EMAIL       verified SES sender, e.g. support@dooster.io
     ALLOWED_ORIGINS  comma-separated site origins allowed to call this
 """
 
@@ -22,7 +22,7 @@ from botocore.exceptions import ClientError
 ses = boto3.client("ses")
 
 TO_EMAIL = os.environ.get("TO_EMAIL", "support@dooster.io")
-FROM_EMAIL = os.environ.get("FROM_EMAIL", "info@dooster.io")
+FROM_EMAIL = os.environ.get("FROM_EMAIL", "support@dooster.io")
 ALLOWED_ORIGINS = [o.strip() for o in os.environ.get("ALLOWED_ORIGINS", "*").split(",") if o.strip()]
 _origin = ALLOWED_ORIGINS[0] if ALLOWED_ORIGINS else "*"
 

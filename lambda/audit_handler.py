@@ -1,7 +1,9 @@
 """
 Free AI visibility check: API Gateway (HTTP API) -> Lambda -> SES.
 
-One function, two modes:
+By default (RUN_AUDIT=false) the form only emails the Dooster inbox a copy of
+the request; the team runs the check and sends the report by hand within
+24-48 hours. With RUN_AUDIT=true it works in two modes:
 
   1. HTTP request from the website form. Validates the website and email,
      then invokes this same function asynchronously and returns 202 straight
@@ -15,14 +17,17 @@ One function, two modes:
 aeo_audit.py is a copy of the standalone tool in ../aeo-audit. Keep them in sync.
 
 Environment variables (set by template.yaml):
-    FROM_EMAIL       verified SES sender, e.g. info@dooster.io
+    FROM_EMAIL       verified SES sender, e.g. support@dooster.io
     NOTIFY_EMAIL     Dooster inbox told about every check that runs
     ALLOWED_ORIGINS  comma-separated site origins allowed to call this
     AUDIT_PAGES      pages to sample per audit (default 10)
+    RUN_AUDIT        "true" runs the automated audit after each request;
+                     anything else just emails the request to NOTIFY_EMAIL
     AUTO_SEND_REPORT "true" emails the report straight to the visitor;
                      anything else sends it to NOTIFY_EMAIL for manual review
 """
 
+import datetime
 import html
 import ipaddress
 import json
@@ -42,7 +47,7 @@ import aeo_audit
 ses = boto3.client("ses")
 lambda_client = boto3.client("lambda")
 
-FROM_EMAIL = os.environ.get("FROM_EMAIL", "info@dooster.io")
+FROM_EMAIL = os.environ.get("FROM_EMAIL", "support@dooster.io")
 NOTIFY_EMAIL = os.environ.get("NOTIFY_EMAIL", "support@dooster.io")
 ALLOWED_ORIGINS = [o.strip() for o in os.environ.get("ALLOWED_ORIGINS", "*").split(",") if o.strip()]
 _origin = ALLOWED_ORIGINS[0] if ALLOWED_ORIGINS else "*"
@@ -56,6 +61,7 @@ def _set_origin(event):
     origin = headers.get("origin", "")
     _origin = origin if origin in ALLOWED_ORIGINS or "*" in ALLOWED_ORIGINS else ALLOWED_ORIGINS[0]
 AUDIT_PAGES = int(os.environ.get("AUDIT_PAGES", "10"))
+RUN_AUDIT = os.environ.get("RUN_AUDIT", "false").strip().lower() == "true"
 AUTO_SEND_REPORT = os.environ.get("AUTO_SEND_REPORT", "false").strip().lower() == "true"
 SITE_URL = "https://www.dooster.io"
 
@@ -172,14 +178,16 @@ def send_report(job, report):
     attachment.add_header("Content-Disposition", "attachment",
                           filename=f"ai-visibility-{report['host']}.html")
     msg.attach(attachment)
-    ses.send_raw_email(Source=FROM_EMAIL, Destinations=[job["email"]],
+    # the Dooster inbox is a hidden recipient (no header), so there's a copy of
+    # exactly what the visitor received
+    ses.send_raw_email(Source=FROM_EMAIL, Destinations=[job["email"], NOTIFY_EMAIL],
                        RawMessage={"Data": msg.as_string()})
 
 
 def send_failure(job, reason):
     ses.send_email(
         Source=f"Dooster <{FROM_EMAIL}>",
-        Destination={"ToAddresses": [job["email"]]},
+        Destination={"ToAddresses": [job["email"]], "BccAddresses": [NOTIFY_EMAIL]},
         ReplyToAddresses=[NOTIFY_EMAIL],
         Message={
             "Subject": {"Data": f"We couldn't check {job['host']}", "Charset": "UTF-8"},
@@ -226,6 +234,33 @@ def notify_dooster(job, report=None, error=None, sent_to_visitor=False):
         msg.attach(attachment)
     ses.send_raw_email(Source=FROM_EMAIL, Destinations=[NOTIFY_EMAIL],
                        RawMessage={"Data": msg.as_string()})
+
+
+def send_submission_copy(job):
+    """Email the Dooster inbox the form exactly as submitted, straight away,
+    so the request is on record even if the audit that follows fails."""
+    lines = [
+        "Someone has requested a free AI visibility report on the website.",
+        "",
+        f"Website:  {job['url']}",
+        f"Email:    {job['email']}",
+        f"Name:     {job.get('first_name') or '—'}",
+        f"Company:  {job.get('company') or '—'}",
+        f"Follow-up consent: {'YES' if job.get('consent') else 'no'}",
+        f"Received: {datetime.datetime.now(datetime.timezone.utc):%d %b %Y %H:%M} UTC",
+        "",
+        ("The automated audit is running; its results follow in a separate email."
+         if RUN_AUDIT else "Please run the check and email them the report."),
+        "We've told them to expect it within 24-48 hours. Reply to this email to contact them.",
+    ]
+    ses.send_email(
+        Source=f"Dooster website <{FROM_EMAIL}>",
+        Destination={"ToAddresses": [NOTIFY_EMAIL]},
+        ReplyToAddresses=[job["email"]],
+        Message={
+            "Subject": {"Data": f"New AI visibility report request: {job['host']}", "Charset": "UTF-8"},
+            "Body": {"Text": {"Data": "\n".join(lines), "Charset": "UTF-8"}},
+        })
 
 
 # ─── Entry point ──────────────────────────────────────────────────────────────
@@ -281,6 +316,17 @@ def lambda_handler(event, context):
     job, errors = validate(data)
     if errors:
         return _response(400, {"ok": False, "errors": errors})
+
+    try:
+        send_submission_copy(job)
+    except ClientError as e:
+        print(f"could not email submission copy: {e}")
+        if not RUN_AUDIT:
+            # the email is the only record of the request, so say it failed
+            return _response(502, {"ok": False, "error": "We couldn't send your request. Please email support@dooster.io."})
+
+    if not RUN_AUDIT:
+        return _response(202, {"ok": True})
 
     try:
         lambda_client.invoke(FunctionName=context.function_name, InvocationType="Event",
