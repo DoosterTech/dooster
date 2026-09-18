@@ -5,6 +5,7 @@
 {% block seometa %}
 {{ seo.meta(meta.title, meta.description, meta.url, meta.image,
             [seo.service_jsonld(service, site),
+             seo.webpage_jsonld(site, meta, service.updated),
              seo.breadcrumb_jsonld(site, [('Home', '/'), ('Services', '/services'), (service.short_title, service.url)]),
              seo.faq_jsonld(service.faqs)]) }}
 {% endblock %}
@@ -24,6 +25,9 @@
       <a href="{{ h.primary_cta.href }}" class="btn btn-accent">{{ h.primary_cta.label }} →</a>
       <a href="{{ h.secondary_cta.href }}" class="btn btn-ghost">{{ h.secondary_cta.label }}</a>
     </div>
+    {% if service.updated %}
+    <p class="updated">{{ labels.updated }} <time datetime="{{ service.updated }}">{{ service.updated | nice_date }}</time></p>
+    {% endif %}
   </div>
 </section>
 

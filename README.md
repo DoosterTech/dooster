@@ -1,8 +1,8 @@
 # Dooster — website
 
-Static website for [dooster.co.uk](https://www.dooster.co.uk), a UK digital
-marketing and website development company specialising in Answer Engine
-Optimisation (AEO). Built from JSON and markdown content by a small Flask app
+Static website for [dooster.io](https://www.dooster.io), a UK technology-led
+digital studio: websites, digital marketing and AI (including AI search
+visibility, also called AEO/GEO). Built from JSON and markdown content by a small Flask app
 and deployed to AWS Amplify as static HTML. It uses the same setup as the
 Kingfisher House site.
 
@@ -16,14 +16,17 @@ templates, so copy changes never require touching HTML.
 | To change… | Edit |
 |---|---|
 | Home page wording | `content/pages/home.json` |
-| Services, Results, Contact, 404 wording | `content/pages/<page>.json` |
+| Services, Results, About, AI visibility check, Contact, 404 wording | `content/pages/<page>.json` |
 | Nav, footer, email, site URL, SEO description | `content/site.json` |
 | The six service pages (`/services/<slug>`) | `content/services.json` |
-| Case studies (home + `/results`) | `content/case-studies.json` |
+| Case studies (home, `/results`, `/about`) | `content/case-studies.json` |
+| Organisation profile links (LinkedIn, Companies House…) | `content/site.json` → `seo.same_as` |
 | Privacy and cookies policies | `content/legal/*.md` |
 
 A new service added to `services.json` gets its own page and appears in the nav
-menu, footer, sitemap and `llms.txt` automatically.
+menu, footer, sitemap and `llms.txt` automatically. Change a service's
+`"updated"` date when you edit it: it shows as "Last updated" on the page and
+as `dateModified` in the structured data.
 
 ### Check your changes before pushing
 
@@ -100,14 +103,27 @@ Set per branch in the Amplify console:
 | Variable | `main` | `dev` |
 |---|---|---|
 | `FORM_ENDPOINT` | prod stack's `FormEndpoint` | dev stack's `FormEndpoint` |
+| `AUDIT_ENDPOINT` | prod stack's `AuditEndpoint` | dev stack's `AuditEndpoint` |
 
 Paste `amplify-redirects.json` into the app's **Rewrites and redirects** JSON
 editor (custom 404 page). Add any future 301s to `REDIRECTS` in `app.py` and to
 that file; the build fails if the two disagree.
 
-### Contact form
+### Contact form and free AI visibility check
 
-API Gateway → Lambda → SES, defined in `lambda/template.yaml` (AWS SAM):
+Both run on one API Gateway, defined in `lambda/template.yaml` (AWS SAM):
+
+- `POST /contact` → `contact_handler.py` → SES email to the Dooster inbox
+- `POST /audit` → `audit_handler.py`: validates the website (public addresses
+  only) and email, then re-invokes itself asynchronously and returns 202. The
+  async run audits up to 10 pages with `aeo_audit.py`, emails the visitor a
+  summary with the full HTML report attached, and emails the Dooster inbox
+  with the lead and score. Throttled to 1 request/second.
+
+`lambda/aeo_audit.py` is a copy of the standalone tool in `../aeo-audit`. Copy
+it across when the tool changes.
+
+Deploy:
 
 ```bash
 cd lambda
@@ -117,8 +133,10 @@ sam deploy --config-env prod
 ```
 
 Replace the `REPLACE-*` values in `lambda/samconfig.toml` first, verify the
-`dooster.co.uk` domain in SES, and request SES production access before launch.
-Until `FORM_ENDPOINT` is set, the form tells visitors to email instead.
+`dooster.io` domain in SES, and request SES production access before launch.
+The audit emails need `ses:SendRawEmail` (included) because the report is an
+attachment. Until `FORM_ENDPOINT` / `AUDIT_ENDPOINT` are set, each form tells
+visitors to email instead.
 
 ---
 
@@ -136,7 +154,7 @@ amplify.yml             AWS Amplify build spec
 content/                All site text
 templates/              Jinja templates (structure only, no copy)
 static/                 CSS (hand-written, no build step), JS, images
-lambda/                 Contact form: handler + SAM template
+lambda/                 Contact form + AI visibility check: handlers + SAM template
 ```
 
 ## Not yet included

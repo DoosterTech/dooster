@@ -17,7 +17,7 @@ Based in: {{ site.brand.country }}
 {%- endfor %}
 
 ## Frequently asked questions
-{% for f in home.faqs.entries %}
+{% for f in about.faqs.entries %}
 ### {{ f.q }}
 {{ f.a }}
 {% endfor %}
@@ -25,4 +25,6 @@ Based in: {{ site.brand.country }}
 
 - [Services]({{ site.site_url }}/services)
 - [Results]({{ site.site_url }}/results)
-- [Contact / free AEO audit]({{ site.site_url }}/contact)
+- [About]({{ site.site_url }}/about)
+- [Free AI visibility check]({{ site.site_url }}/ai-visibility-check)
+- [Contact]({{ site.site_url }}/contact)

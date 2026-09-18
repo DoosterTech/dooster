@@ -25,6 +25,7 @@
         <ul class="check-list">
           {% for e in page.audit.entries %}<li><span class="check" aria-hidden="true">✓</span>{{ e }}</li>{% endfor %}
         </ul>
+        {% if page.audit.cta %}<a href="{{ page.audit.cta.href }}" class="btn btn-accent btn-sm audit-cta">{{ page.audit.cta.label }} →</a>{% endif %}
       </div>
 
       <p class="contact-email">Prefer email? <a href="mailto:{{ site.contact.email }}">{{ site.contact.email }}</a></p>

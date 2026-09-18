@@ -1,0 +1,101 @@
+{% extends 'layouts/base.html' %}
+{% import 'components/seometa.html' as seo with context %}
+{% from 'components/sections.html' import section_head, icon, faq_list, cta_band %}
+
+{% block seometa %}
+{{ seo.meta(meta.title, meta.description, meta.url, meta.image,
+            [seo.webpage_jsonld(site, meta, page.meta.updated),
+             seo.breadcrumb_jsonld(site, [('Home', '/'), ('Free AI visibility check', '/ai-visibility-check')]),
+             seo.faq_jsonld(page.faqs.entries)]) }}
+{% endblock %}
+
+{% block content %}
+{% set f = page.form %}
+<section class="page-hero page-hero-contact">
+  <div class="hero-grid-bg" aria-hidden="true"></div>
+  <div class="wrap contact-grid">
+    <div class="contact-intro">
+      <p class="eyebrow">{{ page.hero.eyebrow }}</p>
+      <h1 class="h1">{{ page.hero.heading }}</h1>
+      <p class="lede lede-lg">{{ page.hero.lede }}</p>
+
+      <div class="audit-box">
+        <h2 class="h3">{{ page.report.heading }}</h2>
+        <ul class="check-list">
+          {% for e in page.report.entries %}<li><span class="check" aria-hidden="true">✓</span>{{ e }}</li>{% endfor %}
+        </ul>
+        <p class="audit-example">{{ page.report.example }}</p>
+      </div>
+    </div>
+
+    <div class="form-card">
+      <h2 class="h3">{{ f.heading }}</h2>
+      <form id="audit-form" data-endpoint="{{ audit_endpoint }}" data-email="{{ site.contact.email }}" novalidate>
+        <div class="field">
+          <label for="url">{{ f.website }} <span aria-hidden="true">*</span></label>
+          <input id="url" name="url" type="text" inputmode="url" autocomplete="url" placeholder="{{ f.website_placeholder }}" required aria-describedby="err-url" />
+          <p class="field-error" id="err-url" aria-live="polite"></p>
+        </div>
+        <div class="field">
+          <label for="email">{{ f.email }} <span aria-hidden="true">*</span></label>
+          <input id="email" name="email" type="email" autocomplete="email" required aria-describedby="err-email" />
+          <p class="field-error" id="err-email" aria-live="polite"></p>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="first_name">{{ f.first_name }}</label>
+            <input id="first_name" name="first_name" type="text" autocomplete="given-name" aria-describedby="err-first_name" />
+            <p class="field-error" id="err-first_name" aria-live="polite"></p>
+          </div>
+          <div class="field">
+            <label for="company">{{ f.company }}</label>
+            <input id="company" name="company" type="text" autocomplete="organization" aria-describedby="err-company" />
+            <p class="field-error" id="err-company" aria-live="polite"></p>
+          </div>
+        </div>
+        <label class="consent">
+          <input type="checkbox" name="consent" value="yes" />
+          <span>{{ f.consent }}</span>
+        </label>
+        {# Honeypot: hidden from people, filled in by bots #}
+        <div class="hp" aria-hidden="true">
+          <label for="website">Leave this empty</label>
+          <input id="website" name="website" type="text" tabindex="-1" autocomplete="off" />
+        </div>
+        <button type="submit" id="audit-submit" class="btn btn-accent btn-block">{{ f.submit }} →</button>
+        <p class="form-note">{{ f.note }}</p>
+        <div id="audit-status" role="status" aria-live="polite"></div>
+      </form>
+      <script type="application/json" id="audit-messages">{{ f.messages | tojson }}</script>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    {{ section_head(page.checks.eyebrow, page.checks.heading) }}
+    <div class="grid grid-2 grid-4">
+      {% for c in page.checks.entries %}
+      <div class="card">
+        <span class="icon-tile">{{ icon(c.icon) }}</span>
+        <h3 class="h3">{{ c.title }}</h3>
+        <p>{{ c.body }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section section-tint">
+  <div class="wrap split">
+    {{ section_head(page.faqs.eyebrow, page.faqs.heading) }}
+    {{ faq_list(page.faqs.entries) }}
+  </div>
+</section>
+
+{{ cta_band(page.cta) }}
+{% endblock %}
+
+{% block extrascripts %}
+<script src="/static/js/audit-form.js" defer></script>
+{% endblock %}

@@ -8,6 +8,7 @@ build, or run this file directly for local development.
 
 from flask import Flask, render_template, abort, Response, redirect
 import copy
+import datetime
 import json
 import os
 import re
@@ -24,6 +25,8 @@ LEGAL_DIR = os.path.join(CONTENT, "legal")
 # Endpoint the contact form posts to. Set in Amplify; empty locally, which
 # makes the form show a "not connected" notice instead of failing silently.
 FORM_ENDPOINT = os.environ.get("FORM_ENDPOINT", "")
+# Endpoint for the free AI visibility check (same pattern as the contact form).
+AUDIT_ENDPOINT = os.environ.get("AUDIT_ENDPOINT", "")
 
 _cache = {}
 
@@ -110,7 +113,7 @@ REDIRECTS = {}
 def page_urls():
     """Every page address the site serves — the static build and the sitemap
     both come from this, so they cannot list different pages."""
-    urls = ["/", "/services", "/results", "/contact"]
+    urls = ["/", "/services", "/results", "/about", "/ai-visibility-check", "/contact"]
     urls += [s["url"] for s in load_services()]
     urls += [l["url"] for l in load_legal()]
     return urls
@@ -138,8 +141,15 @@ def inject_globals():
     """Make site-wide content available to every template."""
     site = load_site()
     return {"site": site, "nav": nav_for(site), "all_services": load_services(),
-            "form_endpoint": FORM_ENDPOINT, "site_env": SITE_ENV,
+            "form_endpoint": FORM_ENDPOINT, "audit_endpoint": AUDIT_ENDPOINT, "site_env": SITE_ENV,
             "is_production": IS_PRODUCTION}
+
+
+@app.template_filter("nice_date")
+def nice_date(value):
+    """2026-09-17 -> 17 September 2026"""
+    d = datetime.date.fromisoformat(value)
+    return f"{d.day} {d.strftime('%B %Y')}"
 
 
 def render_page(template, name, **extra):
@@ -189,6 +199,16 @@ def results():
     return render_page("pages/results.html", "results", case_studies=load_case_studies())
 
 
+@app.route("/about")
+def about():
+    return render_page("pages/about.html", "about", case_studies=load_case_studies())
+
+
+@app.route("/ai-visibility-check")
+def ai_visibility_check():
+    return render_page("pages/ai-visibility-check.html", "ai-visibility-check")
+
+
 @app.route("/contact")
 def contact():
     return render_page("pages/contact.html", "contact")
@@ -228,7 +248,8 @@ def not_found(e):
 # sitemap weighting by page; services and legal pages fall back to defaults below
 SITEMAP_WEIGHTS = {
     "/": ("1.0", "weekly"), "/services": ("0.9", "monthly"),
-    "/results": ("0.8", "monthly"), "/contact": ("0.7", "yearly"),
+    "/results": ("0.8", "monthly"), "/about": ("0.7", "monthly"),
+    "/ai-visibility-check": ("0.8", "monthly"), "/contact": ("0.7", "yearly"),
 }
 
 
@@ -273,7 +294,7 @@ def llms_txt():
     same content as the pages so it never drifts."""
     return Response(render_template("llms.txt", services=load_services(),
                                     case_studies=load_case_studies(),
-                                    home=load_page("home")),
+                                    about=load_page("about")),
                     mimetype="text/plain")
 
 

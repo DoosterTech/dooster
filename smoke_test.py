@@ -20,7 +20,7 @@ import sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 
 # Pages that must exist in every build, as URL paths
-REQUIRED_PAGES = ["/", "/services", "/results", "/contact",
+REQUIRED_PAGES = ["/", "/services", "/results", "/about", "/ai-visibility-check", "/contact",
                   "/privacy-policy", "/cookies-policy"]
 REQUIRED_FILES = ["404.html", "sitemap.xml", "robots.txt", "llms.txt"]
 

@@ -11,6 +11,7 @@ whatever is already live stays live.
 Safe for non-technical editors to run; the output is written for them.
 """
 
+import datetime
 import json
 import os
 import re
@@ -47,7 +48,7 @@ def image_exists(name):
 
 
 def known_routes():
-    routes = {"/", "/services", "/results", "/contact"}
+    routes = {"/", "/services", "/results", "/about", "/ai-visibility-check", "/contact"}
     services = json.load(open(os.path.join(CONTENT, "services.json"), encoding="utf-8"))
     routes |= {s["url"] for s in services["services"] if s.get("url")}
     if os.path.isdir(LEGAL):
@@ -131,6 +132,12 @@ def check_services(routes):
             problems.append(Problem(rel, None, f"two services share the slug '{name}'",
                                     "every service needs its own slug"))
         seen.add(name)
+        if s.get("updated"):
+            try:
+                datetime.date.fromisoformat(s["updated"])
+            except ValueError:
+                problems.append(Problem(rel, None, f"the 'updated' date for '{name}' isn't year-month-day",
+                                        'write it like  "updated": "2026-09-17"'))
         if len(s.get("description", "")) > 300:
             problems.append(Problem(rel, None,
                 f"the description for '{name}' is {len(s['description'])} characters",

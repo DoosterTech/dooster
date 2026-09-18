@@ -1,28 +1,31 @@
 {
   "meta": {
-    "title": "Contact Dooster | Book a Free AEO Audit",
-    "description": "Contact Dooster to book a free AEO audit or talk about a website, SEO, social media or email marketing project. We reply within one working day.",
+    "title": "Contact Dooster | Start a Project",
+    "description": "Contact Dooster about a website, digital marketing, social media or AI search project. We reply within one working day.",
     "path": "contact",
     "image": "og-default.png"
   },
   "hero": {
     "eyebrow": "Contact",
-    "heading": "Let's build a clearer growth system.",
-    "lede": "Tell us where your website, funnel or marketing feels stuck. We'll come back with practical next steps."
+    "heading": "Tell us about your website",
+    "lede": "What does the business sell, and where do things feel stuck? A few lines is plenty. We'll reply within a working day."
   },
   "promises": [
-    "No spam. No hard sell.",
-    "A reply within one working day.",
-    "Useful commercial insight, even if we don't work together."
+    "We reply within one working day.",
+    "No sales sequence afterwards.",
+    "If we're not the right fit, we'll say so."
   ],
   "audit": {
-    "heading": "What's in a free AEO audit?",
+    "heading": "Want to see where you stand first?",
     "entries": [
-      "How you rank on Google for the questions buyers ask",
-      "Whether ChatGPT, Perplexity and Google AI Overviews mention you",
-      "Technical and structured-data issues holding you back",
-      "The three highest-impact fixes to make first"
-    ]
+      "Run our free AI visibility check on your website",
+      "See how ready it is for Google and AI assistants",
+      "Get the top fixes, emailed to you as a report"
+    ],
+    "cta": {
+      "label": "Get a free AI visibility check",
+      "href": "/ai-visibility-check"
+    }
   },
   "form": {
     "heading": "Send us a message",
@@ -34,14 +37,34 @@
     "interest": "What can we help with?",
     "interest_placeholder": "Choose one",
     "interest_options": [
-      { "value": "aeo-audit", "label": "Free AEO audit" },
-      { "value": "aeo-seo", "label": "AEO & SEO" },
-      { "value": "website", "label": "Website design & development" },
-      { "value": "social-media", "label": "Social media management" },
-      { "value": "design", "label": "UI/UX design" },
-      { "value": "email", "label": "Email marketing" },
-      { "value": "analytics", "label": "Analytics" },
-      { "value": "not-sure", "label": "Not sure yet" }
+      {
+        "value": "website",
+        "label": "Website design & development"
+      },
+      {
+        "value": "ai-search",
+        "label": "AI search & SEO"
+      },
+      {
+        "value": "social-media",
+        "label": "Social media management"
+      },
+      {
+        "value": "design",
+        "label": "UI/UX design"
+      },
+      {
+        "value": "email",
+        "label": "Email marketing & automation"
+      },
+      {
+        "value": "analytics",
+        "label": "Analytics"
+      },
+      {
+        "value": "not-sure",
+        "label": "Not sure yet"
+      }
     ],
     "message": "Tell us about your project",
     "submit": "Send message",

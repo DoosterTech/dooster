@@ -6,9 +6,9 @@
     "image": "og-default.png"
   },
   "hero": {
-    "eyebrow": "Results",
-    "heading": "Work that performs after launch",
-    "lede": "A selection of the businesses we've built websites and run marketing for — what they needed, and what we delivered."
+    "eyebrow": "Work",
+    "heading": "Our work",
+    "lede": "Websites we've built and marketing we run. What each client needed, and what we did."
   },
   "labels": {
     "challenge": "The challenge",
@@ -17,8 +17,15 @@
     "visit": "Visit site"
   },
   "cta": {
-    "heading": "Want results like these?",
+    "heading": "Want something similar?",
     "body": "Tell us where your website or marketing feels stuck and we'll show you what we'd do first.",
-    "primary": { "label": "Book a free AEO audit", "href": "/contact#contact-form" }
+    "primary": {
+      "label": "Start a project",
+      "href": "/contact#contact-form"
+    },
+    "secondary": {
+      "label": "Free AI visibility check",
+      "href": "/ai-visibility-check"
+    }
   }
 }

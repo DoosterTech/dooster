@@ -6,20 +6,32 @@
       "website": "https://tradermade.com",
       "website_label": "tradermade.com",
       "sector": "Financial market data · B2B SaaS",
-      "headline": "A website and social presence for a market data provider trusted since 1984",
-      "summary": "TraderMade supplies real-time and historical forex, crypto and CFD data to banks, fintechs and developers worldwide. We built their website and manage their social media — presenting four decades of market data heritage to a developer-first, API-driven audience.",
-      "challenge": "TraderMade's buyers range from developers testing an API to data teams at financial institutions. The website needed to speak to both — technical enough to earn developer trust, credible enough for enterprise procurement — and be structured so search and AI engines understand exactly what TraderMade provides.",
+      "headline": "A website and social presence for a market data company that's been around since 1984",
+      "summary": "TraderMade sells market data APIs to two very different audiences: developers who want to try an API in five minutes, and data teams at banks who need to get procurement to sign off. We built the website and manage their social media.",
+      "challenge": "The site had to work for both audiences at once. Developers look for docs, pricing and a free key. Enterprise buyers look for coverage, reliability and who else uses the data. It also had to explain clearly what TraderMade does, so search engines and AI tools describe it correctly.",
       "work": [
         "Website design and development",
         "Answer-first product and documentation-led content structure",
         "Structured data and technical SEO foundations",
         "Ongoing social media management and content"
       ],
-      "services": ["Web Development", "Social Media", "AEO & SEO"],
+      "services": [
+        "Web Development",
+        "Social Media",
+        "AI Search & SEO"
+      ],
       "highlights": [
-        { "value": "40+", "label": "Years of market data heritage, told for a developer audience" },
-        { "value": "Ongoing", "label": "Social media management" }
-      ]
+        {
+          "value": "1984",
+          "label": "Founded, so four decades of heritage to get across"
+        },
+        {
+          "value": "Web + social",
+          "label": "We built the site and run the social media"
+        }
+      ],
+      "image": "work/tradermade.jpg",
+      "short": "Real-time and historical FX, crypto and CFD data for banks, fintechs and developers since 1984. We built the website and run their social media."
     },
     {
       "slug": "kingfisher-house",
@@ -27,21 +39,33 @@
       "website": "https://www.kingfisherhousebc.co.uk",
       "website_label": "kingfisherhousebc.co.uk",
       "sector": "Serviced offices · Bromley, Kent",
-      "headline": "A 45-page rebuild that kept every hard-won search ranking",
-      "summary": "Kingfisher House is a business centre in Bromley offering serviced offices, meeting rooms, co-working and virtual office services. We rebuilt their website from the ground up — faster, easier to update and structured for local search and AI answers — without losing the authority of the old site.",
-      "challenge": "The old site had years of indexed pages and blog articles. A redesign that changed addresses would have thrown that search authority away, and the team needed to update copy themselves without risking a broken site.",
+      "headline": "A 45-page rebuild that keeps every old address working",
+      "summary": "Kingfisher House rents serviced offices, meeting rooms and virtual office services in Bromley. The old website was dated and hard for the team to update. We redesigned and rebuilt it so their own team can change the wording without breaking anything.",
+      "challenge": "The old site had years of pages and blog posts indexed by Google. Changing the addresses would have thrown that away. The team also needed to edit copy themselves, which on the old site meant waiting for a developer.",
       "work": [
-        "Full redesign and rebuild — 45 pages across services, FAQs and blog",
-        "Every legacy address preserved or redirected with a 301",
-        "Content managed in simple files, validated automatically before every deploy",
-        "Separate staging and live sites on AWS Amplify, with staging hidden from search",
-        "Service, FAQ and LocalBusiness structured data throughout"
+        "Redesign and rebuild of 45 pages, including every blog post brought across word for word",
+        "Every old address kept or redirected, 23 redirects in total",
+        "All wording kept in simple files the team can edit, checked automatically before each update goes live",
+        "A private staging site for reviewing changes, hidden from Google",
+        "Structured data for the business, its services and FAQs"
       ],
-      "services": ["Web Development", "UI/UX Design", "AEO & SEO"],
+      "services": [
+        "Web Development",
+        "UI/UX Design",
+        "AI Search & SEO"
+      ],
       "highlights": [
-        { "value": "45", "label": "Pages designed and built" },
-        { "value": "23", "label": "Legacy URLs redirected, none lost" }
-      ]
+        {
+          "value": "45",
+          "label": "Pages designed and built"
+        },
+        {
+          "value": "23",
+          "label": "Old addresses redirected, none lost"
+        }
+      ],
+      "image": "work/kingfisher-house.jpg",
+      "short": "A business centre in Bromley. We rebuilt their 45-page website, blog included, and kept every old address working, so nothing indexed was lost."
     }
   ]
 }

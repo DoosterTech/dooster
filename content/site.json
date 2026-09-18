@@ -2,57 +2,100 @@
   "brand": {
     "name": "Dooster",
     "full_name": "Dooster",
-    "tagline": "A UK digital marketing and website studio that gets businesses found, chosen and cited — on Google and in AI answer engines.",
-    "footer_blurb": "Websites, AEO and marketing systems for businesses that want sharper positioning, cleaner funnels and measurable growth.",
+    "tagline": "A UK team that builds websites and runs the digital marketing around them.",
+    "footer_blurb": "Websites and digital marketing, built and run by one team.",
     "availability": "Taking on new projects",
     "copyright_year": "2026",
     "country": "United Kingdom"
   },
   "contact": {
-    "email": "hello@dooster.co.uk",
+    "email": "hello@dooster.io",
     "response_promise": "We reply within one working day with something useful, not a pitch."
   },
-  "site_url": "https://www.dooster.co.uk",
+  "site_url": "https://www.dooster.io",
   "nav": {
     "primary": [
-      { "label": "Services", "href": "/services", "children_from": "services" },
-      { "label": "Results", "href": "/results" },
-      { "label": "Why Dooster", "href": "/#why-dooster" },
-      { "label": "Contact", "href": "/contact" }
+      {
+        "label": "Services",
+        "href": "/services",
+        "children_from": "services"
+      },
+      {
+        "label": "Results",
+        "href": "/results"
+      },
+      {
+        "label": "About",
+        "href": "/about"
+      },
+      {
+        "label": "Contact",
+        "href": "/contact"
+      }
     ],
-    "cta": { "label": "Book a free AEO audit", "href": "/contact#contact-form" }
+    "cta": {
+      "label": "Free AI visibility check",
+      "href": "/ai-visibility-check"
+    }
   },
   "footer": {
     "columns": [
       {
         "heading": "Company",
         "links": [
-          { "label": "Home", "href": "/" },
-          { "label": "Services", "href": "/services" },
-          { "label": "Results", "href": "/results" },
-          { "label": "Why Dooster", "href": "/#why-dooster" },
-          { "label": "Contact", "href": "/contact" }
+          {
+            "label": "Home",
+            "href": "/"
+          },
+          {
+            "label": "Services",
+            "href": "/services"
+          },
+          {
+            "label": "Results",
+            "href": "/results"
+          },
+          {
+            "label": "About",
+            "href": "/about"
+          },
+          {
+            "label": "Free AI visibility check",
+            "href": "/ai-visibility-check"
+          },
+          {
+            "label": "Contact",
+            "href": "/contact"
+          }
         ]
       }
     ],
     "services_heading": "Services",
     "contact_heading": "Get in touch",
     "legal_links": [
-      { "label": "Privacy Policy", "href": "/privacy-policy" },
-      { "label": "Cookies Policy", "href": "/cookies-policy" }
+      {
+        "label": "Privacy Policy",
+        "href": "/privacy-policy"
+      },
+      {
+        "label": "Cookies Policy",
+        "href": "/cookies-policy"
+      }
     ]
   },
   "seo": {
     "default_image": "og-default.png",
-    "org_description": "Dooster is a UK-based digital marketing and website development company specialising in Answer Engine Optimisation (AEO) — helping businesses rank in Google and get cited by AI search engines such as ChatGPT, Perplexity, Gemini and Google AI Overviews.",
+    "org_description": "Dooster is a UK web development and digital marketing company. It builds websites and runs the marketing around them, including content, social media, email, SEO and visibility in AI search tools such as ChatGPT, for companies without in-house developers and marketers.",
     "knows_about": [
-      "Answer Engine Optimisation",
-      "AI search visibility",
-      "Search engine optimisation",
       "Website design and development",
+      "Cloud hosting on AWS",
+      "Artificial intelligence",
+      "AI search visibility (AEO / GEO)",
+      "Search engine optimisation",
       "Social media management",
       "Email marketing automation",
       "Marketing analytics"
-    ]
+    ],
+    "same_as": []
   }
 }
