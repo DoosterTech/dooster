@@ -23,6 +23,7 @@ Environment variables (set by template.yaml):
                      anything else sends it to NOTIFY_EMAIL for manual review
 """
 
+import datetime
 import html
 import ipaddress
 import json
@@ -230,6 +231,32 @@ def notify_dooster(job, report=None, error=None, sent_to_visitor=False):
                        RawMessage={"Data": msg.as_string()})
 
 
+def send_submission_copy(job):
+    """Email the Dooster inbox the form exactly as submitted, straight away,
+    so the request is on record even if the audit that follows fails."""
+    lines = [
+        "Someone has requested a free AI visibility report on the website.",
+        "",
+        f"Website:  {job['url']}",
+        f"Email:    {job['email']}",
+        f"Name:     {job.get('first_name') or '—'}",
+        f"Company:  {job.get('company') or '—'}",
+        f"Follow-up consent: {'YES' if job.get('consent') else 'no'}",
+        f"Received: {datetime.datetime.now(datetime.timezone.utc):%d %b %Y %H:%M} UTC",
+        "",
+        "The audit is running now. The report follows in a separate email within a few minutes.",
+        "We've told them to expect it within 24-48 hours. Reply to this email to contact them.",
+    ]
+    ses.send_email(
+        Source=f"Dooster website <{FROM_EMAIL}>",
+        Destination={"ToAddresses": [NOTIFY_EMAIL]},
+        ReplyToAddresses=[job["email"]],
+        Message={
+            "Subject": {"Data": f"New AI visibility report request: {job['host']}", "Charset": "UTF-8"},
+            "Body": {"Text": {"Data": "\n".join(lines), "Charset": "UTF-8"}},
+        })
+
+
 # ─── Entry point ──────────────────────────────────────────────────────────────
 
 def run_job(job):
@@ -283,6 +310,11 @@ def lambda_handler(event, context):
     job, errors = validate(data)
     if errors:
         return _response(400, {"ok": False, "errors": errors})
+
+    try:
+        send_submission_copy(job)
+    except ClientError as e:
+        print(f"could not email submission copy: {e}")   # the audit still runs
 
     try:
         lambda_client.invoke(FunctionName=context.function_name, InvocationType="Event",
