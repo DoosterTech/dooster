@@ -39,7 +39,7 @@ ses = boto3.client("ses")
 lambda_client = boto3.client("lambda")
 
 FROM_EMAIL = os.environ.get("FROM_EMAIL", "website@dooster.io")
-NOTIFY_EMAIL = os.environ.get("NOTIFY_EMAIL", "hello@dooster.io")
+NOTIFY_EMAIL = os.environ.get("NOTIFY_EMAIL", "support@dooster.io")
 ALLOWED_ORIGINS = [o.strip() for o in os.environ.get("ALLOWED_ORIGINS", "*").split(",") if o.strip()]
 _origin = ALLOWED_ORIGINS[0] if ALLOWED_ORIGINS else "*"
 
@@ -254,5 +254,5 @@ def lambda_handler(event, context):
                              Payload=json.dumps({"dooster_job": job}).encode("utf-8"))
     except ClientError as e:
         print(f"could not start audit: {e}")
-        return _response(502, {"ok": False, "error": "We couldn't start the check. Please email hello@dooster.io."})
+        return _response(502, {"ok": False, "error": "We couldn't start the check. Please email support@dooster.io."})
     return _response(202, {"ok": True})

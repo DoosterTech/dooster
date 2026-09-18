@@ -31,4 +31,4 @@ region = "eu-west-2"
 capabilities = "CAPABILITY_IAM"
 resolve_s3 = true
 confirm_changeset = true
-parameter_overrides = "Stage=prod ToEmail=hello@dooster.io FromEmail=website@dooster.io AllowedOrigins=https://www.dooster.io,https://dooster.io,https://main.dp8exvbtxi8lp.amplifyapp.com"
+parameter_overrides = "Stage=prod ToEmail=support@dooster.io FromEmail=website@dooster.io AllowedOrigins=https://www.dooster.io,https://dooster.io,https://main.dp8exvbtxi8lp.amplifyapp.com"

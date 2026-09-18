@@ -21,7 +21,7 @@ from botocore.exceptions import ClientError
 
 ses = boto3.client("ses")
 
-TO_EMAIL = os.environ.get("TO_EMAIL", "hello@dooster.io")
+TO_EMAIL = os.environ.get("TO_EMAIL", "support@dooster.io")
 FROM_EMAIL = os.environ.get("FROM_EMAIL", "website@dooster.io")
 ALLOWED_ORIGINS = [o.strip() for o in os.environ.get("ALLOWED_ORIGINS", "*").split(",") if o.strip()]
 _origin = ALLOWED_ORIGINS[0] if ALLOWED_ORIGINS else "*"
@@ -176,7 +176,7 @@ def lambda_handler(event, context):
         print(f"SES send failed: {e}")
         return _response(502, {
             "ok": False,
-            "error": "We couldn't send your message. Please email hello@dooster.io.",
+            "error": "We couldn't send your message. Please email support@dooster.io.",
         })
 
     return _response(200, {"ok": True})
