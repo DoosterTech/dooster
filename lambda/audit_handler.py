@@ -15,7 +15,7 @@ aeo_audit.py is a copy of the standalone tool in ../aeo-audit. Keep them in sync
 Environment variables (set by template.yaml):
     FROM_EMAIL       verified SES sender, e.g. website@dooster.io
     NOTIFY_EMAIL     Dooster inbox told about every check that runs
-    ALLOWED_ORIGIN   site origin allowed to call this
+    ALLOWED_ORIGINS  comma-separated site origins allowed to call this
     AUDIT_PAGES      pages to sample per audit (default 10)
 """
 
@@ -40,7 +40,17 @@ lambda_client = boto3.client("lambda")
 
 FROM_EMAIL = os.environ.get("FROM_EMAIL", "website@dooster.io")
 NOTIFY_EMAIL = os.environ.get("NOTIFY_EMAIL", "hello@dooster.io")
-ALLOWED_ORIGIN = os.environ.get("ALLOWED_ORIGIN", "*")
+ALLOWED_ORIGINS = [o.strip() for o in os.environ.get("ALLOWED_ORIGINS", "*").split(",") if o.strip()]
+_origin = ALLOWED_ORIGINS[0] if ALLOWED_ORIGINS else "*"
+
+
+def _set_origin(event):
+    """Answer with the caller's origin if it is allowed. API Gateway's CORS
+    settings are the real guard; this keeps direct invocations consistent."""
+    global _origin
+    headers = {k.lower(): v for k, v in (event.get("headers") or {}).items()}
+    origin = headers.get("origin", "")
+    _origin = origin if origin in ALLOWED_ORIGINS or "*" in ALLOWED_ORIGINS else ALLOWED_ORIGINS[0]
 AUDIT_PAGES = int(os.environ.get("AUDIT_PAGES", "10"))
 SITE_URL = "https://www.dooster.io"
 
@@ -53,7 +63,7 @@ def _response(status, body):
         "statusCode": status,
         "headers": {
             "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": ALLOWED_ORIGIN,
+            "Access-Control-Allow-Origin": _origin,
             "Access-Control-Allow-Headers": "Content-Type",
             "Access-Control-Allow-Methods": "POST,OPTIONS",
         },
@@ -218,6 +228,7 @@ def lambda_handler(event, context):
         run_job(event["dooster_job"])
         return {"ok": True}
 
+    _set_origin(event)
     method = (event.get("requestContext", {}).get("http", {}).get("method")
               or event.get("httpMethod", "POST"))
     if method == "OPTIONS":
