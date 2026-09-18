@@ -1,7 +1,9 @@
 """
 Free AI visibility check: API Gateway (HTTP API) -> Lambda -> SES.
 
-One function, two modes:
+By default (RUN_AUDIT=false) the form only emails the Dooster inbox a copy of
+the request; the team runs the check and sends the report by hand within
+24-48 hours. With RUN_AUDIT=true it works in two modes:
 
   1. HTTP request from the website form. Validates the website and email,
      then invokes this same function asynchronously and returns 202 straight
@@ -19,6 +21,8 @@ Environment variables (set by template.yaml):
     NOTIFY_EMAIL     Dooster inbox told about every check that runs
     ALLOWED_ORIGINS  comma-separated site origins allowed to call this
     AUDIT_PAGES      pages to sample per audit (default 10)
+    RUN_AUDIT        "true" runs the automated audit after each request;
+                     anything else just emails the request to NOTIFY_EMAIL
     AUTO_SEND_REPORT "true" emails the report straight to the visitor;
                      anything else sends it to NOTIFY_EMAIL for manual review
 """
@@ -57,6 +61,7 @@ def _set_origin(event):
     origin = headers.get("origin", "")
     _origin = origin if origin in ALLOWED_ORIGINS or "*" in ALLOWED_ORIGINS else ALLOWED_ORIGINS[0]
 AUDIT_PAGES = int(os.environ.get("AUDIT_PAGES", "10"))
+RUN_AUDIT = os.environ.get("RUN_AUDIT", "false").strip().lower() == "true"
 AUTO_SEND_REPORT = os.environ.get("AUTO_SEND_REPORT", "false").strip().lower() == "true"
 SITE_URL = "https://www.dooster.io"
 
@@ -244,7 +249,8 @@ def send_submission_copy(job):
         f"Follow-up consent: {'YES' if job.get('consent') else 'no'}",
         f"Received: {datetime.datetime.now(datetime.timezone.utc):%d %b %Y %H:%M} UTC",
         "",
-        "The audit is running now. The report follows in a separate email within a few minutes.",
+        ("The automated audit is running; its results follow in a separate email."
+         if RUN_AUDIT else "Please run the check and email them the report."),
         "We've told them to expect it within 24-48 hours. Reply to this email to contact them.",
     ]
     ses.send_email(
@@ -314,7 +320,13 @@ def lambda_handler(event, context):
     try:
         send_submission_copy(job)
     except ClientError as e:
-        print(f"could not email submission copy: {e}")   # the audit still runs
+        print(f"could not email submission copy: {e}")
+        if not RUN_AUDIT:
+            # the email is the only record of the request, so say it failed
+            return _response(502, {"ok": False, "error": "We couldn't send your request. Please email support@dooster.io."})
+
+    if not RUN_AUDIT:
+        return _response(202, {"ok": True})
 
     try:
         lambda_client.invoke(FunctionName=context.function_name, InvocationType="Event",

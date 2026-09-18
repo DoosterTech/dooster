@@ -21,6 +21,13 @@ Parameters:
     Type: String
     Default: support@dooster.io
     Description: Sender address. Must be verified in SES (or its domain must be).
+  RunAudit:
+    Type: String
+    AllowedValues: ['true', 'false']
+    Default: 'false'
+    Description: >-
+      'false' only emails each report request to ToEmail (reports are done by
+      hand). 'true' also runs the automated audit.
   AutoSendReport:
     Type: String
     AllowedValues: ['true', 'false']
@@ -102,6 +109,7 @@ Resources:
           NOTIFY_EMAIL: !Ref ToEmail
           ALLOWED_ORIGINS: !Join [',', !Ref AllowedOrigins]
           AUDIT_PAGES: '10'
+          RUN_AUDIT: !Ref RunAudit
           AUTO_SEND_REPORT: !Ref AutoSendReport
       Policies:
         - Statement:

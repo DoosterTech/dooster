@@ -123,10 +123,11 @@ Both run on one API Gateway, defined in `lambda/template.yaml` (AWS SAM):
 
 - `POST /contact` → `contact_handler.py` → SES email to the Dooster inbox
 - `POST /audit` → `audit_handler.py`: validates the website (public addresses
-  only) and email, then re-invokes itself asynchronously and returns 202. The
-  async run audits up to 10 pages with `aeo_audit.py`, emails the visitor a
-  summary with the full HTML report attached, and emails the Dooster inbox
-  with the lead and score. Throttled to 1 request/second.
+  only) and email, then emails the Dooster inbox a copy of the request. Reports
+  are done by hand within 24-48 hours. `RunAudit=true` also runs the automated
+  audit (up to 10 pages) and sends the report to the inbox for review;
+  `AutoSendReport=true` emails it to the visitor directly. Throttled to 1
+  request/second.
 
 `lambda/aeo_audit.py` is a copy of the standalone tool in `../aeo-audit`. Copy
 it across when the tool changes.
