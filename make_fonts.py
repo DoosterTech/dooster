@@ -35,6 +35,29 @@ CHARS = (
     + "áàâäãåéèêëíìîïóòôöõúùûüñçßøœæÁÀÂÄÉÈÊËÍÎÓÔÖÚÜÑÇØ"  # names and loanwords
 )
 
+# Fallback faces sized to match the real ones. With font-display: optional a
+# slow first visit keeps the fallback for that whole page, so it has to take up
+# the same space or the layout would differ from later visits.
+FALLBACKS = """
+@font-face {
+  font-family: 'Inter Fallback';
+  src: local('Arial'), local('Helvetica'), local('Liberation Sans');
+  size-adjust: 107%;
+  ascent-override: 90%;
+  descent-override: 22.4%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: 'Grotesk Fallback';
+  src: local('Arial'), local('Helvetica'), local('Liberation Sans');
+  size-adjust: 103%;
+  ascent-override: 96%;
+  descent-override: 24%;
+  line-gap-override: 0%;
+}
+"""
+
 # a browser UA, or Google serves the older truetype format
 UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
       "(KHTML, like Gecko) Chrome/128.0 Safari/537.36")
@@ -51,7 +74,7 @@ def font_url(family, weight):
     css = fetch("https://fonts.googleapis.com/css2?" + urllib.parse.urlencode({
         "family": f"{family}:wght@{weight}",
         "text": CHARS,
-        "display": "swap",
+        "display": "optional",
     })).decode("utf-8")
     start = css.index("src: url(") + len("src: url(")
     return css[start:css.index(")", start)]
@@ -71,13 +94,14 @@ def main():
   font-family: '{family}';
   font-style: normal;
   font-weight: {weight};
-  font-display: swap;
+  font-display: optional;
   src: url('/static/fonts/{name}') format('woff2');
 }}""")
 
     with open(CSS_PATH, "w", encoding="utf-8", newline="\n") as f:
         f.write("/* Self-hosted, subset web fonts — regenerate with make_fonts.py */\n\n")
         f.write("\n\n".join(rules) + "\n")
+        f.write(FALLBACKS)
 
     total = sum(os.path.getsize(os.path.join(FONT_DIR, n)) for n in made)
     print(f"  {len(made)} fonts, {total // 1024} KB total")
