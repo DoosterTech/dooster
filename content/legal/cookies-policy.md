@@ -9,11 +9,11 @@ Cookies are small text files stored on your device when you visit a website. Thi
 
 ## Strictly necessary
 
-This website works without any cookies. We do not set advertising or tracking cookies unless you allow them.
+The pages themselves work without cookies. We don't use advertising cookies and we don't sell your data.
 
 ## Analytics
 
-If analytics is enabled and you consent, we use Google Analytics 4 to understand how visitors use the site — for example, which pages are most useful and how people found us, including visits referred by AI assistants. This information is aggregated and does not identify you personally.
+We use Google Analytics 4 to understand how visitors use the site — for example, which pages are most useful and how people found us, including visits referred by AI assistants. This information is aggregated and does not identify you personally.
 
 ## Managing cookies
 
