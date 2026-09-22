@@ -12,8 +12,7 @@
   <!-- Fonts: Space Grotesk (display) + Inter (text), served from this domain -->
   <link rel="preload" href="/static/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/static/fonts/space-grotesk-700.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/static/css/fonts.css" />
-  <link rel="stylesheet" href="/static/css/base.css" />
+  <style>{{ inline_css | safe }}</style>
   <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM summary" />
 
   {% block seometa %}{% endblock %}

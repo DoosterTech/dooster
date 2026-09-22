@@ -46,12 +46,20 @@
       ad_personalization: "denied",
       analytics_storage: accepted ? "granted" : "denied",
     });
-    var s = document.createElement("script");
-    s.async = true;
-    s.src = "https://www.googletagmanager.com/gtag/js?id=" + encodeURIComponent(gaId);
-    document.head.appendChild(s);
-    gtag("js", new Date());
-    gtag("config", gaId);
+    // off the critical path: the tag is 160KB+ and nothing on the page needs it
+    function addTag() {
+      var s = document.createElement("script");
+      s.async = true;
+      s.src = "https://www.googletagmanager.com/gtag/js?id=" + encodeURIComponent(gaId);
+      document.head.appendChild(s);
+      gtag("js", new Date());
+      gtag("config", gaId);
+    }
+    if (document.readyState === "complete") {
+      setTimeout(addTag, 0);
+    } else {
+      window.addEventListener("load", function () { setTimeout(addTag, 500); });
+    }
   }
 
   function grant() {

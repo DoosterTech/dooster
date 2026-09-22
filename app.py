@@ -98,6 +98,39 @@ def load_legal():
     return pages
 
 
+def _minify_css(css):
+    """Whitespace and comments only — quoted strings are left alone, so
+    content: "✓" and url("...") survive."""
+    # comments go first: an apostrophe inside one ("doesn't") would otherwise
+    # look like the start of a string and swallow the rest of the file
+    css = re.sub(r"/\*.*?\*/", "", css, flags=re.S)
+    parts, out = re.split(r'("(?:[^"\\]|\\.)*"|\'(?:[^\'\\]|\\.)*\')', css), []
+    for i, part in enumerate(parts):
+        if i % 2:                      # a quoted string: keep verbatim
+            out.append(part)
+            continue
+        part = re.sub(r"\s+", " ", part)
+        part = re.sub(r"\s*([{}:;,>])\s*", r"\1", part)
+        part = part.replace(";}", "}")
+        out.append(part)
+    return "".join(out).strip()
+
+
+def inline_css():
+    """The site's CSS, inlined into every page. Two small stylesheets over the
+    network delayed first paint by about a second on mobile; inlining removes
+    both requests from the critical path."""
+    if "css" in _cache and not app.debug:
+        return _cache["css"]
+    css = ""
+    for name in ("fonts.css", "base.css"):
+        with open(os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                               "static", "css", name), encoding="utf-8") as f:
+            css += _minify_css(f.read()) + "\n"
+    _cache["css"] = css
+    return css
+
+
 def build_meta(page_meta, site):
     """Expand a page's meta block into absolute URLs for canonical/OG tags."""
     base = site["site_url"]
@@ -149,6 +182,7 @@ def inject_globals():
     """Make site-wide content available to every template."""
     site = load_site()
     return {"site": site, "nav": nav_for(site), "all_services": load_services(),
+            "inline_css": inline_css(),
             "form_endpoint": FORM_ENDPOINT, "audit_endpoint": AUDIT_ENDPOINT, "site_env": SITE_ENV,
             "is_production": IS_PRODUCTION}
 
