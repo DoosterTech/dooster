@@ -1,0 +1,9 @@
+{# Cookie consent. Analytics only loads once someone accepts (see cookie-consent.js). #}
+{% set c = site.cookies %}
+<div id="cookie-banner" class="cookie-banner" role="dialog" aria-live="polite" aria-label="{{ c.aria_label }}" hidden>
+  <p>{{ c.message }} <a href="{{ c.link.href }}">{{ c.link.label }}</a></p>
+  <div class="cookie-actions">
+    <button type="button" class="btn btn-ghost btn-sm" data-cookie-choice="declined">{{ c.decline }}</button>
+    <button type="button" class="btn btn-accent btn-sm" data-cookie-choice="accepted">{{ c.accept }}</button>
+  </div>
+</div>

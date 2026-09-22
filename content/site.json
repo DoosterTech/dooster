@@ -100,5 +100,16 @@
   },
   "analytics": {
     "ga4_id": "G-5SNST0L3MR"
+  },
+  "cookies": {
+    "aria_label": "Cookie choice",
+    "message": "We use analytics cookies.",
+    "link": {
+      "label": "Cookies policy",
+      "href": "/cookies-policy"
+    },
+    "accept": "Accept",
+    "decline": "Decline",
+    "settings": "Cookie settings"
   }
 }

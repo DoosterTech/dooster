@@ -17,18 +17,6 @@
   <link rel="stylesheet" href="/static/css/base.css" />
   <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM summary" />
 
-  {% if is_production and site.analytics.ga4_id %}
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.analytics.ga4_id }}"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', '{{ site.analytics.ga4_id }}');
-  </script>
-  {% endif %}
-
   {% block seometa %}{% endblock %}
 </head>
 <body>
@@ -41,8 +29,11 @@
   </main>
 
   {% include 'components/footer.html' %}
+  {% include 'components/cookie-banner.html' %}
 
   <script src="/static/js/site.js" defer></script>
+  {# Google Analytics loads from here, and only once the visitor accepts #}
+  <script src="/static/js/cookie-consent.js" data-ga-id="{{ site.analytics.ga4_id if is_production else '' }}" defer></script>
   {% block extrascripts %}{% endblock %}
 </body>
 </html>
