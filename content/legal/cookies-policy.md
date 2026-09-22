@@ -13,7 +13,13 @@ The pages themselves work without cookies. We don't use advertising cookies and 
 
 ## Analytics
 
-We use Google Analytics 4 to understand how visitors use the site — for example, which pages are most useful and how people found us, including visits referred by AI assistants. This information is aggregated and does not identify you personally.
+We use Google Analytics 4 to understand how visitors use the site, for example which pages are most useful and how people found us, including visits referred by AI assistants.
+
+**Before you choose**, analytics runs in a cookieless mode. It counts page views and nothing is stored on your device, so we can see how busy the site is without identifying anyone.
+
+**If you accept cookies**, Google Analytics sets cookies that let us see returning visits and complete journeys through the site. If you decline, the cookieless counting continues and no cookies are set.
+
+You can change your choice at any time with the **Cookie settings** link in the footer.
 
 ## Managing cookies
 

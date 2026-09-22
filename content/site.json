@@ -103,13 +103,13 @@
   },
   "cookies": {
     "aria_label": "Cookie choice",
-    "message": "We use analytics cookies.",
+    "message": "We count visits anonymously. Accept cookies for fuller analytics.",
     "link": {
       "label": "Cookies policy",
       "href": "/cookies-policy"
     },
     "accept": "Accept",
-    "decline": "Decline",
+    "decline": "No thanks",
     "settings": "Cookie settings"
   }
 }
