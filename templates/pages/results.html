@@ -1,6 +1,6 @@
 {% extends 'layouts/base.html' %}
 {% import 'components/seometa.html' as seo with context %}
-{% from 'components/sections.html' import cta_band %}
+{% from 'components/sections.html' import cta_band, work_image %}
 
 {% block seometa %}
 {{ seo.meta(meta.title, meta.description, meta.url, meta.image,
@@ -28,7 +28,7 @@
         <a href="{{ c.website }}" class="card-link" rel="noopener" target="_blank">{{ page.labels.visit }}: {{ c.website_label }} <span aria-hidden="true">↗</span></a>
       </header>
       {% if c.image %}
-      <figure class="case-shot"><img src="/static/images/{{ c.image }}" alt="{{ c.client }} website homepage" width="1440" height="900" loading="lazy" /></figure>
+      <figure class="case-shot">{{ work_image(c, '(min-width: 1024px) 1140px, 94vw') }}</figure>
       {% endif %}
 
       <div class="case-full-body">
