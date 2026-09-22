@@ -1,5 +1,6 @@
 {% extends 'layouts/base.html' %}
 {% import 'components/seometa.html' as seo with context %}
+{% from 'components/sections.html' import work_image %}
 
 {% block seometa %}
 {{ seo.meta(meta.title, meta.description, meta.url, meta.image,
@@ -59,7 +60,7 @@
       {% for c in case_studies %}
       <article class="work">
         <a href="/results#{{ c.slug }}" class="work-shot">
-          <img src="/static/images/{{ c.image }}" alt="{{ c.client }} website homepage" width="1440" height="900" loading="lazy" />
+          {{ work_image(c, '(min-width: 900px) 58vw, 92vw') }}
         </a>
         <div class="work-text">
           <p class="label">{{ c.sector }}</p>

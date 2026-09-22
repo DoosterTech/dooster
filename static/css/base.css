@@ -755,3 +755,7 @@ a.card:hover .icon-tile { background: var(--accent); color: #fff; }
   font: inherit; color: inherit; text-align: left;
 }
 .link-button:hover { color: #fff; }
+
+/* screenshots fill their container */
+.work-shot picture, .case-shot picture { display: block; }
+.work-shot img, .case-shot img { display: block; width: 100%; height: auto; }
