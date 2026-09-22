@@ -90,7 +90,7 @@
 {% set stem = c.image.rsplit('.', 1)[0] %}
 <picture>
   <source type="image/webp" sizes="{{ sizes }}"
-          srcset="/static/images/{{ stem }}-720.webp 720w, /static/images/{{ stem }}-1440.webp 1440w">
+          srcset="/static/images/{{ stem }}-480.webp 480w, /static/images/{{ stem }}-720.webp 720w, /static/images/{{ stem }}-1440.webp 1440w">
   <img src="/static/images/{{ stem }}-720.jpg" sizes="{{ sizes }}"
        srcset="/static/images/{{ stem }}-720.jpg 720w, /static/images/{{ c.image }} 1440w"
        alt="{{ c.client }} website homepage" width="1440" height="900"

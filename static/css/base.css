@@ -762,3 +762,19 @@ a.card:hover .icon-tile { background: var(--accent); color: #fff; }
 
 /* hold the screenshot's shape before it arrives, so nothing jumps */
 .work-shot img, .case-shot img, .work-shot picture, .case-shot picture { aspect-ratio: 1440 / 900; }
+
+/* ---------- Cheaper paint on phones ----------
+   The hero's masked grid, the blurred glow behind the panel and the header's
+   backdrop blur are all expensive to rasterise on a low-end phone, and they
+   were holding up the first paint of the hero text (2.3s of render delay in
+   Lighthouse). Desktop keeps them; small screens get the plain version. */
+@media (max-width: 900px) {
+  .hero-grid-bg { display: none; }
+  .answer-panel::before { display: none; }
+  .closing::after, .cta-glow { display: none; }
+  .site-header {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: var(--paper);
+  }
+}
