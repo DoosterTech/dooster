@@ -37,6 +37,7 @@
     <p>© {{ site.brand.copyright_year }} {{ site.brand.full_name }}. All rights reserved.</p>
     <ul>
       {% for link in site.footer.legal_links %}<li><a href="{{ link.href }}">{{ link.label }}</a></li>{% endfor %}
+      <li><button type="button" class="link-button" data-cookie-settings>{{ site.cookies.settings }}</button></li>
     </ul>
   </div>
 </footer>
