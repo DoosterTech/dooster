@@ -2,11 +2,11 @@
   "brand": {
     "name": "Dooster",
     "full_name": "Dooster",
-    "tagline": "A UK team that builds websites and runs the digital marketing around them.",
-    "footer_blurb": "Websites and digital marketing, built and run by one team.",
+    "tagline": "A Bromley team that builds websites and runs the digital marketing around them.",
+    "footer_blurb": "Websites and digital marketing, built and run by one team in Bromley, London.",
     "availability": "Taking on new projects",
     "copyright_year": "2026",
-    "country": "United Kingdom"
+    "country": "Bromley, London, United Kingdom"
   },
   "contact": {
     "email": "support@dooster.io",
@@ -85,7 +85,7 @@
   },
   "seo": {
     "default_image": "og-default.png",
-    "org_description": "Dooster is a UK web development and digital marketing company. It builds websites and runs the marketing around them, including content, social media, email, SEO and visibility in AI search tools such as ChatGPT, for companies without in-house developers and marketers.",
+    "org_description": "Dooster is a digital marketing agency and web development company in Bromley, London. It builds websites and runs the marketing around them, including content, social media, email, SEO and visibility in AI search tools such as ChatGPT, for companies without in-house developers and marketers.",
     "knows_about": [
       "Website design and development",
       "Cloud hosting on AWS",
@@ -111,5 +111,15 @@
     "accept": "Accept",
     "decline": "No thanks",
     "settings": "Cookie settings"
+  },
+  "location": {
+    "locality": "Bromley",
+    "region": "Greater London",
+    "country": "GB",
+    "area_served": [
+      "Bromley",
+      "London",
+      "United Kingdom"
+    ]
   }
 }

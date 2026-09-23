@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "Dooster | Websites and digital marketing from one team | UK",
-    "description": "Dooster builds websites and runs the marketing around them: content, social media, SEO and AI search visibility. One UK team for small companies that need their website to bring in leads.",
+    "title": "Digital Marketing Agency & AI Visibility | Dooster, Bromley",
+    "description": "Dooster is a digital marketing agency and web development team in Bromley, London. We build fast websites and make sure they get found — on Google and in AI assistants like ChatGPT.",
     "path": "",
     "image": "og-default.png"
   },
@@ -29,34 +29,34 @@
     ]
   },
   "release_panel": {
-    "title": "dooster deploy · kingfisherhousebc.co.uk",
+    "title": "dooster audit · yourcompany.co.uk",
     "lines": [
       {
         "status": "ok",
-        "text": "Content validated · 45 pages"
+        "text": "GPTBot + Perplexity allowed"
       },
       {
         "status": "ok",
-        "text": "Structured data valid on every page"
+        "text": "18 buyer questions answered"
       },
       {
         "status": "ok",
-        "text": "23 legacy URLs redirected"
+        "text": "Structured data: Service, FAQ"
       },
       {
         "status": "ok",
-        "text": "Google & AI crawlers allowed"
+        "text": "Pages dated, authors named"
       },
       {
         "status": "ok",
-        "text": "Links and assets resolve"
+        "text": "Fixes ranked by impact"
       },
       {
         "status": "live",
-        "text": "Deployed to AWS"
+        "text": "Report back in 24–48 hours"
       }
     ],
-    "caption": "Every release we ship is checked automatically before it goes live."
+    "caption": "A sample AI visibility report. We run the same checks on your site, free."
   },
   "clients": {
     "label": "Trusted by",
