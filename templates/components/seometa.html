@@ -40,8 +40,13 @@
   "image": "{{ site.site_url }}/static/images/og-default.png",
   "description": {{ site.seo.org_description | tojson }},
   "email": {{ site.contact.email | tojson }},
-  "areaServed": "GB",
-  "address": { "@type": "PostalAddress", "addressCountry": "GB" },
+  "areaServed": {{ site.location.area_served | tojson }},
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": {{ site.location.locality | tojson }},
+    "addressRegion": {{ site.location.region | tojson }},
+    "addressCountry": {{ site.location.country | tojson }}
+  },
   "knowsAbout": {{ site.seo.knows_about | tojson }}{% if site.seo.same_as %},
   "sameAs": {{ site.seo.same_as | tojson }}{% endif %}
 }
@@ -81,7 +86,7 @@
   "description": {{ service.description | tojson }},
   "provider": { "@id": "{{ site.site_url }}/#organization", "@type": "ProfessionalService", "name": {{ site.brand.full_name | tojson }} },
   "url": "{{ site.site_url }}{{ service.url }}",
-  "areaServed": "GB"
+  "areaServed": {{ site.location.area_served | tojson }}
 }
 {%- endmacro %}
 
